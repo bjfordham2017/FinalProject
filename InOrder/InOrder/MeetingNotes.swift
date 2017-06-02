@@ -22,4 +22,10 @@ class MeetingNotes {
         self.itemsFailed = itemsFailed
         self.itemsTabled = itemsTabled
     }
+    
+    public static let dateLabel = "Date"
+    public static let generalNotesLabel = "Generalnotes"
+    public static let itemsPasedLabel = "Itemspassed"
+    public static let itemsFailedLabel = "Itemsfailed"
+    public static let itemsTabledLabel = "Itemstabled"
 }

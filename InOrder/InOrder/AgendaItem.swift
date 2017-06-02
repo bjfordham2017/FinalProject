@@ -31,4 +31,13 @@ class AgendaItem {
         self.name = name
         self.description = description
     }
+    
+    public static let nameLabel = "Name"
+    public static let descriptionLbel = "Description"
+    public static let notesLabel = "Notes"
+    public static let amendmentsLabel = "Amendments"
+    public static let votesForLabel = "Votesfor"
+    public static let votesAgainstLabel = "Votesagainst"
+    public static let abstensionsLabel = "Abstensions"
+    public static let statusLabel = "Status"
 }

@@ -25,4 +25,10 @@ class User {//needs explicit access control
         self.password = password
         self.groups = groups
     }
+    
+    public static let firstNameLabel = "Firstname"
+    public static let lastNameLabel = "Lastname"
+    public static let emailLabel = "Email"
+    public static let passwordLabel = "Password"
+    public static let groupsLabel = "Groups"
 }

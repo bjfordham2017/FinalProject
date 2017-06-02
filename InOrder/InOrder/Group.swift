@@ -22,4 +22,10 @@ class Group {
         self.members = members
         self.meetingHistory = meetingHistory
     }
+    
+    public static let nameLabel = "Name"
+    public static let descriptionLabel = "Description"
+    public static let moderatorLabel = "Moderator"
+    public static let membersLabel = "Members"
+    public static let meetingHistoryLabel = "Meetinghistory"
 }

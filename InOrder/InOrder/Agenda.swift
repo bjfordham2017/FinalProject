@@ -10,4 +10,6 @@ import Foundation
 
 class Agenda {
     var agenda = [AgendaItem]()
+    
+    public static let agendaLabel = "Agenda"
 }

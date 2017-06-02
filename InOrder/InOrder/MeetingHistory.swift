@@ -14,4 +14,6 @@ class MeetingHistory {
     init(history: [MeetingNotes]) {
         self.history = history
     }
+    
+    public static let historyLabel = "History"
 }
