@@ -14,6 +14,7 @@ class Group {
     var moderator: User
     var members: [String]
     var meetingHistory: MeetingHistory
+    var upcomingAgenda = Agenda()
     
     init(name: String, description: String, moderator: User, members: [String], meetingHistory: MeetingHistory) {
         self.name = name
@@ -28,4 +29,5 @@ class Group {
     public static let moderatorLabel = "Moderator"
     public static let membersLabel = "Members"
     public static let meetingHistoryLabel = "Meetinghistory"
+    public static let upcomingAgendaLabel = "Upcomingagenda"
 }

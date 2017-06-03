@@ -28,7 +28,7 @@ class InOrderTests: XCTestCase {
     
     func testAgendaItemJSONwNotes() {
         let newNote = Note(name: "New Note", note: "Remember to make sure JSON works")
-        var newAgendaItem = AgendaItem(name: "Resolution", description: "The resolution we will now consider")
+        let newAgendaItem = AgendaItem(name: "Resolution", description: "The resolution we will now consider")
         newAgendaItem.notes.append(newNote)
         let JSON = newAgendaItem.jsonObject
         let fromJSON = AgendaItem(jsonDictionary: JSON)
@@ -38,5 +38,21 @@ class InOrderTests: XCTestCase {
         XCTAssertEqual(newAgendaItem.notes, fromJSON!.notes)
         XCTAssertEqual(newNote.name, noteFromJSON.name)
         XCTAssertEqual(newNote.note, noteFromJSON.note)
+    }
+    
+    func testAgendaJSONwhileEmpty() {
+        let newAgenda = Agenda()
+        let agendaJSON = newAgenda.jsonObject
+        let agendaFromJSON = Agenda(jsonDictionary: agendaJSON)
+        XCTAssertTrue(agendaFromJSON.agenda.isEmpty)
+    }
+    
+    func testAgendaJSON() {
+        let newAgendaItem = AgendaItem(name: "Resolution", description: "The resolution we will now consider")
+        let newAgenda = Agenda()
+        newAgenda.agenda.append(newAgendaItem)
+        let agendaJSON = newAgenda.jsonObject
+        let agendaFromJSON = Agenda(jsonDictionary: agendaJSON)
+        XCTAssertEqual(newAgenda.agenda[0].name, agendaFromJSON.agenda[0].name)
     }
 }
