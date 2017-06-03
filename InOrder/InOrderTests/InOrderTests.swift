@@ -33,6 +33,7 @@ class InOrderTests: XCTestCase {
         let JSON = newAgendaItem.jsonObject
         let fromJSON = AgendaItem(jsonDictionary: JSON)
         let noteFromJSON = fromJSON!.notes[0]
+        print("\(String(describing: fromJSON?.jsonObject))")
         XCTAssertEqual(newAgendaItem.name, fromJSON!.name)
         XCTAssertEqual(newAgendaItem.description, fromJSON!.description)
         XCTAssertEqual(newAgendaItem.notes, fromJSON!.notes)
@@ -53,6 +54,7 @@ class InOrderTests: XCTestCase {
         newAgenda.agenda.append(newAgendaItem)
         let agendaJSON = newAgenda.jsonObject
         let agendaFromJSON = Agenda(jsonDictionary: agendaJSON)
+        print("\(agendaFromJSON.jsonObject)")
         XCTAssertEqual(newAgenda.agenda[0].name, agendaFromJSON.agenda[0].name)
     }
 }
