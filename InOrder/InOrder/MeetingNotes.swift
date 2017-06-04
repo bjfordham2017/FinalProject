@@ -15,7 +15,11 @@ class MeetingNotes {
     var itemsFailed = [AgendaItem]()
     var itemsTabled = [AgendaItem]()
     
-    init(date: Date, generalNotes: [Note]?, itemsPassed: [AgendaItem]?, itemsFailed: [AgendaItem]?, itemsTabled: [AgendaItem]?) {
+    init(date: Date) {
+        self.date = MeetingNotes.sanitize(date: date)
+    }
+    
+    internal init(date: Date, generalNotes: [Note]?, itemsPassed: [AgendaItem]?, itemsFailed: [AgendaItem]?, itemsTabled: [AgendaItem]?) {
         self.date = MeetingNotes.sanitize(date: date)
         
         if let initGeneralNotes = generalNotes {
