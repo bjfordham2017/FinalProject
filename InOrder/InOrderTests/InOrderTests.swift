@@ -82,4 +82,28 @@ class InOrderTests: XCTestCase {
         XCTAssertEqual(newGroup.meetingHistory.history[0].date, groupfromJSON.meetingHistory.history[0].date)
         XCTAssertEqual(newGroup.upcomingAgenda.agenda[0].notes[0].note, groupfromJSON.upcomingAgenda.agenda[0].notes[0].note)
     }
+    
+    func testAgendaItemStatusandMethods() {
+        let passedAgendaItem = AgendaItem(name: "Passed", description: "Now it's off for the presidential veto")
+        passedAgendaItem.inputVoteTally(votesFor: 5, votesAgainst: 3, abstained: 1)
+        let failedAgendaItem = AgendaItem(name: "Failed", description: "Parliment don't play that!")
+        failedAgendaItem.inputVoteTally(votesFor: 1, votesAgainst: 5, abstained: 3)
+        let tabledAgendaItem = AgendaItem(name: "Tabled", description: "We'll talk about it next time")
+        tabledAgendaItem.table()
+        let failedByDefaulAgendaItem = AgendaItem(name: "Fails by default", description: "Everyone abstained")
+        failedByDefaulAgendaItem.inputVoteTally(votesFor: 0, votesAgainst: 0, abstained: 9)
+        XCTAssertEqual(passedAgendaItem.status, .passed)
+        XCTAssertEqual(failedAgendaItem.status, .failed)
+        XCTAssertEqual(tabledAgendaItem.status, .tabled)
+        XCTAssertEqual(failedByDefaulAgendaItem.status, .failed)
+    }
+    
+    func testAgendaItemJSONwVotesandStatus() {
+        let passedAgendaItem = AgendaItem(name: "Passed", description: "Now it's off for the presidential veto")
+        passedAgendaItem.inputVoteTally(votesFor: 5, votesAgainst: 3, abstained: 1)
+        let JSON = passedAgendaItem.jsonObject
+        let fromJSON = AgendaItem(jsonDictionary: JSON)
+        XCTAssertEqual(passedAgendaItem.status, fromJSON?.status)
+    }
+    
 }

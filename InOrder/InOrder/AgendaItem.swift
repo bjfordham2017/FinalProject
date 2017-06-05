@@ -13,6 +13,7 @@ class AgendaItem {
         case passed
         case failed
         case tabled
+        case inProgress
     }
     
     var name: String
@@ -21,11 +22,27 @@ class AgendaItem {
     var notes: [Note]
     var amendments: [Note]//These should never have been optionals.  They can just be empty arrays
     
-    var votesFor: Int?
-    var votesAgainst: Int?
-    var abstentions: Int?
+    var votesFor: Int = 0
+    var votesAgainst: Int = 0
+    var abstentions: Int = 0
     
-    var status: ItemStatus?
+    var isTabled: Bool = false
+    
+    var status: ItemStatus {
+        if isTabled {
+            return .tabled
+        } else {
+            if votesFor == 0 && votesAgainst == 0 && abstentions == 0 {
+                return .inProgress
+            } else if votesFor > votesAgainst {
+                return .passed
+            } else if votesFor < votesAgainst {
+                return .failed
+            } else {
+                return .failed
+            }
+        }
+    }
 
     init(name: String, description: String) {
         self.name = name
@@ -34,9 +51,10 @@ class AgendaItem {
         self.amendments = [Note]()
     }
     
-    internal init(name: String, description: String, notes: [Note]?, amendments: [Note]?, votesFor: Int?, votesAgainst: Int?, abstentions: Int?, status: ItemStatus?){
+    internal init(name: String, description: String, notes: [Note]?, amendments: [Note]?, votesFor: Int?, votesAgainst: Int?, abstentions: Int?, isTabled: Bool){
         self.name = name
         self.description = description
+        self.isTabled = isTabled
         
         if let initnotes = notes {
             self.notes = initnotes
@@ -57,9 +75,6 @@ class AgendaItem {
         if let initAbstentions = abstentions {
             self.abstentions = initAbstentions
         }
-        if let initStatus = status {
-            self.status = initStatus
-        }
     }
     
     var jsonObject: [String:Any] {
@@ -79,18 +94,15 @@ class AgendaItem {
             })
             output[AgendaItem.amendmentsLabel] = amendmentsArray
         }
-        if let outVotesFor = self.votesFor {
-            output[AgendaItem.votesForLabel] = outVotesFor
-        }
-        if let outVotesAgainst = self.votesAgainst {
-            output[AgendaItem.votesAgainstLabel] = outVotesAgainst
-        }
-        if let outAbstentions = self.abstentions {
-            output[AgendaItem.abstentionsLabel] = outAbstentions
-        }
-        if let outStatus = self.status {
-            output[AgendaItem.statusLabel] = outStatus
-        }
+        
+        output[AgendaItem.votesForLabel] = self.votesFor
+        
+        output[AgendaItem.votesAgainstLabel] = self.votesAgainst
+            
+        output[AgendaItem.abstentionsLabel] = self.abstentions
+        
+        output[AgendaItem.isTabledLabel] = self.isTabled
+        
         return output
     }
     
@@ -119,13 +131,47 @@ class AgendaItem {
             }
         }
 
+        var votesFor: Int? {
+            if let jsonVotesFor = jsonDictionary[AgendaItem.votesForLabel] as? Int {
+                return jsonVotesFor
+            } else {
+                return nil
+            }
+        }
         
-        let votesFor = jsonDictionary[AgendaItem.votesForLabel] as? Int
-        let votesAgainst = jsonDictionary[AgendaItem.votesAgainstLabel] as? Int
-        let abstentions = jsonDictionary[AgendaItem.abstentionsLabel] as? Int
-        let status = jsonDictionary[AgendaItem.statusLabel] as? ItemStatus
+        var votesAgainst: Int? {
+            if let jsonVotesAgainst = jsonDictionary[AgendaItem.votesAgainstLabel] as? Int {
+                return jsonVotesAgainst
+            } else {
+                return nil
+            }
+        }
         
-        self.init(name: name, description: description, notes: notes, amendments: amendments, votesFor: votesFor, votesAgainst: votesAgainst, abstentions: abstentions, status: status)
+        var abstentions: Int? {
+            if let jsonAbstentions = jsonDictionary[AgendaItem.abstentionsLabel] as? Int {
+                return jsonAbstentions
+            } else {
+                return nil
+            }
+        }
+        
+        let isTabled = jsonDictionary[AgendaItem.isTabledLabel] as? Bool
+        
+        self.init(name: name, description: description, notes: notes, amendments: amendments, votesFor: votesFor, votesAgainst: votesAgainst, abstentions: abstentions, isTabled: isTabled!)
+    }
+    
+    func inputVoteTally(votesFor: Int, votesAgainst: Int, abstained: Int) {
+        self.votesFor += votesFor
+        self.votesAgainst += votesAgainst
+        self.abstentions += abstained
+    }
+    
+    func table() {
+        self.isTabled = true
+    }
+    
+    func untable() {
+        self.isTabled = false
     }
     
     public static let nameLabel = "Name"
@@ -135,5 +181,5 @@ class AgendaItem {
     public static let votesForLabel = "Votesfor"
     public static let votesAgainstLabel = "Votesagainst"
     public static let abstentionsLabel = "Abstentions"
-    public static let statusLabel = "Status"
+    public static let isTabledLabel = "Istabled"
 }
