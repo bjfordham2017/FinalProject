@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     var group: Group!
     
@@ -18,21 +18,46 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+        
         groupName.text = group.name
         groupDescription.text = group.description
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+        
+        group.name = groupName.text ?? ""
+        group.description = groupDescription.text ?? ""
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        group.name = groupName.text ?? ""
+        group.description = groupDescription.text ?? ""
+        return true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func tapOutofEditing(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+        group.name = groupName.text ?? ""
+        group.description = groupDescription.text ?? ""
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+            case "PastMeetings"?:
+                let meetingHistory = segue.destination as! PastMeetingsViewController
+                meetingHistory.meetingHistory = group.meetingHistory
+            case "NewMeeting"?:
+                let newMeeting = segue.destination as! NewMeetingViewController
+                newMeeting.agenda = group.upcomingAgenda
+        default:
+            preconditionFailure("Unexpected segue identifier")
+        }
+    }
 
 }
 

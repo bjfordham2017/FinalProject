@@ -9,11 +9,24 @@
 import Foundation
 
 class AgendaItem {
-    enum ItemStatus {
+    enum ItemStatus: CustomStringConvertible {
         case passed
         case failed
         case tabled
         case inProgress
+        
+        var description: String {
+            switch self {
+            case .passed:
+                return "Passed"
+            case .failed:
+                return "Failed"
+            case .tabled:
+                return "Tabled"
+            case .inProgress:
+                return "In Progress"
+            }
+        }
     }
     
     var name: String

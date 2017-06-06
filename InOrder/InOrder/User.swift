@@ -26,6 +26,15 @@ class User {//needs explicit access control
         }
     }
     
+    func save() {
+        do {
+            let data = try JSONSerialization.data(withJSONObject: self.group.jsonObject, options: [])
+            try data.write(to: filePath)
+        } catch {
+            print(error)
+        }
+    }
+    
     public static let firstNameLabel = "Firstname"
     public static let lastNameLabel = "Lastname"
     public static let emailLabel = "Email"
