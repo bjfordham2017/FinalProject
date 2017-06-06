@@ -10,6 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var group: Group!
+    
+    @IBOutlet var groupName: UITextField!
+    @IBOutlet var groupDescription: UITextField!
+    
+    override func loadView() {
+        super.loadView()
+        
+        groupName.text = group.name
+        groupDescription.text = group.description
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
