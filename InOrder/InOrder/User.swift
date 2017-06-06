@@ -9,21 +9,21 @@
 import Foundation
 
 class User {//needs explicit access control
-    var firstName: String
-    var lastName: String
-    var displayName: String {
-        return "\(firstName) \(lastName)"
-    }
-    var email: String
-    var password: String
-    var groups: [Group]
+    var group: Group = Group()
+    let filePath: URL = {
+        let documentsDirectories =
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirectories.first!
+        return documentDirectory.appendingPathComponent("test.json")
+    }()
+
     
-    init(firstName: String, lastName: String, email: String, password: String, groups: [Group]) {
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-        self.password = password
-        self.groups = groups
+    init() {
+        if let data = try? Data(contentsOf: filePath),
+            let JSON = try? JSONSerialization.jsonObject(with: data, options: []),
+            let jsonDictionary = JSON as? [String:Any] {
+                self.group = Group(jsonDictionary: jsonDictionary)
+        }
     }
     
     public static let firstNameLabel = "Firstname"

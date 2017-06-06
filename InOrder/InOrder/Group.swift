@@ -74,6 +74,10 @@ class Group {
         self.init(name: name, description: description, meetingHistory: meetingHistory, upcomingAgenda: upcomingAgenda)
     }
     
+    func save() {
+        
+    }
+    
     public static let nameLabel = "Name"
     public static let descriptionLabel = "Description"
     public static let moderatorLabel = "Moderator"
