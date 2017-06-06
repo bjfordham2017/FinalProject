@@ -106,4 +106,40 @@ class InOrderTests: XCTestCase {
         XCTAssertEqual(passedAgendaItem.status, fromJSON?.status)
     }
     
+    func testJSONtofromLocalStorage() {
+        let newGroup = Group()
+        let newMeetingNotes = MeetingNotes(date: Date())
+        let newAgendaItem = AgendaItem(name: "Resolution", description: "The resolution we will now consider")
+        let newNote = Note(name: "New Note", note: "Remember to make sure JSON works")
+        newAgendaItem.notes.append(newNote)
+        let newAgenda = Agenda()
+        newAgenda.agenda.append(newAgendaItem)
+        newGroup.meetingHistory.history.append(newMeetingNotes)
+        newGroup.upcomingAgenda = newAgenda
+        
+        let JSON = newGroup.jsonObject
+        
+        let validJSON = JSONSerialization.isValidJSONObject(JSON)
+        XCTAssertTrue(validJSON)
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: JSON, options: [])
+        let filePath: URL = {
+            let documentsDirectories =
+                FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let documentDirectory = documentsDirectories.first!
+            return documentDirectory.appendingPathComponent("test.json")
+        }()
+        
+        let _ = try! jsonData.write(to: filePath)
+        let returnData = try! Data(contentsOf: filePath, options: [])
+        let returnObject = try! JSONSerialization.jsonObject(with: returnData, options: [])
+        let returnJSON = returnObject as! [String:Any]
+        
+        let groupfromJSON = Group(jsonDictionary: returnJSON)
+        print("\(filePath)")
+        
+        XCTAssertEqual(newGroup.meetingHistory.history[0].date, groupfromJSON.meetingHistory.history[0].date)
+        XCTAssertEqual(newGroup.upcomingAgenda.agenda[0].notes[0].note, groupfromJSON.upcomingAgenda.agenda[0].notes[0].note)
+    }
+    
 }
