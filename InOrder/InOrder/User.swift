@@ -14,7 +14,7 @@ class User {//needs explicit access control
         let documentsDirectories =
             FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = documentsDirectories.first!
-        return documentDirectory.appendingPathComponent("test.json")
+        return documentDirectory.appendingPathComponent("newUser.json")
     }()
 
     

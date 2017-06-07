@@ -22,6 +22,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         groupName.text = group.name
         groupDescription.text = group.description
         
+        group.meetingHistory.history.append(MeetingNotes(date: Date()))
+        group.meetingHistory.history[0].generalNotes.append(Note(name: "Note Name", note: "Note Description"))
     }
     
     override func viewWillDisappear(_ animated: Bool) {

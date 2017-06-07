@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MeetingNotesViewController: UIViewController, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+class MeetingNotesViewController: UITableViewController, UINavigationControllerDelegate {
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -23,19 +23,46 @@ class MeetingNotesViewController: UIViewController, UINavigationControllerDelega
         }
     }
     
-    @IBOutlet var generalNotes: UITableView!
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meetingNotes.generalNotes.count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return meetingNotes.generalNotes.count
+        case 1:
+            return meetingNotes.itemsPassed.count
+        case 2:
+            return meetingNotes.itemsFailed.count
+        case 3:
+            return meetingNotes.itemsTabled.count
+        default:
+            preconditionFailure("unexpected section index")
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath)
-        let notes = meetingNotes.generalNotes[indexPath.row]
         
-        cell.textLabel?.text = notes.name
+        switch indexPath.section {
+        case 0:
+            let note = meetingNotes.generalNotes[indexPath.row]
+            cell.textLabel?.text = note.name
+        case 1:
+            let passed = meetingNotes.itemsPassed[indexPath.row]
+            cell.textLabel?.text = passed.name
+        case 2:
+            let failed = meetingNotes.itemsFailed[indexPath.row]
+            cell.textLabel?.text = failed.name
+        case 3:
+            let tabled = meetingNotes.itemsTabled[indexPath.row]
+            cell.textLabel?.text = tabled.name
+        default:
+            fatalError("unexpected section index")
+        }
         
         return cell
     }
