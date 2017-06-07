@@ -77,27 +77,66 @@ class MeetingNotesViewController: UITableViewController, UINavigationControllerD
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath)
+        let noteCell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath)
+        let itemCell = tableView.dequeueReusableCell(withIdentifier: "ItemsCell", for: indexPath)
         
-        switch indexPath.section {
-        case 0:
-            let note = meetingNotes.generalNotes[indexPath.row]
-            cell.textLabel?.text = note.name
-        case 1:
-            let passed = meetingNotes.itemsPassed[indexPath.row]
-            cell.textLabel?.text = passed.name
-        case 2:
-            let failed = meetingNotes.itemsFailed[indexPath.row]
-            cell.textLabel?.text = failed.name
-        case 3:
-            let tabled = meetingNotes.itemsTabled[indexPath.row]
-            cell.textLabel?.text = tabled.name
+        var cell: UITableViewCell {
+            switch indexPath.section {
+            case 0:
+                let note = meetingNotes.generalNotes[indexPath.row]
+                noteCell.textLabel?.text = note.name
+                return noteCell
+            case 1:
+                let passed = meetingNotes.itemsPassed[indexPath.row]
+                itemCell.textLabel?.text = passed.name
+                return itemCell
+            case 2:
+                let failed = meetingNotes.itemsFailed[indexPath.row]
+                itemCell.textLabel?.text = failed.name
+                return itemCell
+            case 3:
+                let tabled = meetingNotes.itemsTabled[indexPath.row]
+                itemCell.textLabel?.text = tabled.name
+                return itemCell
         default:
             fatalError("unexpected section index")
+            }
         }
         
         return cell
     }
-
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "noteDetailSegue"?:
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let note = meetingNotes.generalNotes[row]
+                let noteDetail = segue.destination as! NoteDetailViewController
+                noteDetail.note = note
+            }
+        case "itemDetailSegue"?:
+            if let row = tableView.indexPathForSelectedRow?.row,
+                let section = tableView.indexPathForSelectedRow?.section {
+                
+                var itemResultArray: [AgendaItem] {
+                    switch section {
+                    case 1:
+                        return meetingNotes.itemsPassed
+                    case 2:
+                        return meetingNotes.itemsFailed
+                    case 3:
+                        return meetingNotes.itemsTabled
+                    default:
+                        fatalError("Unexpected section index")
+                    }
+                }
+                
+                let itemDetail = segue.destination as! ItemDetailViewController
+                itemDetail.item = itemResultArray[row]
+                
+            }
+        default:
+            fatalError("Unexpected segue identifier")
+        }
+    }
 }

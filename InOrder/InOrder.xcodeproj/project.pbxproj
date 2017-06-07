@@ -10,6 +10,8 @@
 		60C3BEF01EE74107001A8710 /* NewMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C3BEEF1EE74107001A8710 /* NewMeetingViewController.swift */; };
 		60C3BEF21EE74131001A8710 /* PastMeetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C3BEF11EE74131001A8710 /* PastMeetingsViewController.swift */; };
 		60C3BEF61EE75299001A8710 /* MeetingNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C3BEF51EE75299001A8710 /* MeetingNotesViewController.swift */; };
+		60C3BEF81EE870C8001A8710 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C3BEF71EE870C8001A8710 /* NoteDetailViewController.swift */; };
+		60C3BEFA1EE883C4001A8710 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C3BEF91EE883C4001A8710 /* ItemDetailViewController.swift */; };
 		60CC61951EE1BAA30041C17F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CC61941EE1BAA30041C17F /* AppDelegate.swift */; };
 		60CC61971EE1BAA30041C17F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CC61961EE1BAA30041C17F /* ViewController.swift */; };
 		60CC619A1EE1BAA30041C17F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60CC61981EE1BAA30041C17F /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		60C3BEEF1EE74107001A8710 /* NewMeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMeetingViewController.swift; sourceTree = "<group>"; };
 		60C3BEF11EE74131001A8710 /* PastMeetingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastMeetingsViewController.swift; sourceTree = "<group>"; };
 		60C3BEF51EE75299001A8710 /* MeetingNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingNotesViewController.swift; sourceTree = "<group>"; };
+		60C3BEF71EE870C8001A8710 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
+		60C3BEF91EE883C4001A8710 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		60CC61911EE1BAA30041C17F /* InOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60CC61941EE1BAA30041C17F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60CC61961EE1BAA30041C17F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +124,9 @@
 				60CC61941EE1BAA30041C17F /* AppDelegate.swift */,
 				60CC61961EE1BAA30041C17F /* ViewController.swift */,
 				60CC61981EE1BAA30041C17F /* Main.storyboard */,
+				60C3BEF91EE883C4001A8710 /* ItemDetailViewController.swift */,
 				60C3BEF51EE75299001A8710 /* MeetingNotesViewController.swift */,
+				60C3BEF71EE870C8001A8710 /* NoteDetailViewController.swift */,
 				60C3BEEF1EE74107001A8710 /* NewMeetingViewController.swift */,
 				60C3BEF11EE74131001A8710 /* PastMeetingsViewController.swift */,
 				60CC619B1EE1BAA30041C17F /* Assets.xcassets */,
@@ -290,12 +296,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				60C3BEF61EE75299001A8710 /* MeetingNotesViewController.swift in Sources */,
+				60C3BEF81EE870C8001A8710 /* NoteDetailViewController.swift in Sources */,
 				60CC61971EE1BAA30041C17F /* ViewController.swift in Sources */,
 				60CC61CF1EE1DFDE0041C17F /* Agenda.swift in Sources */,
 				60CC61951EE1BAA30041C17F /* AppDelegate.swift in Sources */,
 				60C3BEF21EE74131001A8710 /* PastMeetingsViewController.swift in Sources */,
 				60CC61CD1EE1D6AA0041C17F /* AgendaItem.swift in Sources */,
 				60CC61CB1EE1D60C0041C17F /* Note.swift in Sources */,
+				60C3BEFA1EE883C4001A8710 /* ItemDetailViewController.swift in Sources */,
 				60CC61C71EE1CFE70041C17F /* MeetingHistory.swift in Sources */,
 				60CC61C31EE1BABF0041C17F /* User.swift in Sources */,
 				60CC61C51EE1BCBF0041C17F /* Group.swift in Sources */,

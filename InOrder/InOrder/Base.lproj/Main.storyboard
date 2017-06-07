@@ -164,6 +164,29 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="3GX-O1-aFC" kind="show" identifier="noteDetailSegue" id="a0o-LS-A5p"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemsCell" textLabel="W2s-PP-WmV" style="IBUITableViewCellStyleDefault" id="P4t-tm-A3H">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P4t-tm-A3H" id="bYh-EA-sHF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W2s-PP-WmV">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="LwK-7W-UZg" kind="show" identifier="itemDetailSegue" id="AIN-3f-1rm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -175,6 +198,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9p-6L-JIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1898" y="872"/>
+        </scene>
+        <!--Item Detail View Controller-->
+        <scene sceneID="U9P-Ax-bvF">
+            <objects>
+                <viewController id="LwK-7W-UZg" customClass="ItemDetailViewController" customModule="InOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OdB-8g-x60"/>
+                        <viewControllerLayoutGuide type="bottom" id="iCh-Xz-be5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uoi-sn-HhR" customClass="ItemD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aWk-Ni-0M1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1904" y="1538"/>
+        </scene>
+        <!--Note Detail View Controller-->
+        <scene sceneID="Z20-RV-tSf">
+            <objects>
+                <viewController id="3GX-O1-aFC" customClass="NoteDetailViewController" customModule="InOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Vg-Ey-JsP"/>
+                        <viewControllerLayoutGuide type="bottom" id="kGQ-aa-h9P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Q3-86-EMh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yig-Nw-9pe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2627" y="865"/>
         </scene>
         <!--Prepare a New Meeting-->
         <scene sceneID="f55-VE-C8S">
