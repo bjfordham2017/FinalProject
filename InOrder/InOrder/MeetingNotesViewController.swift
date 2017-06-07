@@ -43,6 +43,22 @@ class MeetingNotesViewController: UITableViewController, UINavigationControllerD
         return 4
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "General Notes"
+        case 1:
+            return "Passed Items"
+        case 2:
+            return "Failed Items"
+        case 3:
+            return "Tabled Items"
+        default:
+            print("Unexpected section index")
+            return nil
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath)
