@@ -46,13 +46,29 @@ class MeetingNotesViewController: UITableViewController, UINavigationControllerD
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "General Notes"
+            if !meetingNotes.generalNotes.isEmpty {
+                return "General Notes"
+            } else {
+                return "No notes from this meeting"
+            }
         case 1:
-            return "Passed Items"
+            if !meetingNotes.itemsPassed.isEmpty {
+                return "Passed Items"
+            } else {
+                return "No items passed at this meeting"
+            }
         case 2:
-            return "Failed Items"
+            if !meetingNotes.itemsFailed.isEmpty {
+                return "Failed Items"
+            } else {
+                return "No items failed at this meeting"
+            }
         case 3:
-            return "Tabled Items"
+            if !meetingNotes.itemsTabled.isEmpty {
+                return "Tabled Items"
+            } else {
+                return "No Items tabled at this meeting"
+            }
         default:
             print("Unexpected section index")
             return nil
