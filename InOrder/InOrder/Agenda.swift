@@ -39,5 +39,16 @@ class Agenda {
         }
     }
     
+    func arrangeAgenda(from fromIndex: Int, to toIndex: Int) {
+        if fromIndex == toIndex {
+            return
+        }
+        
+        let movedItem = agenda[fromIndex]
+        agenda.remove(at: fromIndex)
+        agenda.insert(movedItem, at: toIndex)
+    }
+
+    
     public static let agendaLabel = "Agenda"
 }

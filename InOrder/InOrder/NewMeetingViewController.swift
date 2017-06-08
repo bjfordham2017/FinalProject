@@ -16,6 +16,7 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var agendaTable: UITableView!
     @IBOutlet var instructions: UITextView!
     @IBOutlet var beginMeeting: UIButton!
+    @IBOutlet var editList: UIButton!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return agenda.agenda.count
@@ -29,10 +30,24 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            agenda.agenda.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            if agenda.agenda.isEmpty {
+                beginMeeting.isHidden = true
+            }
+        }
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        agenda.arrangeAgenda(from: sourceIndexPath.row, to: destinationIndexPath.row)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        instructions.text = "Build an agenda for this group's next meeting.  Add items with the 'Add Item' button, remove items by swiping, and add or edit titles and descriptions by tapping the item you want. Tap 'Begin Meeting' to begin your meeting walkthrough."
+        instructions.text = "Build an agenda for this group's next meeting.  Add items with the 'Add Item' button and add or edit titles and descriptions by tapping the item you want. You can also use 'Edit List' to toggle a mode for rearragning or deleting items. Tap 'Begin Meeting' to begin your meeting walkthrough."
         
         instructions.isEditable = false
         
@@ -41,12 +56,28 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        agendaTable.reloadData()
+    }
+    
     @IBAction func addItem(_ sender: UIButton) {
         let newItem = AgendaItem(name: "Tap to Add Name", description: "Tap to edit description")
         agenda.agenda.append(newItem)
         if let index = agenda.agenda.index(of: newItem) {
             let indexPath = IndexPath(row: index, section: 0)
             agendaTable.insertRows(at: [indexPath], with: .automatic)
+        }
+        
+        beginMeeting.isHidden = false
+    }
+    
+    @IBAction func toggleEditing(_ sender: Any) {
+        if !agendaTable.isEditing {
+            agendaTable.setEditing(true, animated: true)
+        } else {
+            agendaTable.setEditing(false, animated: true)
         }
     }
     

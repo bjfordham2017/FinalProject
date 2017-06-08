@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EditAgenaItemViewController: UIViewController {
+class EditAgenaItemViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     var item: AgendaItem!
     
     @IBOutlet var itemDescription: UITextView!
@@ -22,4 +22,24 @@ class EditAgenaItemViewController: UIViewController {
         itemDescription.text = item.description
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+        print("Editing ended")
+        
+        item.name = name.text ?? "Unnamed Item"
+        item.description = itemDescription.text
+    }
+    
+    
+    @IBAction func tapToEndEditing(_ sender: Any) {
+        view.endEditing(true)
+        print("Editing ended")
+        
+        item.name = name.text ?? "Unnamed Item"
+        item.description = itemDescription.text
+    }
+    
 }

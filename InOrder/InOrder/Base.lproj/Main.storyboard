@@ -435,6 +435,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="BcR-zS-66S" firstAttribute="centerY" secondItem="X81-v2-M0d" secondAttribute="centerY" id="0Hi-jf-Pw2"/>
                             <constraint firstItem="NgT-VT-R8f" firstAttribute="top" secondItem="9Jf-hZ-xEZ" secondAttribute="bottom" constant="30" id="44V-Fj-e3W"/>
@@ -450,6 +451,9 @@
                             <constraint firstItem="BcR-zS-66S" firstAttribute="leading" secondItem="X81-v2-M0d" secondAttribute="leadingMargin" id="ttH-KA-gIe"/>
                             <constraint firstItem="KnP-Mx-VuY" firstAttribute="leading" secondItem="X81-v2-M0d" secondAttribute="leadingMargin" id="uz5-2t-KrZ"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="oBU-GH-uI7" appends="YES" id="CzL-e5-1GN"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="itemDescription" destination="BcR-zS-66S" id="r1G-JE-7io"/>
@@ -457,6 +461,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGu-6V-07L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="oBU-GH-uI7">
+                    <connections>
+                        <action selector="tapToEndEditing:" destination="cb9-Aa-AgW" id="5HR-3m-q1Q"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1957" y="-621"/>
         </scene>
@@ -515,13 +524,25 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFr-nf-Gon">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iNh-tb-dxW">
                                                 <rect key="frame" x="0.0" y="100.5" width="343" height="100.5"/>
-                                                <state key="normal" title="Add Item"/>
-                                                <connections>
-                                                    <action selector="addItem:" destination="0lk-ux-ERu" eventType="touchUpInside" id="7RC-D3-qdP"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myZ-dt-94d">
+                                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="100.5"/>
+                                                        <state key="normal" title="Edit List"/>
+                                                        <connections>
+                                                            <action selector="toggleEditing:" destination="0lk-ux-ERu" eventType="touchUpInside" id="jhs-2l-5g6"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFr-nf-Gon">
+                                                        <rect key="frame" x="171.5" y="0.0" width="171.5" height="100.5"/>
+                                                        <state key="normal" title="Add Item"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="0lk-ux-ERu" eventType="touchUpInside" id="7RC-D3-qdP"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-8c-Zrn">
                                                 <rect key="frame" x="0.0" y="201" width="343" height="100.5"/>
                                                 <state key="normal" title="Begin Meeting"/>
@@ -542,6 +563,7 @@
                     <connections>
                         <outlet property="agendaTable" destination="yLL-Nc-VdS" id="SgQ-1k-HI0"/>
                         <outlet property="beginMeeting" destination="eIh-8c-Zrn" id="Vgn-bf-aTL"/>
+                        <outlet property="editList" destination="myZ-dt-94d" id="7rf-05-VOX"/>
                         <outlet property="instructions" destination="xfX-d4-VAJ" id="078-Mm-xEc"/>
                     </connections>
                 </viewController>
