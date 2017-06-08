@@ -9,11 +9,7 @@
 import Foundation
 import UIKit
 
-class MeetingViewController: UIViewController, SillyDelegate {
-    
-    func printFromModal(_ string: String) {
-        print(string)
-    }
+class MeetingViewController: UIViewController {
 
     var agenda: Agenda!
     var newNotes: MeetingNotes!
@@ -27,12 +23,6 @@ class MeetingViewController: UIViewController, SillyDelegate {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let modal = segue.destination as! NeverUseViewController
-        modal.delegate = self
-    }
 }
 
-protocol SillyDelegate {
-    func printFromModal(_ string: String)
-}
+

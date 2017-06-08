@@ -590,9 +590,6 @@
                                 <rect key="frame" x="164" y="318" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="GJM-f7-3q5" kind="presentation" modalTransitionStyle="coverVertical" id="2Xg-JR-KLs"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -601,34 +598,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUd-xS-Vu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2819" y="92"/>
-        </scene>
-        <!--Never Use View Controller-->
-        <scene sceneID="QPE-Jt-Zre">
-            <objects>
-                <viewController id="GJM-f7-3q5" customClass="NeverUseViewController" customModule="InOrder" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2e9-OW-ljO"/>
-                        <viewControllerLayoutGuide type="bottom" id="57f-Gb-rET"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tJd-LQ-Jzd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Pv-ud-wF1">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="back:" destination="GJM-f7-3q5" eventType="touchUpInside" id="s6w-og-PaW"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N3y-vO-26w" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3825" y="70"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wu4-jo-W0c">

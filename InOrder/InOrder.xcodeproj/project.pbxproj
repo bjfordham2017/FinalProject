@@ -29,7 +29,8 @@
 		60D745EB1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D745EA1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift */; };
 		60D745ED1EE9C170005900F8 /* EditAgendaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D745EC1EE9C170005900F8 /* EditAgendaItemView.swift */; };
 		60D745EF1EE9E835005900F8 /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D745EE1EE9E835005900F8 /* MeetingViewController.swift */; };
-		60D745F11EEA0232005900F8 /* NeverUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D745F01EEA0232005900F8 /* NeverUseViewController.swift */; };
+		60D745F31EEA07AD005900F8 /* Motions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D745F21EEA07AD005900F8 /* Motions.swift */; };
+		60D745F51EEA0850005900F8 /* MotionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D745F41EEA0850005900F8 /* MotionDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +79,8 @@
 		60D745EA1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesAndAmendmentsViewController.swift; sourceTree = "<group>"; };
 		60D745EC1EE9C170005900F8 /* EditAgendaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAgendaItemView.swift; sourceTree = "<group>"; };
 		60D745EE1EE9E835005900F8 /* MeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
-		60D745F01EEA0232005900F8 /* NeverUseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeverUseViewController.swift; sourceTree = "<group>"; };
+		60D745F21EEA07AD005900F8 /* Motions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Motions.swift; sourceTree = "<group>"; };
+		60D745F41EEA0850005900F8 /* MotionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +134,9 @@
 				60CC61941EE1BAA30041C17F /* AppDelegate.swift */,
 				60CC61961EE1BAA30041C17F /* ViewController.swift */,
 				60D745EE1EE9E835005900F8 /* MeetingViewController.swift */,
+				60D745F21EEA07AD005900F8 /* Motions.swift */,
+				60D745F41EEA0850005900F8 /* MotionDelegate.swift */,
 				60CC61981EE1BAA30041C17F /* Main.storyboard */,
-				60D745F01EEA0232005900F8 /* NeverUseViewController.swift */,
 				60D745EC1EE9C170005900F8 /* EditAgendaItemView.swift */,
 				60D745EA1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift */,
 				60C3BEF91EE883C4001A8710 /* ItemDetailViewController.swift */,
@@ -310,6 +313,7 @@
 				60C3BEF61EE75299001A8710 /* MeetingNotesViewController.swift in Sources */,
 				60C3BEF81EE870C8001A8710 /* NoteDetailViewController.swift in Sources */,
 				60CC61971EE1BAA30041C17F /* ViewController.swift in Sources */,
+				60D745F51EEA0850005900F8 /* MotionDelegate.swift in Sources */,
 				60D745ED1EE9C170005900F8 /* EditAgendaItemView.swift in Sources */,
 				60CC61CF1EE1DFDE0041C17F /* Agenda.swift in Sources */,
 				60CC61951EE1BAA30041C17F /* AppDelegate.swift in Sources */,
@@ -320,11 +324,11 @@
 				60D745EB1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift in Sources */,
 				60CC61C71EE1CFE70041C17F /* MeetingHistory.swift in Sources */,
 				60CC61C31EE1BABF0041C17F /* User.swift in Sources */,
-				60D745F11EEA0232005900F8 /* NeverUseViewController.swift in Sources */,
 				60D745EF1EE9E835005900F8 /* MeetingViewController.swift in Sources */,
 				60CC61C51EE1BCBF0041C17F /* Group.swift in Sources */,
 				60CC61C91EE1D0140041C17F /* MeetingNotes.swift in Sources */,
 				60C3BEF01EE74107001A8710 /* NewMeetingViewController.swift in Sources */,
+				60D745F31EEA07AD005900F8 /* Motions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
