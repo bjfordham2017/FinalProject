@@ -27,6 +27,7 @@
 		60CC61CD1EE1D6AA0041C17F /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CC61CC1EE1D6AA0041C17F /* AgendaItem.swift */; };
 		60CC61CF1EE1DFDE0041C17F /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CC61CE1EE1DFDE0041C17F /* Agenda.swift */; };
 		60D745EB1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D745EA1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift */; };
+		60D745ED1EE9C170005900F8 /* EditAgendaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D745EC1EE9C170005900F8 /* EditAgendaItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		60CC61CC1EE1D6AA0041C17F /* AgendaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		60CC61CE1EE1DFDE0041C17F /* Agenda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
 		60D745EA1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesAndAmendmentsViewController.swift; sourceTree = "<group>"; };
+		60D745EC1EE9C170005900F8 /* EditAgendaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAgendaItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				60CC61941EE1BAA30041C17F /* AppDelegate.swift */,
 				60CC61961EE1BAA30041C17F /* ViewController.swift */,
 				60CC61981EE1BAA30041C17F /* Main.storyboard */,
+				60D745EC1EE9C170005900F8 /* EditAgendaItemView.swift */,
 				60D745EA1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift */,
 				60C3BEF91EE883C4001A8710 /* ItemDetailViewController.swift */,
 				60C3BEF51EE75299001A8710 /* MeetingNotesViewController.swift */,
@@ -301,6 +304,7 @@
 				60C3BEF61EE75299001A8710 /* MeetingNotesViewController.swift in Sources */,
 				60C3BEF81EE870C8001A8710 /* NoteDetailViewController.swift in Sources */,
 				60CC61971EE1BAA30041C17F /* ViewController.swift in Sources */,
+				60D745ED1EE9C170005900F8 /* EditAgendaItemView.swift in Sources */,
 				60CC61CF1EE1DFDE0041C17F /* Agenda.swift in Sources */,
 				60CC61951EE1BAA30041C17F /* AppDelegate.swift in Sources */,
 				60C3BEF21EE74131001A8710 /* PastMeetingsViewController.swift in Sources */,

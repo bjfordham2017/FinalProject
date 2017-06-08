@@ -48,8 +48,18 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
             let indexPath = IndexPath(row: index, section: 0)
             agendaTable.insertRows(at: [indexPath], with: .automatic)
         }
-
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "editSegue"?:
+            if let row = agendaTable.indexPathForSelectedRow?.row {
+                let itemEditView = segue.destination as! EditAgenaItemViewController
+                itemEditView.item = agenda.agenda[row]
+            }
+        default:
+            preconditionFailure("unexpected segue identifier")
+        }
     }
     
 }

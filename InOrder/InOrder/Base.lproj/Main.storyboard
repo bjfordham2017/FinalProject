@@ -396,6 +396,70 @@
             </objects>
             <point key="canvasLocation" x="3663" y="909"/>
         </scene>
+        <!--Edit Agenda Item-->
+        <scene sceneID="Gid-ZJ-CzY">
+            <objects>
+                <viewController title="Edit Agenda Item" id="cb9-Aa-AgW" customClass="EditAgenaItemViewController" customModule="InOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Jf-hZ-xEZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="eqQ-uA-PGM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X81-v2-M0d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BcR-zS-66S">
+                                <rect key="frame" x="16" y="313" width="343" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KnP-Mx-VuY">
+                                <rect key="frame" x="16" y="165" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ju6-5P-DVK">
+                                <rect key="frame" x="143.5" y="245" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgT-VT-R8f">
+                                <rect key="frame" x="165" y="94" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BcR-zS-66S" firstAttribute="centerY" secondItem="X81-v2-M0d" secondAttribute="centerY" id="0Hi-jf-Pw2"/>
+                            <constraint firstItem="NgT-VT-R8f" firstAttribute="top" secondItem="9Jf-hZ-xEZ" secondAttribute="bottom" constant="30" id="44V-Fj-e3W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KnP-Mx-VuY" secondAttribute="trailing" id="5qE-7g-z9X"/>
+                            <constraint firstItem="BcR-zS-66S" firstAttribute="centerX" secondItem="NgT-VT-R8f" secondAttribute="centerX" id="Egf-yC-CpJ"/>
+                            <constraint firstItem="BcR-zS-66S" firstAttribute="top" secondItem="ju6-5P-DVK" secondAttribute="bottom" constant="47" id="HaZ-dZ-zBn"/>
+                            <constraint firstItem="ju6-5P-DVK" firstAttribute="top" secondItem="KnP-Mx-VuY" secondAttribute="bottom" constant="50" id="NZQ-2p-lyf"/>
+                            <constraint firstItem="ju6-5P-DVK" firstAttribute="top" secondItem="KnP-Mx-VuY" secondAttribute="bottom" constant="50" id="Yms-NE-eGe"/>
+                            <constraint firstItem="KnP-Mx-VuY" firstAttribute="top" secondItem="NgT-VT-R8f" secondAttribute="bottom" constant="50" id="dpg-oc-3vV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BcR-zS-66S" secondAttribute="trailing" id="gcC-wA-Yo8"/>
+                            <constraint firstItem="ju6-5P-DVK" firstAttribute="centerX" secondItem="NgT-VT-R8f" secondAttribute="centerX" id="gg5-XJ-rEf"/>
+                            <constraint firstItem="KnP-Mx-VuY" firstAttribute="top" secondItem="NgT-VT-R8f" secondAttribute="bottom" constant="50" id="iUI-Xh-dVI"/>
+                            <constraint firstItem="BcR-zS-66S" firstAttribute="leading" secondItem="X81-v2-M0d" secondAttribute="leadingMargin" id="ttH-KA-gIe"/>
+                            <constraint firstItem="KnP-Mx-VuY" firstAttribute="leading" secondItem="X81-v2-M0d" secondAttribute="leadingMargin" id="uz5-2t-KrZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="itemDescription" destination="BcR-zS-66S" id="r1G-JE-7io"/>
+                        <outlet property="name" destination="KnP-Mx-VuY" id="Sqq-bw-5KG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jGu-6V-07L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1957" y="-621"/>
+        </scene>
         <!--Prepare a New Meeting-->
         <scene sceneID="f55-VE-C8S">
             <objects>
@@ -431,6 +495,9 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="cb9-Aa-AgW" kind="show" identifier="editSegue" id="xYm-Tw-rtm"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
