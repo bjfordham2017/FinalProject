@@ -11,6 +11,7 @@ import UIKit
 
 class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var agenda: Agenda!
+    var history: MeetingHistory!
     
     
     @IBOutlet var agendaTable: UITableView!
@@ -88,6 +89,10 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
                 let itemEditView = segue.destination as! EditAgenaItemViewController
                 itemEditView.item = agenda.agenda[row]
             }
+        case "beginMeetingSegue"?:
+            let meeting = segue.destination as! MeetingViewController
+            meeting.agenda = self.agenda
+            meeting.newNotes = MeetingNotes(date: Date())
         default:
             preconditionFailure("unexpected segue identifier")
         }

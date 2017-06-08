@@ -71,6 +71,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             case "NewMeeting"?:
                 let newMeeting = segue.destination as! NewMeetingViewController
                 newMeeting.agenda = group.upcomingAgenda
+                newMeeting.history = group.meetingHistory
         default:
             preconditionFailure("Unexpected segue identifier")
         }
