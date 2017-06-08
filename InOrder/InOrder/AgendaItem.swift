@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AgendaItem {
+class AgendaItem: Equatable {
     enum ItemStatus: CustomStringConvertible {
         case passed
         case failed
@@ -55,6 +55,10 @@ class AgendaItem {
                 return .failed
             }
         }
+    }
+    
+    public static func == (lhs: AgendaItem, rhs: AgendaItem) -> Bool {
+        return lhs.name == rhs.name && lhs.description == rhs.description
     }
 
     init(name: String, description: String) {

@@ -120,7 +120,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T98-R9-Nra">
-                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -415,28 +415,48 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="301.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="49a-mW-TcP">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AgendaCell" textLabel="KDt-eT-TdN" style="IBUITableViewCellStyleDefault" id="49a-mW-TcP">
                                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="49a-mW-TcP" id="FEM-Qp-e8A">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KDt-eT-TdN">
+                                                            <rect key="frame" x="15" y="0.0" width="313" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="0lk-ux-ERu" id="NqV-sG-3DE"/>
+                                            <outlet property="delegate" destination="0lk-ux-ERu" id="Agc-pv-xPE"/>
+                                        </connections>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zok-aM-GHC">
                                         <rect key="frame" x="0.0" y="301.5" width="343" height="301.5"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xfX-d4-VAJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="151"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="100.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFr-nf-Gon">
+                                                <rect key="frame" x="0.0" y="100.5" width="343" height="100.5"/>
+                                                <state key="normal" title="Add Item"/>
+                                                <connections>
+                                                    <action selector="addItem:" destination="0lk-ux-ERu" eventType="touchUpInside" id="7RC-D3-qdP"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-8c-Zrn">
-                                                <rect key="frame" x="0.0" y="151" width="343" height="150.5"/>
+                                                <rect key="frame" x="0.0" y="201" width="343" height="100.5"/>
                                                 <state key="normal" title="Begin Meeting"/>
                                             </button>
                                         </subviews>
@@ -452,6 +472,11 @@
                             <constraint firstItem="GpS-E8-akN" firstAttribute="top" secondItem="avK-EP-RJJ" secondAttribute="bottom" id="rIF-uN-E9e"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="agendaTable" destination="yLL-Nc-VdS" id="SgQ-1k-HI0"/>
+                        <outlet property="beginMeeting" destination="eIh-8c-Zrn" id="Vgn-bf-aTL"/>
+                        <outlet property="instructions" destination="xfX-d4-VAJ" id="078-Mm-xEc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGn-yF-RDR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
