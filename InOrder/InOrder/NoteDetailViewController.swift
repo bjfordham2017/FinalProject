@@ -9,6 +9,19 @@
 import Foundation
 import UIKit
 
-class NoteDetailViewController: UIViewController {
-    var note: Note!
+class NoteDetailViewController: UIViewController, UINavigationControllerDelegate {
+    var note: Note! {
+        didSet {
+            navigationItem.title = note.name
+        }
+    }
+    
+    @IBOutlet var noteText: UITextView!
+    
+    override func loadView() {
+        super.loadView()
+        noteText.text = note.note
+        
+        noteText.isEditable = false
+    }
 }

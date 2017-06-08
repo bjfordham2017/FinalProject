@@ -23,7 +23,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         groupDescription.text = group.description
         
         group.meetingHistory.history.append(MeetingNotes(date: Date()))
-        group.meetingHistory.history[0].generalNotes.append(Note(name: "Note Name", note: "Note Description"))
+        group.meetingHistory.history[0].generalNotes.append(Note(name: "Note Name", note: "Note Description.  A description of a note describing the note that is described herein, in this case that this note is in fact a note, and its description is in fact a description of said note which we have contrived to describe.  That's a terrible description, to say nothing of terrible sentence, and we should change it soon."))
+        
+        let passedAgendaItem = AgendaItem(name: "Passed", description: "Now it's off for the presidential veto")
+        passedAgendaItem.inputVoteTally(votesFor: 5, votesAgainst: 3, abstained: 1)
+        passedAgendaItem.amendments.append(Note(name: "Iffy Amendment", note: "The amendment that renders the bill very iffy."))
+        let failedAgendaItem = AgendaItem(name: "Failed", description: "Parliment don't play that!")
+        failedAgendaItem.inputVoteTally(votesFor: 1, votesAgainst: 5, abstained: 3)
+        let tabledAgendaItem = AgendaItem(name: "Tabled", description: "We'll talk about it next time")
+        tabledAgendaItem.table()
+        let failedByDefaulAgendaItem = AgendaItem(name: "Fails by default", description: "Everyone abstained")
+        failedByDefaulAgendaItem.inputVoteTally(votesFor: 0, votesAgainst: 0, abstained: 9)
+
+        group.meetingHistory.history[0].itemsPassed.append(passedAgendaItem)
+        group.meetingHistory.history[0].itemsFailed.append(failedAgendaItem)
+        group.meetingHistory.history[0].itemsFailed.append(failedByDefaulAgendaItem)
+        group.meetingHistory.history[0].itemsTabled.append(tabledAgendaItem)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
