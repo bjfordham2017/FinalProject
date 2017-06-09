@@ -13,6 +13,15 @@ class MeetingViewController: UIViewController, MotionDelegate {
 
     @IBOutlet var nameField: UITextField!
     @IBOutlet var descriptionView: UITextView!
+    @IBOutlet var proceedToHistory: UIButton!
+    @IBOutlet var recess: UIButton!
+    @IBOutlet var generalNotes: UIButton!
+    @IBOutlet var adjourn: UIButton!
+    @IBOutlet var addNote: UIButton!
+    @IBOutlet var motionToAmend: UIButton!
+    @IBOutlet var review: UIButton!
+    @IBOutlet var table: UIButton!
+    @IBOutlet var closeAndVote: UIButton!
     
     var agenda: Agenda!
     var newNotes: MeetingNotes!
@@ -30,6 +39,8 @@ class MeetingViewController: UIViewController, MotionDelegate {
         
         nameField.text = currentItem.name
         descriptionView.text = currentItem.description
+        
+        proceedToHistory.isHidden = true
         
     }
     
@@ -65,6 +76,9 @@ class MeetingViewController: UIViewController, MotionDelegate {
             let noteList = segue.destination as! NotesAndAmendmentsViewController
             noteList.notes = currentItem.notes
             noteList.amendments = currentItem.amendments
+        case "meetingNotesSegue"?:
+            let newNotes = segue.destination as! MeetingNotesViewController
+            newNotes.meetingNotes = self.newNotes
         default:
             preconditionFailure("Unexpected segue identifier")
         }
@@ -83,6 +97,50 @@ class MeetingViewController: UIViewController, MotionDelegate {
  
     func tally(votefor: Int, voteagainst: Int, abstension: Int) {
         self.currentItem.inputVoteTally(votesFor: votefor, votesAgainst: voteagainst, abstained: abstension)
+        itemIndex += 1
+        if itemIndex == agenda.agenda.count {
+            itemIndex = 0
+        }
+    }
+    
+    func historyReady() {
+        descriptionView.text = "That's the end of your agenda.  You can now proceed to your notes for this meeting"
+        
+        nameField.isHidden = true
+        recess.isHidden = true
+        generalNotes.isHidden = true
+        adjourn.isHidden = true
+        addNote.isHidden = true
+        motionToAmend.isHidden = true
+        review.isHidden = true
+        table.isHidden = true
+        closeAndVote.isHidden = true
+        
+        proceedToHistory.isHidden = false
+        
+    }
+    
+    func closeMeeting() {
+        var savedForNext = [AgendaItem]()
+        for item in agenda.agenda {
+            
+            if item.status == .passed {
+                newNotes.itemsPassed.append(item)
+            } else if item.status == .failed {
+                newNotes.itemsFailed.append(item)
+            } else if item.status == .tabled {
+                newNotes.itemsTabled.append(item)
+                savedForNext.append(item)
+            } else {
+                savedForNext.append(item)
+            }
+        }
+        
+        self.agenda.agenda = savedForNext
+        
+        self.history.history.append(newNotes)
+        
+        historyReady()
     }
     
     func passFail(motion: Motions, result: Bool) {
@@ -91,10 +149,15 @@ class MeetingViewController: UIViewController, MotionDelegate {
             return
         case (.table, true):
             currentItem.table()
+            itemIndex += 1
+            if itemIndex == agenda.agenda.count {
+                itemIndex = 0
+                closeMeeting()
+            }
         case (.table, false):
             return
         case (.adjourn, true):
-            return
+            closeMeeting()
         case (.adjourn, false):
             return
         default:

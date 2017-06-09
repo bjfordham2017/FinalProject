@@ -599,7 +599,7 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-8c-Zrn">
                                                 <rect key="frame" x="0.0" y="201" width="343" height="100.5"/>
-                                                <state key="normal" title="Begin Meeting"/>
+                                                <state key="normal" title="Begin Walkthrough"/>
                                                 <connections>
                                                     <segue destination="g0R-aZ-rRU" kind="show" identifier="beginMeetingSegue" id="fUf-M5-5SF"/>
                                                 </connections>
@@ -713,14 +713,23 @@
                                     <segue destination="FYE-Uh-1Ma" kind="show" identifier="reviewSegue" id="gyf-OQ-BNg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfD-IB-nXe">
+                                <rect key="frame" x="96" y="507" width="182" height="30"/>
+                                <state key="normal" title="Proceed To Meeting Notes"/>
+                                <connections>
+                                    <segue destination="wg5-TO-4Ne" kind="show" identifier="meetingNotesSegue" id="ujG-j8-YRA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bdg-eE-JTZ" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" id="6qu-BD-2Vw"/>
                             <constraint firstItem="xcs-cS-82t" firstAttribute="top" secondItem="5IQ-CX-0Xx" secondAttribute="bottom" id="9tU-49-cCc"/>
                             <constraint firstItem="JdV-9q-IBD" firstAttribute="centerY" secondItem="NyY-Il-lHy" secondAttribute="centerY" id="AZw-gD-OLa"/>
+                            <constraint firstItem="dfD-IB-nXe" firstAttribute="centerX" secondItem="NyY-Il-lHy" secondAttribute="centerX" id="BFl-KA-uX3"/>
                             <constraint firstItem="fWl-na-hNI" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="BII-oa-BKN"/>
                             <constraint firstItem="JdV-9q-IBD" firstAttribute="top" secondItem="bS9-CY-406" secondAttribute="bottom" constant="76" id="CyX-d0-dTF"/>
+                            <constraint firstItem="dfD-IB-nXe" firstAttribute="top" secondItem="SDb-Dp-am3" secondAttribute="bottom" id="DWz-xy-KBa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nVm-vv-Huu" secondAttribute="trailing" id="G12-8h-lvO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5IQ-CX-0Xx" secondAttribute="trailing" id="GQ1-kM-oQt"/>
                             <constraint firstItem="xcs-cS-82t" firstAttribute="top" secondItem="fWl-na-hNI" secondAttribute="bottom" id="Kdp-46-afL"/>
@@ -742,8 +751,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addNote" destination="20h-fO-oX2" id="A3Q-Dp-tRa"/>
+                        <outlet property="adjourn" destination="r0m-AM-dU9" id="k6s-mM-EhX"/>
+                        <outlet property="closeAndVote" destination="5IQ-CX-0Xx" id="Rfh-kk-GH2"/>
                         <outlet property="descriptionView" destination="JdV-9q-IBD" id="bni-bd-ckz"/>
+                        <outlet property="generalNotes" destination="qh9-1a-Oid" id="Lzs-1X-Zcp"/>
+                        <outlet property="motionToAmend" destination="nVm-vv-Huu" id="tbf-RO-Ug8"/>
                         <outlet property="nameField" destination="bS9-CY-406" id="uXL-I8-0YV"/>
+                        <outlet property="proceedToHistory" destination="dfD-IB-nXe" id="oAy-oC-UlV"/>
+                        <outlet property="recess" destination="bdg-eE-JTZ" id="XG2-x9-H9s"/>
+                        <outlet property="review" destination="SDb-Dp-am3" id="dZ5-mt-RH3"/>
+                        <outlet property="table" destination="fWl-na-hNI" id="cCY-rz-zaw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUd-xS-Vu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -791,6 +809,7 @@
         <segue reference="I4t-my-RFw"/>
         <segue reference="EVC-hH-oGX"/>
         <segue reference="gyf-OQ-BNg"/>
-        <segue reference="g1X-lI-VN7"/>
+        <segue reference="ujG-j8-YRA"/>
+        <segue reference="a0o-LS-A5p"/>
     </inferredMetricsTieBreakers>
 </document>

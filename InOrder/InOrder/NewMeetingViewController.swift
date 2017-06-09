@@ -48,7 +48,7 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        instructions.text = "Build an agenda for this group's next meeting.  Add items with the 'Add Item' button and add or edit titles and descriptions by tapping the item you want. You can also use 'Edit List' to toggle a mode for rearragning or deleting items. Tap 'Begin Meeting' to begin your meeting walkthrough."
+        instructions.text = "Build an agenda for this group's next meeting.  Add items with the 'Add Item' button and add or edit titles and descriptions by tapping the item you want. You can also use 'Edit List' to toggle a mode for rearragning or deleting items. Tap 'Begin Walkthrough' when you are ready to consider your first order of business."
         
         instructions.isEditable = false
         
