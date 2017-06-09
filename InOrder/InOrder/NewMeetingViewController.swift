@@ -93,6 +93,7 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
             let meeting = segue.destination as! MeetingViewController
             meeting.agenda = self.agenda
             meeting.newNotes = MeetingNotes(date: Date())
+            meeting.history = self.history
         default:
             preconditionFailure("unexpected segue identifier")
         }

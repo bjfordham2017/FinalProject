@@ -586,14 +586,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMk-Za-gri">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-eE-JTZ">
+                                <rect key="frame" x="16" y="64" width="50" height="30"/>
+                                <state key="normal" title="Recess"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qh9-1a-Oid">
+                                <rect key="frame" x="142" y="64" width="91" height="30"/>
+                                <state key="normal" title="General Note"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0m-AM-dU9">
+                                <rect key="frame" x="305" y="64" width="54" height="30"/>
+                                <state key="normal" title="Adjourn"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWl-na-hNI">
+                                <rect key="frame" x="16" y="637" width="38" height="30"/>
+                                <state key="normal" title="Table"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IQ-CX-0Xx">
+                                <rect key="frame" x="255" y="637" width="104" height="30"/>
+                                <state key="normal" title="Close and Vote"/>
+                                <connections>
+                                    <action selector="closeAndVote:" destination="g0R-aZ-rRU" eventType="touchUpInside" id="FBM-Xj-eY1"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JdV-9q-IBD">
+                                <rect key="frame" x="16" y="269" width="343" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="MdH-5P-r4V"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20h-fO-oX2">
+                                <rect key="frame" x="16" y="397" width="65" height="30"/>
+                                <state key="normal" title="Add Note"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVm-vv-Huu">
+                                <rect key="frame" x="241" y="397" width="118" height="30"/>
+                                <state key="normal" title="Motion to Amend"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bS9-CY-406">
+                                <rect key="frame" x="16" y="163" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bdg-eE-JTZ" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" id="6qu-BD-2Vw"/>
+                            <constraint firstItem="xcs-cS-82t" firstAttribute="top" secondItem="5IQ-CX-0Xx" secondAttribute="bottom" id="9tU-49-cCc"/>
+                            <constraint firstItem="JdV-9q-IBD" firstAttribute="centerY" secondItem="NyY-Il-lHy" secondAttribute="centerY" id="AZw-gD-OLa"/>
+                            <constraint firstItem="fWl-na-hNI" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="BII-oa-BKN"/>
+                            <constraint firstItem="JdV-9q-IBD" firstAttribute="top" secondItem="bS9-CY-406" secondAttribute="bottom" constant="76" id="CyX-d0-dTF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nVm-vv-Huu" secondAttribute="trailing" id="G12-8h-lvO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5IQ-CX-0Xx" secondAttribute="trailing" id="GQ1-kM-oQt"/>
+                            <constraint firstItem="xcs-cS-82t" firstAttribute="top" secondItem="fWl-na-hNI" secondAttribute="bottom" id="Kdp-46-afL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JdV-9q-IBD" secondAttribute="trailing" id="Kz4-8f-Ibx"/>
+                            <constraint firstItem="qh9-1a-Oid" firstAttribute="centerX" secondItem="NyY-Il-lHy" secondAttribute="centerX" id="PaZ-vv-IKU"/>
+                            <constraint firstItem="JdV-9q-IBD" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="TNN-fl-UNz"/>
+                            <constraint firstItem="qh9-1a-Oid" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" id="cAd-Mn-NxY"/>
+                            <constraint firstItem="bdg-eE-JTZ" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="gG5-9Y-lV7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r0m-AM-dU9" secondAttribute="trailing" id="hbQ-ec-7Kt"/>
+                            <constraint firstItem="20h-fO-oX2" firstAttribute="top" secondItem="JdV-9q-IBD" secondAttribute="bottom" id="l9d-02-Jd1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bS9-CY-406" secondAttribute="trailing" id="lr2-tc-91w"/>
+                            <constraint firstItem="bS9-CY-406" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="mkH-2s-1Bh"/>
+                            <constraint firstItem="nVm-vv-Huu" firstAttribute="top" secondItem="JdV-9q-IBD" secondAttribute="bottom" id="oSu-iX-AQF"/>
+                            <constraint firstItem="JdV-9q-IBD" firstAttribute="centerX" secondItem="NyY-Il-lHy" secondAttribute="centerX" id="qlm-2E-bkb"/>
+                            <constraint firstItem="20h-fO-oX2" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="xJe-Su-spN"/>
+                            <constraint firstItem="r0m-AM-dU9" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" id="yNv-ef-8DQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionView" destination="JdV-9q-IBD" id="bni-bd-ckz"/>
+                        <outlet property="nameField" destination="bS9-CY-406" id="uXL-I8-0YV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUd-xS-Vu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
