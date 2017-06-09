@@ -8,10 +8,25 @@
 
 import Foundation
 
-enum Motions {
+enum Motions: CustomStringConvertible {
     case adjourn
     case recess
     case table
     case amend
     case previousQuestion
+    
+    var description: String {
+        switch self {
+        case .adjourn:
+            return "Adjourn"
+        case .amend:
+            return "Amend"
+        case .recess:
+            return "Recess"
+        case .table:
+            return "Table"
+        case .previousQuestion:
+            return "Close Debate"
+        }
+    }
 }
