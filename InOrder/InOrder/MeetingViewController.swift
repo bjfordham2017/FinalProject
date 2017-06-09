@@ -33,6 +33,43 @@ class MeetingViewController: UIViewController, MotionDelegate {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "recessSegue"?:
+            let modal = segue.destination as! PassFailMotionViewController
+            modal.delegate = self
+            modal.motionType = .recess
+        case "adjournSegue"?:
+            let modal = segue.destination as! PassFailMotionViewController
+            modal.delegate = self
+            modal.motionType = .adjourn
+        case "generalNoteSegue"?:
+            let modal = segue.destination as! AddNoteViewController
+            modal.delegate = self
+            modal.general = true
+        case "tableSegue"?:
+            let modal = segue.destination as! PassFailMotionViewController
+            modal.delegate = self
+            modal.motionType = .table
+        case "closeAndVoteSegue"?:
+            let modal = segue.destination as! CloseAndVoteViewController
+            modal.delegate = self
+        case "addNoteSegue"?:
+            let modal = segue.destination as! AddNoteViewController
+            modal.delegate = self
+            modal.general = false
+        case "motionToAmendSegue"?:
+            let modal = segue.destination as! MotionToAmendViewController
+            modal.delegate = self
+        case "reviewSegue"?:
+            let noteList = segue.destination as! NotesAndAmendmentsViewController
+            noteList.notes = currentItem.notes
+            noteList.amendments = currentItem.amendments
+        default:
+            preconditionFailure("Unexpected segue identifier")
+        }
+    }
+    
     @IBAction func closeAndVote(_ sender: UIButton) {
         itemIndex += 1
         if itemIndex == agenda.agenda.count {
