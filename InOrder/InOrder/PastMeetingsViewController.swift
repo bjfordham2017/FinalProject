@@ -12,6 +12,10 @@ import UIKit
 class PastMeetingsViewController: UITableViewController {
     var meetingHistory: MeetingHistory!
     
+    var meetingHistorySorted: [MeetingNotes] {
+        return meetingHistory.history.reversed()
+    }
+    
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -21,13 +25,13 @@ class PastMeetingsViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meetingHistory.history.count
+        return meetingHistorySorted.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PastViewCell", for: indexPath)
-        let notes = meetingHistory.history[indexPath.row]
+        let notes = meetingHistorySorted[indexPath.row]
         
         cell.textLabel?.text = dateFormatter.string(from: notes.date)
         
@@ -38,7 +42,7 @@ class PastMeetingsViewController: UITableViewController {
         switch segue.identifier {
         case "MeetingSelection"?:
             if let row = tableView.indexPathForSelectedRow?.row {
-                let meetingNotes = meetingHistory.history[row]
+                let meetingNotes = meetingHistorySorted[row]
                 let notesView = segue.destination as! MeetingNotesViewController
                 notesView.meetingNotes = meetingNotes
             }
