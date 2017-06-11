@@ -14,8 +14,15 @@ class NotesAndAmendmentsViewController: UITableViewController {
     var notes: [Note]!
     var amendments: [Note]!
     
+    var meetingInProgress: Bool = false
+    var generalNotes: [Note]?
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if meetingInProgress {
+            return 3
+        } else {
+            return 2
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,6 +31,12 @@ class NotesAndAmendmentsViewController: UITableViewController {
             return notes.count
         case 1:
             return amendments.count
+        case 2:
+            if let general = generalNotes {
+                return general.count
+            } else {
+                return 0
+            }
         default:
             fatalError("unexpected section index")
         }
@@ -38,6 +51,10 @@ class NotesAndAmendmentsViewController: UITableViewController {
         
         if indexPath.section == 1 {
             cell.textLabel?.text = amendments[indexPath.row].name
+        }
+        
+        if indexPath.section == 2 {
+            cell.textLabel?.text = generalNotes![indexPath.row].name
         }
         
         return cell
@@ -57,6 +74,16 @@ class NotesAndAmendmentsViewController: UITableViewController {
             } else {
                 return "No amendments passed on this item"
             }
+        case 2:
+            if let general = generalNotes {
+                if !general.isEmpty {
+                    return "General Meeting Notes"
+                } else {
+                    return "No general notes for this meeting so far"
+                }
+            } else {
+                return nil
+            }
         default:
             print("unexpected section index")
             return nil
@@ -73,6 +100,8 @@ class NotesAndAmendmentsViewController: UITableViewController {
                     return notes
                 case 1:
                     return amendments
+                case 2:
+                    return generalNotes!
                 default:
                     fatalError("Unexpected section index")
                 }

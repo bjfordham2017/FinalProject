@@ -23,9 +23,10 @@ class MeetingViewController: UIViewController, MotionDelegate {
     @IBOutlet var table: UIButton!
     @IBOutlet var closeAndVote: UIButton!
     
+    var delegate: MeetingWalkthroughDelegate!
+    
     var agenda: Agenda!
     var newNotes: MeetingNotes!
-    var history: MeetingHistory!
     
     var itemIndex: Int = 0
     var currentItem: AgendaItem {
@@ -76,23 +77,11 @@ class MeetingViewController: UIViewController, MotionDelegate {
             let noteList = segue.destination as! NotesAndAmendmentsViewController
             noteList.notes = currentItem.notes
             noteList.amendments = currentItem.amendments
-        case "meetingNotesSegue"?:
-            let newNotes = segue.destination as! MeetingNotesViewController
-            newNotes.meetingNotes = self.newNotes
+            noteList.meetingInProgress = true
+            noteList.generalNotes = newNotes.generalNotes
         default:
             preconditionFailure("Unexpected segue identifier")
         }
-    }
-    
-    @IBAction func closeAndVote(_ sender: UIButton) {
-        itemIndex += 1
-        if itemIndex == agenda.agenda.count {
-            itemIndex = 0
-        }
-        
-        nameField.text = currentItem.name
-        descriptionView.text = currentItem.description
-        
     }
  
     func tally(votefor: Int, voteagainst: Int, abstension: Int) {
@@ -138,8 +127,6 @@ class MeetingViewController: UIViewController, MotionDelegate {
         
         self.agenda.agenda = savedForNext
         
-        self.history.history.append(newNotes)
-        
         historyReady()
     }
     
@@ -179,6 +166,10 @@ class MeetingViewController: UIViewController, MotionDelegate {
     func recordAmendment(name: String, description: String) {
         let amendment = Note(name: name, note: description)
         self.currentItem.amendments.append(amendment)
+    }
+    
+    @IBAction func finishMeeting(_ sender: UIButton) {
+        delegate.transferMeetingInfo(newMeeting: newNotes, nextAgenda: agenda)
     }
 
     

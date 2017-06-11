@@ -9,15 +9,19 @@
 import Foundation
 import UIKit
 
-class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MeetingWalkthroughDelegate {
     var agenda: Agenda!
-    var history: MeetingHistory!
-    
+    var delegate: MeetingDelegate!
     
     @IBOutlet var agendaTable: UITableView!
     @IBOutlet var instructions: UITextView!
     @IBOutlet var beginMeeting: UIButton!
     @IBOutlet var editList: UIButton!
+    
+    func transferMeetingInfo(newMeeting: MeetingNotes?, nextAgenda: Agenda) {
+        delegate.recordMeeting(newMeeting: newMeeting, nextAgenda: nextAgenda)
+        dismiss(animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return agenda.agenda.count
@@ -82,6 +86,10 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    @IBAction func saveForLater(_ sender: UIButton) {
+        transferMeetingInfo(newMeeting: nil, nextAgenda: agenda)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "editSegue"?:
@@ -93,7 +101,7 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
             let meeting = segue.destination as! MeetingViewController
             meeting.agenda = self.agenda
             meeting.newNotes = MeetingNotes(date: Date())
-            meeting.history = self.history
+            meeting.delegate = self
         default:
             preconditionFailure("unexpected segue identifier")
         }
