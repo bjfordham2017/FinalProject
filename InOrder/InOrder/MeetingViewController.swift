@@ -83,13 +83,23 @@ class MeetingViewController: UIViewController, MotionDelegate {
             preconditionFailure("Unexpected segue identifier")
         }
     }
+    
+    func advance() {
+        itemIndex += 1
+        
+        if itemIndex == agenda.agenda.count {
+            itemIndex = 0
+            closeMeeting()
+        } else {
+            nameField.text = currentItem.name
+            descriptionView.text = currentItem.description
+        }
+    }
  
     func tally(votefor: Int, voteagainst: Int, abstension: Int) {
         self.currentItem.inputVoteTally(votesFor: votefor, votesAgainst: voteagainst, abstained: abstension)
-        itemIndex += 1
-        if itemIndex == agenda.agenda.count {
-            itemIndex = 0
-        }
+        
+        advance()
     }
     
     func historyReady() {
@@ -136,11 +146,7 @@ class MeetingViewController: UIViewController, MotionDelegate {
             return
         case (.table, true):
             currentItem.table()
-            itemIndex += 1
-            if itemIndex == agenda.agenda.count {
-                itemIndex = 0
-                closeMeeting()
-            }
+            advance()
         case (.table, false):
             return
         case (.adjourn, true):

@@ -433,6 +433,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnb-z6-HAI">
+                                <rect key="frame" x="170" y="497" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveChagnes:" destination="cb9-Aa-AgW" eventType="touchUpInside" id="y1c-sa-2f8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -444,7 +451,9 @@
                             <constraint firstItem="BcR-zS-66S" firstAttribute="top" secondItem="ju6-5P-DVK" secondAttribute="bottom" constant="47" id="HaZ-dZ-zBn"/>
                             <constraint firstItem="ju6-5P-DVK" firstAttribute="top" secondItem="KnP-Mx-VuY" secondAttribute="bottom" constant="50" id="NZQ-2p-lyf"/>
                             <constraint firstItem="ju6-5P-DVK" firstAttribute="top" secondItem="KnP-Mx-VuY" secondAttribute="bottom" constant="50" id="Yms-NE-eGe"/>
+                            <constraint firstItem="pnb-z6-HAI" firstAttribute="centerX" secondItem="X81-v2-M0d" secondAttribute="centerX" id="cIt-fe-8dL"/>
                             <constraint firstItem="KnP-Mx-VuY" firstAttribute="top" secondItem="NgT-VT-R8f" secondAttribute="bottom" constant="50" id="dpg-oc-3vV"/>
+                            <constraint firstItem="pnb-z6-HAI" firstAttribute="top" secondItem="BcR-zS-66S" secondAttribute="bottom" constant="100" id="e6p-pO-w8r"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BcR-zS-66S" secondAttribute="trailing" id="gcC-wA-Yo8"/>
                             <constraint firstItem="ju6-5P-DVK" firstAttribute="centerX" secondItem="NgT-VT-R8f" secondAttribute="centerX" id="gg5-XJ-rEf"/>
                             <constraint firstItem="KnP-Mx-VuY" firstAttribute="top" secondItem="NgT-VT-R8f" secondAttribute="bottom" constant="50" id="iUI-Xh-dVI"/>
@@ -748,7 +757,7 @@
                                                     </subviews>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <segue destination="cb9-Aa-AgW" kind="show" identifier="editSegue" id="xYm-Tw-rtm"/>
+                                                    <segue destination="cb9-Aa-AgW" kind="presentation" identifier="editSegue" id="xYm-Tw-rtm"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -800,7 +809,7 @@
                                                         <rect key="frame" x="171.5" y="0.0" width="171.5" height="108"/>
                                                         <state key="normal" title="Begin Walkthrough"/>
                                                         <connections>
-                                                            <segue destination="g0R-aZ-rRU" kind="presentation" identifier="beginMeetingSegue" id="fUf-M5-5SF"/>
+                                                            <segue destination="IDj-5B-pVn" kind="presentation" identifier="beginMeetingSegue" id="fUf-M5-5SF"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -873,7 +882,6 @@
                                 <rect key="frame" x="255" y="637" width="104" height="30"/>
                                 <state key="normal" title="Close and Vote"/>
                                 <connections>
-                                    <action selector="closeAndVote:" destination="g0R-aZ-rRU" eventType="touchUpInside" id="FBM-Xj-eY1"/>
                                     <segue destination="P4D-fu-CDI" kind="presentation" identifier="closeAndVoteSegue" id="NTk-Vw-Shh"/>
                                 </connections>
                             </button>
@@ -951,10 +959,11 @@
                             <constraint firstItem="r0m-AM-dU9" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" id="yNv-ef-8DQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="0Jq-Ye-wNH"/>
                     <connections>
                         <outlet property="addNote" destination="20h-fO-oX2" id="A3Q-Dp-tRa"/>
                         <outlet property="adjourn" destination="r0m-AM-dU9" id="k6s-mM-EhX"/>
-                        <outlet property="closeAndVote" destination="5IQ-CX-0Xx" id="Rfh-kk-GH2"/>
+                        <outlet property="closeAndVote" destination="5IQ-CX-0Xx" id="Tja-YX-b7E"/>
                         <outlet property="descriptionView" destination="JdV-9q-IBD" id="bni-bd-ckz"/>
                         <outlet property="generalNotes" destination="qh9-1a-Oid" id="Lzs-1X-Zcp"/>
                         <outlet property="motionToAmend" destination="nVm-vv-Huu" id="tbf-RO-Ug8"/>
@@ -967,7 +976,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUd-xS-Vu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2819" y="92"/>
+            <point key="canvasLocation" x="3757.5999999999999" y="91.304347826086968"/>
         </scene>
         <!--Close And Vote View Controller-->
         <scene sceneID="mee-xs-eEZ">
@@ -1090,7 +1099,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3794" y="115"/>
+            <point key="canvasLocation" x="4732" y="114.69265367316342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wu4-jo-W0c">
@@ -1109,6 +1118,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iON-WW-lYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="136.28185907046478"/>
+        </scene>
+        <!--Meeting Nav View Controller-->
+        <scene sceneID="l2b-9C-emN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IDj-5B-pVn" customClass="MeetingNavViewController" customModule="InOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Kc-3P-TVC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g0R-aZ-rRU" kind="relationship" relationship="rootViewController" id="tRn-ww-8QF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0dc-hs-cZx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2818.4000000000001" y="91.304347826086968"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -98,7 +98,8 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
                 itemEditView.item = agenda.agenda[row]
             }
         case "beginMeetingSegue"?:
-            let meeting = segue.destination as! MeetingViewController
+            let meetingNav = segue.destination as! MeetingNavViewController
+            let meeting = meetingNav.topViewController as! MeetingViewController
             meeting.agenda = self.agenda
             meeting.newNotes = MeetingNotes(date: Date())
             meeting.delegate = self

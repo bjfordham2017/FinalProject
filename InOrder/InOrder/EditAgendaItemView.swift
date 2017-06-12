@@ -41,5 +41,10 @@ class EditAgenaItemViewController: UIViewController, UITextFieldDelegate, UIText
         item.name = name.text ?? "Unnamed Item"
         item.description = itemDescription.text
     }
+
+    @IBAction func saveChagnes(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 }
