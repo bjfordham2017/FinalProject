@@ -28,6 +28,8 @@ class PassFailMotionViewController: UIViewController {
         default:
             motionText.text = "Error: \(motionType.description) is not a pass/fail motion. If this happens, it is a bug"
         }
+        
+        motionText.isEditable = false
     }
     
     @IBAction func passMotion(_ sender: UIButton) {

@@ -41,6 +41,9 @@ class MeetingViewController: UIViewController, MotionDelegate {
         nameField.text = currentItem.name
         descriptionView.text = currentItem.description
         
+        nameField.isUserInteractionEnabled = false
+        descriptionView.isEditable = false
+        
         proceedToHistory.isHidden = true
         
     }

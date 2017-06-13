@@ -16,6 +16,13 @@ class CloseAndVoteViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var votesFor: UITextField!
     @IBOutlet var votesAgainst: UITextField!
     @IBOutlet var abstentions: UITextField!
+    @IBOutlet var voteDirections: UITextView!
+    
+    override func loadView() {
+        super.loadView()
+        
+        voteDirections.isEditable = false
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

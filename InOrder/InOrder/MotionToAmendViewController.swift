@@ -14,6 +14,7 @@ class MotionToAmendViewController: UIViewController, UITextViewDelegate, UITextF
     
     @IBOutlet var amendmentTitle: UITextField!
     @IBOutlet var amendmentText: UITextView!
+    @IBOutlet var amendmentDirections: UITextView!
     
     
     override func loadView() {
@@ -21,6 +22,7 @@ class MotionToAmendViewController: UIViewController, UITextViewDelegate, UITextF
         
         amendmentTitle.text = "Add a Title"
         amendmentText.text = "Add the Text of the Amendment"
+        amendmentDirections.isEditable = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {

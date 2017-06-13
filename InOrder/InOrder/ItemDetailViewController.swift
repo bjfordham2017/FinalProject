@@ -22,6 +22,9 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet var countAgainst: UITextField!
     @IBOutlet var countAbstained: UITextField!
     
+    @IBOutlet var notesAndAmendments: UIButton!
+    
+    
     override func loadView() {
         super.loadView()
         itemDescription.text = item.description
@@ -30,7 +33,29 @@ class ItemDetailViewController: UIViewController {
         countAgainst.text = "\(item.votesAgainst)"
         countAbstained.text = "\(item.abstentions)"
         
+        var notesOnButton: String {
+            if item.notes.count == 1 {
+                return "\(item.notes.count) Note"
+            } else {
+                return "\(item.notes.count) Notes"
+            }
+        }
+        
+        var amendmentsOnButton: String {
+            if item.amendments.count == 1 {
+                return "\(item.amendments.count) Amendment"
+            } else {
+                return "\(item.amendments.count) Amendments"
+            }
+        }
+        
+        notesAndAmendments.setTitle("\(notesOnButton) & \(amendmentsOnButton)", for: .normal)
+        
         itemDescription.isEditable = false
+        itemStatus.isUserInteractionEnabled = false
+        countFor.isUserInteractionEnabled = false
+        countAgainst.isUserInteractionEnabled = false
+        countAbstained.isUserInteractionEnabled = false
         
     }
     

@@ -90,6 +90,10 @@ class NotesAndAmendmentsViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(50)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let row = tableView.indexPathForSelectedRow?.row,
             let section = tableView.indexPathForSelectedRow?.section {

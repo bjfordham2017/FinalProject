@@ -36,6 +36,8 @@
 		60D746321EEAF605005900F8 /* MotionToAmendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D746311EEAF605005900F8 /* MotionToAmendViewController.swift */; };
 		60D746341EEAF67B005900F8 /* CloseAndVoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D746331EEAF67B005900F8 /* CloseAndVoteViewController.swift */; };
 		60D974851EEEDB9300F319BA /* MeetingNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D974841EEEDB9300F319BA /* MeetingNavViewController.swift */; };
+		60E5245C1EEEE834006EC34B /* EditGroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E5245B1EEEE834006EC34B /* EditGroupDetailsViewController.swift */; };
+		60E5245E1EEEE978006EC34B /* GroupDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E5245D1EEEE978006EC34B /* GroupDetailsDelegate.swift */; };
 		60FA578E1EEDE166007807B3 /* MeetingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FA578D1EEDE166007807B3 /* MeetingDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,8 @@
 		60D746311EEAF605005900F8 /* MotionToAmendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionToAmendViewController.swift; sourceTree = "<group>"; };
 		60D746331EEAF67B005900F8 /* CloseAndVoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloseAndVoteViewController.swift; sourceTree = "<group>"; };
 		60D974841EEEDB9300F319BA /* MeetingNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingNavViewController.swift; sourceTree = "<group>"; };
+		60E5245B1EEEE834006EC34B /* EditGroupDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGroupDetailsViewController.swift; sourceTree = "<group>"; };
+		60E5245D1EEEE978006EC34B /* GroupDetailsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailsDelegate.swift; sourceTree = "<group>"; };
 		60FA578D1EEDE166007807B3 /* MeetingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +149,7 @@
 			children = (
 				60CC61941EE1BAA30041C17F /* AppDelegate.swift */,
 				60CC61961EE1BAA30041C17F /* ViewController.swift */,
+				60E5245B1EEEE834006EC34B /* EditGroupDetailsViewController.swift */,
 				60FA578D1EEDE166007807B3 /* MeetingDelegate.swift */,
 				60D745EE1EE9E835005900F8 /* MeetingViewController.swift */,
 				60D7462D1EEAF5AB005900F8 /* PassFailMotionViewController.swift */,
@@ -154,6 +159,7 @@
 				60D745F21EEA07AD005900F8 /* Motions.swift */,
 				60D745F41EEA0850005900F8 /* MotionDelegate.swift */,
 				60CC61981EE1BAA30041C17F /* Main.storyboard */,
+				60E5245D1EEEE978006EC34B /* GroupDetailsDelegate.swift */,
 				60D974841EEEDB9300F319BA /* MeetingNavViewController.swift */,
 				60D745EC1EE9C170005900F8 /* EditAgendaItemView.swift */,
 				60D745EA1EE9A1BB005900F8 /* NotesAndAmendmentsViewController.swift */,
@@ -328,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60E5245E1EEEE978006EC34B /* GroupDetailsDelegate.swift in Sources */,
 				60C3BEF61EE75299001A8710 /* MeetingNotesViewController.swift in Sources */,
 				60D7462E1EEAF5AB005900F8 /* PassFailMotionViewController.swift in Sources */,
 				60C3BEF81EE870C8001A8710 /* NoteDetailViewController.swift in Sources */,
@@ -339,6 +346,7 @@
 				60D746321EEAF605005900F8 /* MotionToAmendViewController.swift in Sources */,
 				60CC61951EE1BAA30041C17F /* AppDelegate.swift in Sources */,
 				60C3BEF21EE74131001A8710 /* PastMeetingsViewController.swift in Sources */,
+				60E5245C1EEEE834006EC34B /* EditGroupDetailsViewController.swift in Sources */,
 				60CC61CD1EE1D6AA0041C17F /* AgendaItem.swift in Sources */,
 				60CC61CB1EE1D60C0041C17F /* Note.swift in Sources */,
 				60FA578E1EEDE166007807B3 /* MeetingDelegate.swift in Sources */,
