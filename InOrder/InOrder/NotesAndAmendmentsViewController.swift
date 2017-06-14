@@ -64,20 +64,32 @@ class NotesAndAmendmentsViewController: UITableViewController {
         switch section {
         case 0:
             if !notes.isEmpty {
-                return "Notes"
+                if notes.count == 1 {
+                    return "\(notes.count) Note"
+                } else {
+                    return "\(notes.count) Notes"
+                }
             } else {
                 return "No notes for this item"
             }
         case 1:
             if !amendments.isEmpty {
-                return "Amendments"
+                if amendments.count == 1 {
+                    return "\(amendments.count) Amendment"
+                } else {
+                    return "\(amendments.count) Amendments"
+                }
             } else {
                 return "No amendments passed on this item"
             }
         case 2:
             if let general = generalNotes {
                 if !general.isEmpty {
-                    return "General Meeting Notes"
+                    if general.count == 1 {
+                        return "\(general.count) General Meeting Note"
+                    } else {
+                        return "\(general.count) General Meeting Notes"
+                    }
                 } else {
                     return "No general notes for this meeting so far"
                 }
@@ -93,6 +105,7 @@ class NotesAndAmendmentsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(50)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let row = tableView.indexPathForSelectedRow?.row,

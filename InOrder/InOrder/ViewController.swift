@@ -37,13 +37,13 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-            case "PastMeetings"?:
-                let meetingHistory = segue.destination as! PastMeetingsViewController
-                meetingHistory.meetingHistory = group.meetingHistory
-            case "NewMeeting"?:
-                let newMeeting = segue.destination as! NewMeetingViewController
-                newMeeting.agenda = group.upcomingAgenda
-                newMeeting.delegate = self
+        case "PastMeetings"?:
+            let meetingHistory = segue.destination as! PastMeetingsViewController
+            meetingHistory.meetingHistory = group.meetingHistory
+        case "NewMeeting"?:
+            let newMeeting = segue.destination as! NewMeetingViewController
+            newMeeting.agenda = group.upcomingAgenda
+            newMeeting.delegate = self
         case "GroupDetails"?:
             let details = segue.destination as! EditGroupDetailsViewController
             details.delegate = self
