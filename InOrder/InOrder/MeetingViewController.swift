@@ -36,8 +36,6 @@ class MeetingViewController: UIViewController, MotionDelegate {
     override func loadView() {
         super.loadView()
         
-        //navigationItem.hidesBackButton = true  I don't want to implement this until I'm absolutely certain I can escape with my Adjourn key.
-        
         nameField.text = currentItem.name
         descriptionView.text = currentItem.description
         
@@ -46,6 +44,41 @@ class MeetingViewController: UIViewController, MotionDelegate {
         
         proceedToHistory.isHidden = true
         
+        proceedToHistory.layer.cornerRadius = 7
+        proceedToHistory.layer.borderWidth = 1
+        proceedToHistory.layer.borderColor = UIColor.lightGray.cgColor
+        
+        recess.layer.cornerRadius = 7
+        recess.layer.borderWidth = 1
+        recess.layer.borderColor = UIColor.lightGray.cgColor
+        
+        generalNotes.layer.cornerRadius = 7
+        generalNotes.layer.borderWidth = 1
+        generalNotes.layer.borderColor = UIColor.lightGray.cgColor
+        
+        adjourn.layer.cornerRadius = 7
+        adjourn.layer.borderWidth = 1
+        adjourn.layer.borderColor = UIColor.lightGray.cgColor
+        
+        addNote.layer.cornerRadius = 7
+        addNote.layer.borderWidth = 1
+        addNote.layer.borderColor = UIColor.lightGray.cgColor
+        
+        review.layer.cornerRadius = 7
+        review.layer.borderWidth = 1
+        review.layer.borderColor = UIColor.lightGray.cgColor
+        
+        motionToAmend.layer.cornerRadius = 7
+        motionToAmend.layer.borderWidth = 1
+        motionToAmend.layer.borderColor = UIColor.lightGray.cgColor
+        
+        table.layer.cornerRadius = 7
+        table.layer.borderWidth = 1
+        table.layer.borderColor = UIColor.lightGray.cgColor
+        
+        closeAndVote.layer.cornerRadius = 7
+        closeAndVote.layer.borderWidth = 1
+        closeAndVote.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -14,6 +14,8 @@ class PassFailMotionViewController: UIViewController {
     var motionType: Motions = .recess
 
     @IBOutlet var motionText: UITextView!
+    @IBOutlet var passButton: UIButton!
+    @IBOutlet var failButton: UIButton!
     
     override func loadView() {
         super.loadView()
@@ -30,6 +32,15 @@ class PassFailMotionViewController: UIViewController {
         }
         
         motionText.isEditable = false
+        
+        passButton.layer.cornerRadius = 7
+        passButton.layer.borderWidth = 1
+        passButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        failButton.layer.cornerRadius = 7
+        failButton.layer.borderWidth = 1
+        failButton.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     @IBAction func passMotion(_ sender: UIButton) {

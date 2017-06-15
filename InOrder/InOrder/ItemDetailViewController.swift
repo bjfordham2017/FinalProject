@@ -50,6 +50,9 @@ class ItemDetailViewController: UIViewController {
         }
         
         notesAndAmendments.setTitle("\(notesOnButton) & \(amendmentsOnButton)", for: .normal)
+        notesAndAmendments.layer.cornerRadius = 7
+        notesAndAmendments.layer.borderWidth = 1
+        notesAndAmendments.layer.borderColor = UIColor.lightGray.cgColor
         
         itemDescription.isEditable = false
         itemStatus.isUserInteractionEnabled = false

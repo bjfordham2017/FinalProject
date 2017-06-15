@@ -17,11 +17,22 @@ class CloseAndVoteViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var votesAgainst: UITextField!
     @IBOutlet var abstentions: UITextField!
     @IBOutlet var voteDirections: UITextView!
+    @IBOutlet var returnButton: UIButton!
+    @IBOutlet var recordButton: UIButton!
     
     override func loadView() {
         super.loadView()
         
         voteDirections.isEditable = false
+        
+        returnButton.layer.cornerRadius = 7
+        returnButton.layer.borderWidth = 1
+        returnButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        recordButton.layer.cornerRadius = 7
+        recordButton.layer.borderWidth = 1
+        recordButton.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

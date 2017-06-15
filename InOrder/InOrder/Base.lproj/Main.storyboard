@@ -206,8 +206,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="InOrder" id="VRR-kh-Pkb"/>
                     <connections>
+                        <outlet property="editDetailsButton" destination="Zcu-st-anI" id="EeH-9E-RZD"/>
                         <outlet property="groupDescription" destination="VWu-6e-ntO" id="IAB-Nn-ZKC"/>
                         <outlet property="groupName" destination="4tv-YE-PeG" id="lc7-YE-zBx"/>
+                        <outlet property="newMeetingButton" destination="tF2-wq-8tJ" id="E8X-vl-MKH"/>
+                        <outlet property="pastMeetingsButton" destination="CC6-Zx-LgK" id="aWA-vS-S4g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -599,6 +602,7 @@
                     <connections>
                         <outlet property="itemDescription" destination="BcR-zS-66S" id="r1G-JE-7io"/>
                         <outlet property="name" destination="KnP-Mx-VuY" id="Sqq-bw-5KG"/>
+                        <outlet property="saveButton" destination="pnb-z6-HAI" id="3LM-G5-szd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGu-6V-07L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -676,7 +680,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="failButton" destination="D2Q-7c-xqL" id="DFk-72-x51"/>
                         <outlet property="motionText" destination="03C-w7-dEM" id="X43-5p-r1Y"/>
+                        <outlet property="passButton" destination="k47-9S-2i4" id="8nT-de-Zp3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gx-L6-OIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -777,8 +783,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="Oyt-mG-IW8" id="4aI-fi-jYM"/>
                         <outlet property="noteName" destination="bno-bC-WZZ" id="lTw-Qo-Rbr"/>
                         <outlet property="noteText" destination="zxf-B3-U88" id="k5Y-CO-Bzz"/>
+                        <outlet property="recordButton" destination="G6f-4D-bWh" id="Wdu-iC-rMe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bln-tE-xWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -899,6 +907,8 @@
                         <outlet property="amendmentDirections" destination="Kuf-hF-Le4" id="5y2-nf-4JN"/>
                         <outlet property="amendmentText" destination="Htt-Ym-G0S" id="zEA-on-Sgb"/>
                         <outlet property="amendmentTitle" destination="KCK-cL-gWE" id="fNG-Dc-4Rf"/>
+                        <outlet property="failButton" destination="xxx-XX-F1f" id="GWH-OP-NRx"/>
+                        <outlet property="passButton" destination="bLi-LT-i0r" id="Hk3-uL-0BY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6C-Wc-00X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1030,10 +1040,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addItem" destination="UFr-nf-Gon" id="9uM-F4-4T8"/>
                         <outlet property="agendaTable" destination="yLL-Nc-VdS" id="SgQ-1k-HI0"/>
                         <outlet property="beginMeeting" destination="eIh-8c-Zrn" id="Vgn-bf-aTL"/>
                         <outlet property="editList" destination="myZ-dt-94d" id="7rf-05-VOX"/>
                         <outlet property="instructions" destination="xfX-d4-VAJ" id="078-Mm-xEc"/>
+                        <outlet property="saveForLater" destination="WO4-aY-HAz" id="Ygm-zy-nZ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGn-yF-RDR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1360,6 +1372,8 @@
                     </view>
                     <connections>
                         <outlet property="abstentions" destination="HYm-V2-W8y" id="WOp-H0-wfw"/>
+                        <outlet property="recordButton" destination="skS-J1-PBl" id="VbX-1V-cll"/>
+                        <outlet property="returnButton" destination="W3T-pZ-6rB" id="p5P-Vu-2Ww"/>
                         <outlet property="voteDirections" destination="Pa1-fJ-pMD" id="wsp-UB-Lmq"/>
                         <outlet property="votesAgainst" destination="DrO-br-Qyu" id="pyA-Lz-rGi"/>
                         <outlet property="votesFor" destination="9FE-LM-qQ7" id="XJc-qK-uUb"/>
@@ -1412,9 +1426,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gvm-h5-lvC"/>
-        <segue reference="g1X-lI-VN7"/>
-        <segue reference="EVC-hH-oGX"/>
         <segue reference="I4t-my-RFw"/>
+        <segue reference="gyf-OQ-BNg"/>
+        <segue reference="EVC-hH-oGX"/>
+        <segue reference="g1X-lI-VN7"/>
     </inferredMetricsTieBreakers>
 </document>

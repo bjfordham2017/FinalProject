@@ -14,14 +14,25 @@ class AddNoteViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     var general: Bool!
     
     @IBOutlet var noteName: UITextField!
-    
     @IBOutlet var noteText: UITextView!
+    @IBOutlet var recordButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
+    
     
     override func loadView() {
         super.loadView()
         
         noteName.text = "Add Name"
         noteText.text = "Add Note"
+        
+        recordButton.layer.cornerRadius = 7
+        recordButton.layer.borderWidth = 1
+        recordButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        cancelButton.layer.cornerRadius = 7
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

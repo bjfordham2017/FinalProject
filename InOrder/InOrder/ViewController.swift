@@ -14,6 +14,9 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
     
     @IBOutlet var groupName: UITextField!
     @IBOutlet var groupDescription: UITextView!
+    @IBOutlet var newMeetingButton: UIButton!
+    @IBOutlet var pastMeetingsButton: UIButton!
+    @IBOutlet var editDetailsButton: UIButton!
     
     func recordMeeting(newMeeting: MeetingNotes?, nextAgenda: Agenda) {
         if let newNotes = newMeeting {
@@ -32,6 +35,19 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
         groupDescription.text = group.description
         
         groupName.isUserInteractionEnabled = false
+        
+        newMeetingButton.layer.cornerRadius = 7
+        newMeetingButton.layer.borderWidth = 1
+        newMeetingButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        pastMeetingsButton.layer.cornerRadius = 7
+        pastMeetingsButton.layer.borderWidth = 1
+        pastMeetingsButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        editDetailsButton.layer.cornerRadius = 7
+        editDetailsButton.layer.borderWidth = 1
+        editDetailsButton.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     

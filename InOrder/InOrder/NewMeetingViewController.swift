@@ -17,6 +17,8 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var instructions: UITextView!
     @IBOutlet var beginMeeting: UIButton!
     @IBOutlet var editList: UIButton!
+    @IBOutlet var addItem: UIButton!
+    @IBOutlet var saveForLater: UIButton!
     
     func transferMeetingInfo(newMeeting: MeetingNotes?, nextAgenda: Agenda) {
         delegate.recordMeeting(newMeeting: newMeeting, nextAgenda: nextAgenda)
@@ -59,6 +61,23 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
         if agenda.agenda.isEmpty {
             beginMeeting.isHidden = true
         }
+        
+        editList.layer.cornerRadius = 7
+        editList.layer.borderWidth = 1
+        editList.layer.borderColor = UIColor.lightGray.cgColor
+        
+        addItem.layer.cornerRadius = 7
+        addItem.layer.borderWidth = 1
+        addItem.layer.borderColor = UIColor.lightGray.cgColor
+        
+        saveForLater.layer.cornerRadius = 7
+        saveForLater.layer.borderWidth = 1
+        saveForLater.layer.borderColor = UIColor.lightGray.cgColor
+        
+        beginMeeting.layer.cornerRadius = 7
+        beginMeeting.layer.borderWidth = 1
+        beginMeeting.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

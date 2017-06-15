@@ -14,12 +14,18 @@ class EditAgenaItemViewController: UIViewController, UITextFieldDelegate, UIText
     
     @IBOutlet var itemDescription: UITextView!
     @IBOutlet var name: UITextField!
+    @IBOutlet var saveButton: UIButton!
     
     override func loadView() {
         super.loadView()
         
         name.text = item.name
         itemDescription.text = item.description
+        
+        saveButton.layer.cornerRadius = 7
+        saveButton.layer.borderWidth = 1
+        saveButton.layer.borderColor = UIColor.lightGray.cgColor
+
         
     }
     

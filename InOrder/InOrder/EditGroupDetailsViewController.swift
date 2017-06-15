@@ -24,6 +24,10 @@ class EditGroupDetailsViewController: UIViewController {
         
         groupName.text = name
         groupDetails.text = details
+        
+        doneEditing.layer.cornerRadius = 7
+        doneEditing.layer.borderWidth = 1
+        doneEditing.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     override func viewWillDisappear(_ animated: Bool) {
