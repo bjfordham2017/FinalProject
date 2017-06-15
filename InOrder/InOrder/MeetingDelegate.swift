@@ -14,4 +14,5 @@ protocol MeetingDelegate {
 
 protocol MeetingWalkthroughDelegate {
     func transferMeetingInfo(newMeeting: MeetingNotes?, nextAgenda: Agenda)
+    func cancel()
 }

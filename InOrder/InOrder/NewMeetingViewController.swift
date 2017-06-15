@@ -25,6 +25,10 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
         dismiss(animated: true, completion: nil)
     }
     
+    func cancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return agenda.agenda.count
     }

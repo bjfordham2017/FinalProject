@@ -13,4 +13,5 @@ protocol MotionDelegate {
     func passFail(motion: Motions, result: Bool)
     func recordNote(name: String, description: String, general: Bool)
     func recordAmendment(name: String, description: String)
+    func cancelMotion()
 }
