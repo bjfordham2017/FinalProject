@@ -53,5 +53,8 @@ class PassFailMotionViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func cancelMotion(_ sender: UIBarButtonItem) {
+        delegate.cancelMotion()
+    }
     
 }

@@ -55,4 +55,8 @@ class MotionToAmendViewController: UIViewController, UITextViewDelegate, UITextF
         view.endEditing(true)
     }
     
+    @IBAction func cancelMotion(_ sender: UIBarButtonItem) {
+        delegate.cancelMotion()
+    }
+    
 }

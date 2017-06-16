@@ -84,11 +84,13 @@ class MeetingViewController: UIViewController, MotionDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "recessSegue"?:
-            let modal = segue.destination as! PassFailMotionViewController
+            let nav = segue.destination as! MeetingNavViewController
+            let modal = nav.topViewController as! PassFailMotionViewController
             modal.delegate = self
             modal.motionType = .recess
         case "adjournSegue"?:
-            let modal = segue.destination as! PassFailMotionViewController
+            let nav = segue.destination as! MeetingNavViewController
+            let modal = nav.topViewController as! PassFailMotionViewController
             modal.delegate = self
             modal.motionType = .adjourn
         case "generalNoteSegue"?:
@@ -96,18 +98,21 @@ class MeetingViewController: UIViewController, MotionDelegate {
             modal.delegate = self
             modal.general = true
         case "tableSegue"?:
-            let modal = segue.destination as! PassFailMotionViewController
+            let nav = segue.destination as! MeetingNavViewController
+            let modal = nav.topViewController as! PassFailMotionViewController
             modal.delegate = self
             modal.motionType = .table
         case "closeAndVoteSegue"?:
-            let modal = segue.destination as! CloseAndVoteViewController
+            let nav = segue.destination as! MeetingNavViewController
+            let modal = nav.topViewController as! CloseAndVoteViewController
             modal.delegate = self
         case "addNoteSegue"?:
             let modal = segue.destination as! AddNoteViewController
             modal.delegate = self
             modal.general = false
         case "motionToAmendSegue"?:
-            let modal = segue.destination as! MotionToAmendViewController
+            let nav = segue.destination as! MeetingNavViewController
+            let modal = nav.topViewController as! MotionToAmendViewController
             modal.delegate = self
         case "reviewSegue"?:
             let noteList = segue.destination as! NotesAndAmendmentsViewController
@@ -122,6 +127,7 @@ class MeetingViewController: UIViewController, MotionDelegate {
     
     func advance() {
         itemIndex += 1
+        
         
         if itemIndex == agenda.agenda.count {
             itemIndex = 0
