@@ -22,6 +22,8 @@ class MotionToAmendViewController: UIViewController, UITextViewDelegate, UITextF
     override func loadView() {
         super.loadView()
         
+        amendmentDirections.text = "An amendment needs a second and simple majority vote before it can be debated, and a simple majority vote in order to pass."
+        
         amendmentTitle.text = "Add a Title"
         amendmentText.text = "Add the Text of the Amendment"
         amendmentDirections.isEditable = false
