@@ -556,10 +556,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbf-FK-VfW">
                                                 <rect key="frame" x="0.0" y="0.0" width="171.5" height="83.5"/>
                                                 <state key="normal" title="Add Note"/>
+                                                <connections>
+                                                    <segue destination="7fI-A9-HNG" kind="presentation" identifier="addNote" id="acp-sD-HRO"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89U-Qx-7Cm">
                                                 <rect key="frame" x="171.5" y="0.0" width="171.5" height="83.5"/>
                                                 <state key="normal" title="Amend"/>
+                                                <connections>
+                                                    <segue destination="LY1-DE-ifJ" kind="presentation" identifier="amend" id="Uru-K9-JZn"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -569,16 +575,25 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jq8-Tj-BYr">
                                                 <rect key="frame" x="0.0" y="0.0" width="171.5" height="83"/>
                                                 <state key="normal" title="Review"/>
+                                                <connections>
+                                                    <segue destination="FYE-Uh-1Ma" kind="show" identifier="review" id="G1a-II-MW4"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwp-AL-EDU">
                                                 <rect key="frame" x="171.5" y="0.0" width="171.5" height="83"/>
                                                 <state key="normal" title="Table"/>
+                                                <connections>
+                                                    <segue destination="n1h-Jd-EPR" kind="presentation" identifier="table" id="04A-Mg-6j3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiW-gp-ynQ">
                                         <rect key="frame" x="0.0" y="166.5" width="343" height="83.5"/>
                                         <state key="normal" title="Close and Vote"/>
+                                        <connections>
+                                            <segue destination="7dk-UM-jCO" kind="presentation" identifier="closeAndVote" id="LhK-ms-uo1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1176,13 +1191,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="hjr-Jq-R10">
-                                <rect key="frame" x="16" y="64" width="343" height="99"/>
+                                <rect key="frame" x="16" y="64" width="343" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-Ou-dIO">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-eE-JTZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="49.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="30"/>
                                                 <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Recess">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1192,7 +1207,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qh9-1a-Oid">
-                                                <rect key="frame" x="115.5" y="0.0" width="112" height="49.5"/>
+                                                <rect key="frame" x="115.5" y="0.0" width="112" height="30"/>
                                                 <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="General Note">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1202,7 +1217,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0m-AM-dU9">
-                                                <rect key="frame" x="231.5" y="0.0" width="111.5" height="49.5"/>
+                                                <rect key="frame" x="231.5" y="0.0" width="111.5" height="30"/>
                                                 <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Adjourn">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1214,7 +1229,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDb-Dp-am3">
-                                        <rect key="frame" x="0.0" y="49.5" width="343" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="30" width="343" height="30"/>
                                         <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Review Notes &amp; Amendments">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1225,48 +1240,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JdV-9q-IBD">
-                                <rect key="frame" x="16" y="269" width="343" height="128"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="MdH-5P-r4V"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bS9-CY-406">
-                                <rect key="frame" x="16" y="163" width="343" height="30"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfD-IB-nXe">
-                                <rect key="frame" x="156" y="201" width="62" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Finished!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="finishMeeting:" destination="g0R-aZ-rRU" eventType="touchUpInside" id="KvP-AJ-SML"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="JdV-9q-IBD" firstAttribute="centerY" secondItem="NyY-Il-lHy" secondAttribute="centerY" id="AZw-gD-OLa"/>
-                            <constraint firstItem="JdV-9q-IBD" firstAttribute="top" secondItem="bS9-CY-406" secondAttribute="bottom" constant="76" id="CyX-d0-dTF"/>
                             <constraint firstItem="hjr-Jq-R10" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="Iqj-Eo-6Ay"/>
                             <constraint firstItem="hjr-Jq-R10" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" id="Kjb-jB-2IA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JdV-9q-IBD" secondAttribute="trailing" id="Kz4-8f-Ibx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hjr-Jq-R10" secondAttribute="trailing" id="LFc-VH-3Gb"/>
-                            <constraint firstItem="JdV-9q-IBD" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="TNN-fl-UNz"/>
-                            <constraint firstItem="bS9-CY-406" firstAttribute="top" secondItem="hjr-Jq-R10" secondAttribute="bottom" id="aM4-Hh-jnJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bS9-CY-406" secondAttribute="trailing" id="lr2-tc-91w"/>
-                            <constraint firstItem="bS9-CY-406" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="mkH-2s-1Bh"/>
-                            <constraint firstItem="JdV-9q-IBD" firstAttribute="centerX" secondItem="NyY-Il-lHy" secondAttribute="centerX" id="qlm-2E-bkb"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Meeting" id="wbg-ed-sWe">
@@ -1275,10 +1254,7 @@
                     <navigationItem key="navigationItem" title="Meeting In Progress" id="0Jq-Ye-wNH"/>
                     <connections>
                         <outlet property="adjourn" destination="r0m-AM-dU9" id="k6s-mM-EhX"/>
-                        <outlet property="descriptionView" destination="JdV-9q-IBD" id="bni-bd-ckz"/>
                         <outlet property="generalNotes" destination="qh9-1a-Oid" id="Lzs-1X-Zcp"/>
-                        <outlet property="nameField" destination="bS9-CY-406" id="uXL-I8-0YV"/>
-                        <outlet property="proceedToHistory" destination="dfD-IB-nXe" id="oAy-oC-UlV"/>
                         <outlet property="recess" destination="bdg-eE-JTZ" id="XG2-x9-H9s"/>
                         <outlet property="review" destination="SDb-Dp-am3" id="dZ5-mt-RH3"/>
                     </connections>
@@ -1546,8 +1522,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gyf-OQ-BNg"/>
-        <segue reference="rRV-Zx-FSs"/>
+        <segue reference="acp-sD-HRO"/>
+        <segue reference="G1a-II-MW4"/>
+        <segue reference="04A-Mg-6j3"/>
         <segue reference="g1X-lI-VN7"/>
     </inferredMetricsTieBreakers>
 </document>

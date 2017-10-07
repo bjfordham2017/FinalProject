@@ -11,9 +11,6 @@ import UIKit
 
 class MeetingViewController: UIViewController, MotionDelegate {
 
-    @IBOutlet var nameField: UITextField!
-    @IBOutlet var descriptionView: UITextView!
-    @IBOutlet var proceedToHistory: UIButton!
     @IBOutlet var recess: UIButton!
     @IBOutlet var generalNotes: UIButton!
     @IBOutlet var adjourn: UIButton!
@@ -24,25 +21,8 @@ class MeetingViewController: UIViewController, MotionDelegate {
     var agenda: Agenda!
     var newNotes: MeetingNotes!
     
-    var itemIndex: Int = 0
-    var currentItem: AgendaItem {
-        return agenda.agenda[itemIndex]
-    }
-    
     override func loadView() {
         super.loadView()
-        
-        nameField.text = currentItem.name
-        descriptionView.text = currentItem.description
-        
-        nameField.isUserInteractionEnabled = false
-        descriptionView.isEditable = false
-        
-        proceedToHistory.isHidden = true
-        
-        proceedToHistory.layer.cornerRadius = 7
-        proceedToHistory.layer.borderWidth = 1
-        proceedToHistory.layer.borderColor = UIColor.lightGray.cgColor
         
         recess.layer.cornerRadius = 7
         recess.layer.borderWidth = 1
@@ -80,9 +60,7 @@ class MeetingViewController: UIViewController, MotionDelegate {
             modal.general = true
         case "reviewSegue"?:
             let noteList = segue.destination as! NotesAndAmendmentsViewController
-            noteList.notes = currentItem.notes
-            noteList.amendments = currentItem.amendments
-            noteList.meetingInProgress = true
+            noteList.generalNoteRequest = true
             noteList.generalNotes = newNotes.generalNotes
         default:
             preconditionFailure("Unexpected segue identifier")
@@ -106,7 +84,7 @@ class MeetingViewController: UIViewController, MotionDelegate {
         }
         
         self.agenda.agenda = savedForNext
-        
+        self.delegate.transferMeetingInfo(newMeeting: newNotes, nextAgenda: agenda)
     }
     
     func passFail(motion: Motions, result: Bool) {
@@ -131,10 +109,6 @@ class MeetingViewController: UIViewController, MotionDelegate {
     
     func cancelMotion() {
         dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func finishMeeting(_ sender: UIButton) {
-        delegate.transferMeetingInfo(newMeeting: newNotes, nextAgenda: agenda)
     }
     
 }

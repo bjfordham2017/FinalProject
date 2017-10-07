@@ -16,6 +16,35 @@ class MainMotionViewController: UIViewController, MainMotionDelegate {
         return agenda.agenda[itemIndex]
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "closeAndVote":
+            let nav = segue.destination as! MeetingNavViewController
+            let voteView = nav.topViewController as! CloseAndVoteViewController
+            voteView.delegate = self
+        case "amend":
+            let nav = segue.destination as! MeetingNavViewController
+            let amendView = nav.topViewController as! MotionToAmendViewController
+            amendView.delegate = self
+        case "addNote":
+            let noteView = segue.destination as! AddNoteViewController
+            noteView.delegate = self
+            noteView.general = false
+        case "table":
+            let nav = segue.destination as! MeetingNavViewController
+            let tableMotionView = nav.topViewController as! PassFailMotionViewController
+            tableMotionView.delegate = self
+            tableMotionView.motionType = .table
+        case "review":
+            let noteList = segue.destination as! NotesAndAmendmentsViewController
+            noteList.notes = currentItem.notes
+            noteList.amendments = currentItem.amendments
+            noteList.generalNoteRequest = false
+        default:
+            print("Unexpected Segue Identifier")
+        }
+    }
+    
     func advance() {
         itemIndex += 1
         
