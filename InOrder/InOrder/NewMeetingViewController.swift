@@ -117,10 +117,14 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         case "beginMeetingSegue"?:
             let meetingNav = segue.destination as! MeetingNavViewController
-            let meeting = meetingNav.topViewController as! MeetingViewController
+            let meetingTabBar = meetingNav.topViewController as! MeetingTabBarController
+            meetingTabBar.meetingWalkThroughDelegate = self
+            let meeting = meetingTabBar.customizableViewControllers![0] as! MeetingViewController
             meeting.agenda = self.agenda
             meeting.newNotes = MeetingNotes(date: Date())
             meeting.delegate = self
+            let mainMotion = meetingTabBar.customizableViewControllers![1] as! MainMotionViewController
+            mainMotion.delegate = self
         default:
             preconditionFailure("unexpected segue identifier")
         }

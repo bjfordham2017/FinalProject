@@ -223,10 +223,6 @@ class MeetingViewController: UIViewController, MotionDelegate {
     @IBAction func finishMeeting(_ sender: UIButton) {
         delegate.transferMeetingInfo(newMeeting: newNotes, nextAgenda: agenda)
     }
-
-    @IBAction func cancel(_ sender: Any) {
-        delegate.cancel()
-    }
     
 }
 

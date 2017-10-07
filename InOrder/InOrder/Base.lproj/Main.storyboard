@@ -500,7 +500,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1nV-VF-YX1">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -522,6 +522,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yig-Nw-9pe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3663" y="909"/>
+        </scene>
+        <!--Main Motion-->
+        <scene sceneID="RvP-fF-bdI">
+            <objects>
+                <viewController id="dSo-FH-ZLN" customClass="MainMotionViewController" customModule="InOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fre-a9-zcF"/>
+                        <viewControllerLayoutGuide type="bottom" id="ygl-3u-t7B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xfb-b7-gdM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Main Motion" id="Sqq-m1-V5o">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-18"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="che-Rk-UEI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4686" y="780"/>
         </scene>
         <!--Edit Agenda Item-->
         <scene sceneID="Gid-ZJ-CzY">
@@ -956,11 +977,11 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="49a-mW-TcP" id="FEM-Qp-e8A">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KDt-eT-TdN">
-                                                    <rect key="frame" x="15" y="0.0" width="313" height="49.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="313" height="49"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1128,10 +1149,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MuN-Aj-DtJ">
-                                <rect key="frame" x="16" y="397" width="343" height="270"/>
+                                <rect key="frame" x="16" y="397" width="343" height="221"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20h-fO-oX2">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="51"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="41"/>
                                         <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Add Note">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1141,7 +1162,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVm-vv-Huu">
-                                        <rect key="frame" x="0.0" y="55" width="343" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="45" width="343" height="41"/>
                                         <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Amend">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1151,7 +1172,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDb-Dp-am3">
-                                        <rect key="frame" x="0.0" y="109.5" width="343" height="51"/>
+                                        <rect key="frame" x="0.0" y="90" width="343" height="41"/>
                                         <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Review Notes &amp; Amendments">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1161,7 +1182,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWl-na-hNI">
-                                        <rect key="frame" x="0.0" y="164.5" width="343" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="135" width="343" height="41"/>
                                         <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Table">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1171,7 +1192,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IQ-CX-0Xx">
-                                        <rect key="frame" x="0.0" y="219" width="343" height="51"/>
+                                        <rect key="frame" x="0.0" y="180" width="343" height="41"/>
                                         <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Close and Vote">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1220,13 +1241,10 @@
                             <constraint firstItem="MuN-Aj-DtJ" firstAttribute="top" secondItem="JdV-9q-IBD" secondAttribute="bottom" id="twW-Am-Hz5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Meeting In Progress" id="0Jq-Ye-wNH">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dkl-Sb-dbJ">
-                            <connections>
-                                <action selector="cancel:" destination="g0R-aZ-rRU" id="uvh-a1-vFn"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="Meeting" id="wbg-ed-sWe">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-18"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Meeting In Progress" id="0Jq-Ye-wNH"/>
                     <connections>
                         <outlet property="addNote" destination="20h-fO-oX2" id="A3Q-Dp-tRa"/>
                         <outlet property="adjourn" destination="r0m-AM-dU9" id="k6s-mM-EhX"/>
@@ -1243,7 +1261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUd-xS-Vu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3757.5999999999999" y="91.304347826086968"/>
+            <point key="canvasLocation" x="4696.8000000000002" y="91.304347826086968"/>
         </scene>
         <!--Close and Vote-->
         <scene sceneID="mee-xs-eEZ">
@@ -1385,7 +1403,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5671.1999999999998" y="114.69265367316342"/>
+            <point key="canvasLocation" x="6610.3999999999996" y="114.69265367316342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wu4-jo-W0c">
@@ -1416,7 +1434,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="g0R-aZ-rRU" kind="relationship" relationship="rootViewController" id="tRn-ww-8QF"/>
+                        <segue destination="mil-nY-QTq" kind="relationship" relationship="rootViewController" id="tRn-ww-8QF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0dc-hs-cZx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1475,13 +1493,38 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bp8-YB-U0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4732" y="114.69265367316342"/>
+            <point key="canvasLocation" x="5671.1999999999998" y="114.69265367316342"/>
+        </scene>
+        <!--Meeting Tab Bar-->
+        <scene sceneID="uM1-Cd-noh">
+            <objects>
+                <tabBarController title="Meeting Tab Bar" automaticallyAdjustsScrollViewInsets="NO" id="mil-nY-QTq" customClass="MeetingTabBarController" customModule="InOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bzZ-Oj-aFF">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="8jk-XN-Og4">
+                            <connections>
+                                <action selector="cancel:" destination="mil-nY-QTq" id="3i7-h5-52Q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="zbb-hh-XKq">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="g0R-aZ-rRU" kind="relationship" relationship="viewControllers" id="Ttg-CR-TJ7"/>
+                        <segue destination="dSo-FH-ZLN" kind="relationship" relationship="viewControllers" id="TKH-9P-xOZ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tei-0a-iCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3757.5999999999999" y="91.304347826086968"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gvm-h5-lvC"/>
-        <segue reference="g1X-lI-VN7"/>
-        <segue reference="rRV-Zx-FSs"/>
         <segue reference="rhf-Up-9JK"/>
+        <segue reference="rRV-Zx-FSs"/>
+        <segue reference="gyf-OQ-BNg"/>
+        <segue reference="g1X-lI-VN7"/>
     </inferredMetricsTieBreakers>
 </document>
