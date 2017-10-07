@@ -17,10 +17,12 @@ class Meeting {
         case adjourned = "Adjourned"
     }
     
+    var title: String
     var agenda: Agenda
     var status: MeetingStatus
     
-    init (agenda: Agenda, status: MeetingStatus) {
+    init (title: String, agenda: Agenda, status: MeetingStatus) {
+        self.title = title
         self.agenda = agenda
         self.status = status
     }
