@@ -17,11 +17,7 @@ class MeetingViewController: UIViewController, MotionDelegate {
     @IBOutlet var recess: UIButton!
     @IBOutlet var generalNotes: UIButton!
     @IBOutlet var adjourn: UIButton!
-    @IBOutlet var addNote: UIButton!
-    @IBOutlet var motionToAmend: UIButton!
     @IBOutlet var review: UIButton!
-    @IBOutlet var table: UIButton!
-    @IBOutlet var closeAndVote: UIButton!
     
     var delegate: MeetingWalkthroughDelegate!
     
@@ -60,25 +56,10 @@ class MeetingViewController: UIViewController, MotionDelegate {
         adjourn.layer.borderWidth = 1
         adjourn.layer.borderColor = UIColor.lightGray.cgColor
         
-        addNote.layer.cornerRadius = 7
-        addNote.layer.borderWidth = 1
-        addNote.layer.borderColor = UIColor.lightGray.cgColor
-        
         review.layer.cornerRadius = 7
         review.layer.borderWidth = 1
         review.layer.borderColor = UIColor.lightGray.cgColor
         
-        motionToAmend.layer.cornerRadius = 7
-        motionToAmend.layer.borderWidth = 1
-        motionToAmend.layer.borderColor = UIColor.lightGray.cgColor
-        
-        table.layer.cornerRadius = 7
-        table.layer.borderWidth = 1
-        table.layer.borderColor = UIColor.lightGray.cgColor
-        
-        closeAndVote.layer.cornerRadius = 7
-        closeAndVote.layer.borderWidth = 1
-        closeAndVote.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,23 +78,6 @@ class MeetingViewController: UIViewController, MotionDelegate {
             let modal = segue.destination as! AddNoteViewController
             modal.delegate = self
             modal.general = true
-        case "tableSegue"?:
-            let nav = segue.destination as! MeetingNavViewController
-            let modal = nav.topViewController as! PassFailMotionViewController
-            modal.delegate = self
-            modal.motionType = .table
-        case "closeAndVoteSegue"?:
-            let nav = segue.destination as! MeetingNavViewController
-            let modal = nav.topViewController as! CloseAndVoteViewController
-            modal.delegate = self
-        case "addNoteSegue"?:
-            let modal = segue.destination as! AddNoteViewController
-            modal.delegate = self
-            modal.general = false
-        case "motionToAmendSegue"?:
-            let nav = segue.destination as! MeetingNavViewController
-            let modal = nav.topViewController as! MotionToAmendViewController
-            modal.delegate = self
         case "reviewSegue"?:
             let noteList = segue.destination as! NotesAndAmendmentsViewController
             noteList.notes = currentItem.notes
