@@ -600,6 +600,17 @@
                                     <constraint firstAttribute="height" constant="250" id="DhT-V6-FP9"/>
                                 </constraints>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-FT-buf">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="HCv-yG-T6r"/>
+                                    <constraint firstAttribute="height" constant="128" id="siI-Xs-e8Q"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q89-v8-43x">
                                 <rect key="frame" x="16" y="154.5" width="343" height="193.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -616,16 +627,28 @@
                             <constraint firstItem="Zgh-jX-T0i" firstAttribute="top" secondItem="q89-v8-43x" secondAttribute="bottom" constant="20" id="C24-X8-tLF"/>
                             <constraint firstItem="sTp-aJ-HmA" firstAttribute="centerX" secondItem="xfb-b7-gdM" secondAttribute="centerX" id="IF1-M4-Ngo"/>
                             <constraint firstItem="ygl-3u-t7B" firstAttribute="top" secondItem="Zgh-jX-T0i" secondAttribute="bottom" id="JM8-Sy-KqB"/>
+                            <constraint firstItem="fwD-FT-buf" firstAttribute="centerY" secondItem="xfb-b7-gdM" secondAttribute="centerY" id="L4P-6o-aCm"/>
                             <constraint firstItem="sTp-aJ-HmA" firstAttribute="top" secondItem="pyJ-5P-mnW" secondAttribute="bottom" constant="20" id="MEU-j8-rXd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="q89-v8-43x" secondAttribute="trailing" id="YEH-Ra-kDJ"/>
                             <constraint firstItem="q89-v8-43x" firstAttribute="top" secondItem="sTp-aJ-HmA" secondAttribute="bottom" constant="20" id="dDU-cs-1WF"/>
                             <constraint firstItem="Zgh-jX-T0i" firstAttribute="leading" secondItem="xfb-b7-gdM" secondAttribute="leadingMargin" id="icE-uy-brF"/>
+                            <constraint firstItem="fwD-FT-buf" firstAttribute="centerX" secondItem="xfb-b7-gdM" secondAttribute="centerX" id="vja-8C-O5f"/>
                             <constraint firstItem="q89-v8-43x" firstAttribute="leading" secondItem="xfb-b7-gdM" secondAttribute="leadingMargin" id="vuk-h0-zeS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Main Motion" id="Sqq-m1-V5o">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-18"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="addNote" destination="Dbf-FK-VfW" id="lVa-7N-m6m"/>
+                        <outlet property="amend" destination="89U-Qx-7Cm" id="k5X-W7-FyB"/>
+                        <outlet property="closeAndVote" destination="XiW-gp-ynQ" id="SSS-3U-Wpl"/>
+                        <outlet property="completionText" destination="fwD-FT-buf" id="dy9-dw-SkJ"/>
+                        <outlet property="motionName" destination="sTp-aJ-HmA" id="yAH-6J-0Qg"/>
+                        <outlet property="motionText" destination="q89-v8-43x" id="9ga-DC-DAW"/>
+                        <outlet property="review" destination="jq8-Tj-BYr" id="Jzj-d1-IRT"/>
+                        <outlet property="table" destination="cwp-AL-EDU" id="cze-N7-yzY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="che-Rk-UEI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1191,45 +1214,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="hjr-Jq-R10">
-                                <rect key="frame" x="16" y="64" width="343" height="60"/>
+                                <rect key="frame" x="16" y="378" width="343" height="240"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-Ou-dIO">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-eE-JTZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="30"/>
-                                                <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Recess">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="n1h-Jd-EPR" kind="presentation" identifier="recessSegue" id="ngP-aD-NR4"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qh9-1a-Oid">
-                                                <rect key="frame" x="115.5" y="0.0" width="112" height="30"/>
-                                                <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="General Note">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="7fI-A9-HNG" kind="presentation" identifier="generalNoteSegue" id="rhf-Up-9JK"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0m-AM-dU9">
-                                                <rect key="frame" x="231.5" y="0.0" width="111.5" height="30"/>
-                                                <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Adjourn">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="n1h-Jd-EPR" kind="presentation" identifier="adjournSegue" id="rRV-Zx-FSs"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-eE-JTZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+                                        <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Recess">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="n1h-Jd-EPR" kind="presentation" identifier="recessSegue" id="ngP-aD-NR4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qh9-1a-Oid">
+                                        <rect key="frame" x="0.0" y="60" width="343" height="60"/>
+                                        <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="General Note">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="7fI-A9-HNG" kind="presentation" identifier="generalNoteSegue" id="rhf-Up-9JK"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDb-Dp-am3">
-                                        <rect key="frame" x="0.0" y="30" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="343" height="60"/>
                                         <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Review Notes &amp; Amendments">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1238,14 +1246,41 @@
                                             <segue destination="FYE-Uh-1Ma" kind="show" identifier="reviewSegue" id="gyf-OQ-BNg"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0m-AM-dU9">
+                                        <rect key="frame" x="0.0" y="180" width="343" height="60"/>
+                                        <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Adjourn">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="n1h-Jd-EPR" kind="presentation" identifier="adjournSegue" id="rRV-Zx-FSs"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="XlD-Se-rwf"/>
+                                </constraints>
                             </stackView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Meeting Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ekj-FE-puy">
+                                <rect key="frame" x="139" y="115" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="82c-pv-neK">
+                                <rect key="frame" x="139" y="208" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="hjr-Jq-R10" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="Iqj-Eo-6Ay"/>
-                            <constraint firstItem="hjr-Jq-R10" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" id="Kjb-jB-2IA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hjr-Jq-R10" secondAttribute="trailing" id="LFc-VH-3Gb"/>
+                            <constraint firstItem="hjr-Jq-R10" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="KgO-gn-RaF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hjr-Jq-R10" secondAttribute="trailing" id="NLu-G8-HVn"/>
+                            <constraint firstItem="xcs-cS-82t" firstAttribute="top" secondItem="hjr-Jq-R10" secondAttribute="bottom" id="Stv-2W-wXy"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Meeting" id="wbg-ed-sWe">
@@ -1522,9 +1557,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="acp-sD-HRO"/>
-        <segue reference="G1a-II-MW4"/>
-        <segue reference="04A-Mg-6j3"/>
+        <segue reference="gyf-OQ-BNg"/>
+        <segue reference="rhf-Up-9JK"/>
+        <segue reference="rRV-Zx-FSs"/>
         <segue reference="g1X-lI-VN7"/>
     </inferredMetricsTieBreakers>
 </document>

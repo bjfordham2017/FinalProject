@@ -10,10 +10,28 @@ import UIKit
 
 class MainMotionViewController: UIViewController, MainMotionDelegate {
     
+    @IBOutlet var motionName: UITextField!
+    @IBOutlet var motionText: UITextView!
+    @IBOutlet var completionText: UITextView!
+    @IBOutlet var addNote: UIButton!
+    @IBOutlet var amend: UIButton!
+    @IBOutlet var review: UIButton!
+    @IBOutlet var table: UIButton!
+    @IBOutlet var closeAndVote: UIButton!
+    
     var agenda: Agenda!
     var itemIndex: Int = 0
     var currentItem: AgendaItem {
         return agenda.agenda[itemIndex]
+    }
+    
+    override func viewDidLoad() {
+        super .viewDidLoad()
+        
+        self.motionName.text = currentItem.name
+        self.motionText.text = currentItem.description
+        
+        self.completionText.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,25 +71,23 @@ class MainMotionViewController: UIViewController, MainMotionDelegate {
             itemIndex = 0
             agendaComplete()
         } else {
-//            nameField.text = currentItem.name
-//            descriptionView.text = currentItem.description
+            motionName.text = currentItem.name
+            motionText.text = currentItem.description
         }
     }
     
     func agendaComplete() {
-//        descriptionView.text = "That's the end of your agenda.  You can now proceed to your notes for this meeting"
-//
-//        nameField.isHidden = true
-//        recess.isHidden = true
-//        generalNotes.isHidden = true
-//        adjourn.isHidden = true
-//        addNote.isHidden = true
-//        motionToAmend.isHidden = true
-//        review.isHidden = true
-//        table.isHidden = true
-//        closeAndVote.isHidden = true
+        completionText.text = "That's everything on the agenda.  Time to entertain a motion to adjourn."
         
-//        proceedToHistory.isHidden = false
+        motionName.isHidden = true
+        motionText.isHidden = true
+        addNote.isHidden = true
+        amend.isHidden = true
+        review.isHidden = true
+        table.isHidden = true
+        closeAndVote.isHidden = true
+        
+        completionText.isHidden = false
         
     }
     
