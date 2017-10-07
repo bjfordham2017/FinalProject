@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class MotionToAmendViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
-    var delegate: MotionDelegate!
+    var delegate: MainMotionDelegate!
     
     @IBOutlet var amendmentTitle: UITextField!
     @IBOutlet var amendmentText: UITextView!

@@ -125,42 +125,6 @@ class MeetingViewController: UIViewController, MotionDelegate {
         }
     }
     
-    func advance() {
-        itemIndex += 1
-        
-        
-        if itemIndex == agenda.agenda.count {
-            itemIndex = 0
-            closeMeeting()
-        } else {
-            nameField.text = currentItem.name
-            descriptionView.text = currentItem.description
-        }
-    }
- 
-    func tally(votefor: Int, voteagainst: Int, abstension: Int) {
-        self.currentItem.inputVoteTally(votesFor: votefor, votesAgainst: voteagainst, abstained: abstension)
-        
-        advance()
-    }
-    
-    func historyReady() {
-        descriptionView.text = "That's the end of your agenda.  You can now proceed to your notes for this meeting"
-        
-        nameField.isHidden = true
-        recess.isHidden = true
-        generalNotes.isHidden = true
-        adjourn.isHidden = true
-        addNote.isHidden = true
-        motionToAmend.isHidden = true
-        review.isHidden = true
-        table.isHidden = true
-        closeAndVote.isHidden = true
-        
-        proceedToHistory.isHidden = false
-        
-    }
-    
     func closeMeeting() {
         var savedForNext = [AgendaItem]()
         for item in agenda.agenda {
@@ -179,41 +143,26 @@ class MeetingViewController: UIViewController, MotionDelegate {
         
         self.agenda.agenda = savedForNext
         
-        historyReady()
     }
     
     func passFail(motion: Motions, result: Bool) {
         switch (motion, result) {
         case (.recess, _):
             return
-        case (.table, true):
-            currentItem.table()
-            advance()
-        case (.table, false):
-            return
         case (.adjourn, true):
             closeMeeting()
         case (.adjourn, false):
             return
         default:
-            print("Motions to \(motion) are not simple pass/fail motions")
+            print("Motions to \(motion) are called on the main motion")
         }
     }
     
     func recordNote(name: String, description: String, general: Bool) {
         let noteToAdd = Note(name: name, note: description)
         
-        if general {
-            self.newNotes.generalNotes.append(noteToAdd)
-        } else {
-            self.currentItem.notes.append(noteToAdd)
-        }
+        self.newNotes.generalNotes.append(noteToAdd)
         
-    }
-    
-    func recordAmendment(name: String, description: String) {
-        let amendment = Note(name: name, note: description)
-        self.currentItem.amendments.append(amendment)
     }
     
     func cancelMotion() {

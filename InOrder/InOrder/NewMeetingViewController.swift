@@ -124,7 +124,7 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
             meeting.newNotes = MeetingNotes(date: Date())
             meeting.delegate = self
             let mainMotion = meetingTabBar.customizableViewControllers![1] as! MainMotionViewController
-            mainMotion.delegate = self
+            mainMotion.agenda = self.agenda
         default:
             preconditionFailure("unexpected segue identifier")
         }
