@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vyx-S0-AWZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vyx-S0-AWZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -945,111 +945,117 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GpS-E8-akN">
-                                <rect key="frame" x="16" y="20" width="343" height="647"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-Nc-VdS">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="323.5"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AgendaCell" textLabel="KDt-eT-TdN" style="IBUITableViewCellStyleDefault" id="49a-mW-TcP">
-                                                <rect key="frame" x="0.0" y="28" width="343" height="50"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="49a-mW-TcP" id="FEM-Qp-e8A">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="49.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-Nc-VdS">
+                                <rect key="frame" x="16" y="60" width="343" height="400"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="5rj-Dc-mPM"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AgendaCell" textLabel="KDt-eT-TdN" style="IBUITableViewCellStyleDefault" id="49a-mW-TcP">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="49a-mW-TcP" id="FEM-Qp-e8A">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KDt-eT-TdN">
+                                                    <rect key="frame" x="15" y="0.0" width="313" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KDt-eT-TdN">
-                                                            <rect key="frame" x="15" y="0.0" width="313" height="49.5"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <segue destination="cb9-Aa-AgW" kind="presentation" identifier="editSegue" id="xYm-Tw-rtm"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="dataSource" destination="0lk-ux-ERu" id="NqV-sG-3DE"/>
-                                            <outlet property="delegate" destination="0lk-ux-ERu" id="Agc-pv-xPE"/>
+                                            <segue destination="cb9-Aa-AgW" kind="presentation" identifier="editSegue" id="xYm-Tw-rtm"/>
                                         </connections>
-                                    </tableView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zok-aM-GHC">
-                                        <rect key="frame" x="0.0" y="323.5" width="343" height="323.5"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="0lk-ux-ERu" id="NqV-sG-3DE"/>
+                                    <outlet property="delegate" destination="0lk-ux-ERu" id="Agc-pv-xPE"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zok-aM-GHC">
+                                <rect key="frame" x="16" y="460" width="343" height="207"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iNh-tb-dxW">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="99.5"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xfX-d4-VAJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="102.5"/>
-                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iNh-tb-dxW">
-                                                <rect key="frame" x="0.0" y="110.5" width="343" height="102.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myZ-dt-94d">
-                                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="102.5"/>
-                                                        <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Edit List">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="toggleEditing:" destination="0lk-ux-ERu" eventType="touchUpInside" id="jhs-2l-5g6"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFr-nf-Gon">
-                                                        <rect key="frame" x="179.5" y="0.0" width="163.5" height="102.5"/>
-                                                        <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Add Item">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="0lk-ux-ERu" eventType="touchUpInside" id="7RC-D3-qdP"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="16k-lg-GcU">
-                                                <rect key="frame" x="0.0" y="221" width="343" height="102.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO4-aY-HAz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="102.5"/>
-                                                        <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Save for Later">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="saveForLater:" destination="0lk-ux-ERu" eventType="touchUpInside" id="1Bg-eN-xnx"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-8c-Zrn">
-                                                        <rect key="frame" x="179.5" y="0.0" width="163.5" height="102.5"/>
-                                                        <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Begin Walkthrough">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <segue destination="IDj-5B-pVn" kind="presentation" identifier="beginMeetingSegue" id="fUf-M5-5SF"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myZ-dt-94d">
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="99.5"/>
+                                                <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Edit List">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="toggleEditing:" destination="0lk-ux-ERu" eventType="touchUpInside" id="jhs-2l-5g6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFr-nf-Gon">
+                                                <rect key="frame" x="179.5" y="0.0" width="163.5" height="99.5"/>
+                                                <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Add Item">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addItem:" destination="0lk-ux-ERu" eventType="touchUpInside" id="7RC-D3-qdP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="16k-lg-GcU">
+                                        <rect key="frame" x="0.0" y="107.5" width="343" height="99.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO4-aY-HAz">
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="99.5"/>
+                                                <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Save for Later">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveForLater:" destination="0lk-ux-ERu" eventType="touchUpInside" id="1Bg-eN-xnx"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-8c-Zrn">
+                                                <rect key="frame" x="179.5" y="0.0" width="163.5" height="99.5"/>
+                                                <color key="backgroundColor" red="0.69481678300000005" green="0.59281914179999995" blue="0.4218877553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Begin Walkthrough">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="IDj-5B-pVn" kind="presentation" identifier="beginMeetingSegue" id="fUf-M5-5SF"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meeting Agenda" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQk-5W-eGS">
+                                <rect key="frame" x="16" y="20" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rOC-rb-fkD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="GpS-E8-akN" secondAttribute="trailing" id="BVl-qY-elZ"/>
-                            <constraint firstItem="nia-Q7-Im5" firstAttribute="top" secondItem="GpS-E8-akN" secondAttribute="bottom" id="XWD-6d-47H"/>
-                            <constraint firstItem="GpS-E8-akN" firstAttribute="leading" secondItem="9hk-XE-jac" secondAttribute="leadingMargin" id="nx8-JO-bpg"/>
-                            <constraint firstItem="GpS-E8-akN" firstAttribute="top" secondItem="avK-EP-RJJ" secondAttribute="bottom" id="rIF-uN-E9e"/>
+                            <constraint firstItem="yLL-Nc-VdS" firstAttribute="trailing" secondItem="9hk-XE-jac" secondAttribute="trailingMargin" id="3mC-lM-0B9"/>
+                            <constraint firstItem="yLL-Nc-VdS" firstAttribute="top" secondItem="gQk-5W-eGS" secondAttribute="bottom" id="40Q-2i-Nzg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zok-aM-GHC" secondAttribute="trailing" id="7uX-0r-LQF"/>
+                            <constraint firstItem="gQk-5W-eGS" firstAttribute="leading" secondItem="9hk-XE-jac" secondAttribute="leadingMargin" id="8Uz-5e-2GS"/>
+                            <constraint firstItem="gQk-5W-eGS" firstAttribute="trailing" secondItem="9hk-XE-jac" secondAttribute="trailingMargin" id="U3M-sS-xpJ"/>
+                            <constraint firstItem="yLL-Nc-VdS" firstAttribute="leading" secondItem="9hk-XE-jac" secondAttribute="leadingMargin" id="UC1-5o-Nnm"/>
+                            <constraint firstItem="zok-aM-GHC" firstAttribute="leading" secondItem="9hk-XE-jac" secondAttribute="leadingMargin" id="YHp-dw-OxO"/>
+                            <constraint firstItem="gQk-5W-eGS" firstAttribute="top" secondItem="avK-EP-RJJ" secondAttribute="bottom" id="aXv-QI-v7W"/>
+                            <constraint firstItem="zok-aM-GHC" firstAttribute="top" secondItem="yLL-Nc-VdS" secondAttribute="bottom" id="lsT-ar-Y12"/>
+                            <constraint firstItem="nia-Q7-Im5" firstAttribute="top" secondItem="zok-aM-GHC" secondAttribute="bottom" id="scQ-Ow-k6b"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1057,7 +1063,6 @@
                         <outlet property="agendaTable" destination="yLL-Nc-VdS" id="SgQ-1k-HI0"/>
                         <outlet property="beginMeeting" destination="eIh-8c-Zrn" id="Vgn-bf-aTL"/>
                         <outlet property="editList" destination="myZ-dt-94d" id="7rf-05-VOX"/>
-                        <outlet property="instructions" destination="xfX-d4-VAJ" id="078-Mm-xEc"/>
                         <outlet property="saveForLater" destination="WO4-aY-HAz" id="Ygm-zy-nZ2"/>
                     </connections>
                 </viewController>

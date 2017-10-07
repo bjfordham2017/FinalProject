@@ -14,7 +14,6 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     var delegate: MeetingDelegate!
     
     @IBOutlet var agendaTable: UITableView!
-    @IBOutlet var instructions: UITextView!
     @IBOutlet var beginMeeting: UIButton!
     @IBOutlet var editList: UIButton!
     @IBOutlet var addItem: UIButton!
@@ -57,10 +56,6 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        instructions.text = "Build an agenda for this group's next meeting.  Add items with the 'Add Item' button and add or edit titles and descriptions by tapping the item you want. You can also use 'Edit List' to toggle a mode for rearragning or deleting items. Tap 'Begin Walkthrough' when you are ready to consider your first order of business."
-        
-        instructions.isEditable = false
         
         if agenda.agenda.isEmpty {
             beginMeeting.isHidden = true
