@@ -10,16 +10,10 @@ import Foundation
 import UIKit
 
 class MeetingNotesViewController: UITableViewController, UINavigationControllerDelegate {
-    let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter
-    }()
     
     var meetingNotes: MeetingNotes! {
         didSet {
-            navigationItem.title = dateFormatter.string(from: meetingNotes.date)
+            navigationItem.title = meetingNotes.title
         }
     }
     

@@ -15,6 +15,8 @@ class MeetingViewController: UIViewController, MotionDelegate {
     @IBOutlet var generalNotes: UIButton!
     @IBOutlet var adjourn: UIButton!
     @IBOutlet var review: UIButton!
+    @IBOutlet var meetingTitle: UITextField!
+    @IBOutlet var meetingDate: UITextField!
     
     var delegate: MeetingWalkthroughDelegate!
     
@@ -23,6 +25,9 @@ class MeetingViewController: UIViewController, MotionDelegate {
     
     override func loadView() {
         super.loadView()
+        
+        meetingTitle.text = agenda.title
+        meetingDate.text = MeetingNotes.dateFormatter.string(from: Date())
         
         recess.layer.cornerRadius = 7
         recess.layer.borderWidth = 1

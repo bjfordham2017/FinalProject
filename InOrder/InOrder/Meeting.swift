@@ -27,4 +27,15 @@ class Meeting {
         self.status = status
     }
     
+    var JSONDictionary: [String:Any] {
+        var output = [String:Any]()
+        output[Meeting.titleLabel] = title
+        output[Meeting.agendaLabel] = agenda.jsonObject
+        output[Meeting.statusLabel] = status.rawValue
+        return output
+    }
+    
+    public static let titleLabel = "Title"
+    public static let agendaLabel = "Agenda"
+    public static let statusLabel = "Status"
 }

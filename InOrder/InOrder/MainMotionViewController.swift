@@ -32,6 +32,27 @@ class MainMotionViewController: UIViewController, MainMotionDelegate {
         self.motionText.text = currentItem.description
         
         self.completionText.isHidden = true
+        
+        addNote.layer.cornerRadius = 7
+        addNote.layer.borderWidth = 1
+        addNote.layer.borderColor = UIColor.lightGray.cgColor
+        
+        amend.layer.cornerRadius = 7
+        amend.layer.borderWidth = 1
+        amend.layer.borderColor = UIColor.lightGray.cgColor
+        
+        table.layer.cornerRadius = 7
+        table.layer.borderWidth = 1
+        table.layer.borderColor = UIColor.lightGray.cgColor
+        
+        review.layer.cornerRadius = 7
+        review.layer.borderWidth = 1
+        review.layer.borderColor = UIColor.lightGray.cgColor
+        
+        closeAndVote.layer.cornerRadius = 7
+        closeAndVote.layer.borderWidth = 1
+        closeAndVote.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,6 +113,7 @@ class MainMotionViewController: UIViewController, MainMotionDelegate {
     }
     
     func tally(votefor: Int, voteagainst: Int, abstension: Int) {
+        
         self.currentItem.inputVoteTally(votesFor: votefor, votesAgainst: voteagainst, abstained: abstension)
         
         advance()

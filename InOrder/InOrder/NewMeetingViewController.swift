@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MeetingWalkthroughDelegate {
+class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MeetingWalkthroughDelegate {
     var agenda: Agenda!
     var delegate: MeetingDelegate!
     
@@ -18,6 +18,8 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var editList: UIButton!
     @IBOutlet var addItem: UIButton!
     @IBOutlet var saveForLater: UIButton!
+    @IBOutlet var meetingTitleField: UITextField!
+    
     
     func transferMeetingInfo(newMeeting: MeetingNotes?, nextAgenda: Agenda) {
         delegate.recordMeeting(newMeeting: newMeeting, nextAgenda: nextAgenda)
@@ -85,6 +87,22 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
         agendaTable.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+        print("Editing ended")
+        
+        agenda.title = meetingTitleField.text ?? "New Meeting"
+    }
+    
+    @IBAction func tapToEndTextEditing(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        agenda.title = meetingTitleField.text ?? "New Meeting"
+    }
+    
     @IBAction func addItem(_ sender: UIButton) {
         let newItem = AgendaItem(name: "Tap to Add Name", description: "Tap to edit description")
         agenda.agenda.append(newItem)
@@ -116,12 +134,18 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
                 itemEditView.item = agenda.agenda[row]
             }
         case "beginMeetingSegue"?:
+            for item in agenda.agenda {
+                if item.status == .tabled {
+                    item.untable()
+                }
+            }
+            
             let meetingNav = segue.destination as! MeetingNavViewController
             let meetingTabBar = meetingNav.topViewController as! MeetingTabBarController
             meetingTabBar.meetingWalkThroughDelegate = self
             let meeting = meetingTabBar.customizableViewControllers![0] as! MeetingViewController
             meeting.agenda = self.agenda
-            meeting.newNotes = MeetingNotes(date: Date())
+            meeting.newNotes = MeetingNotes(title: self.agenda.title, date: Date())
             meeting.delegate = self
             let mainMotion = meetingTabBar.customizableViewControllers![1] as! MainMotionViewController
             mainMotion.agenda = self.agenda
