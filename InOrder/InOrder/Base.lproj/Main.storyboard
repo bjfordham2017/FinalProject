@@ -1355,7 +1355,7 @@
                                         <rect key="frame" x="0.0" y="120" width="343" height="60"/>
                                         <color key="backgroundColor" red="0.69411764710000001" green="0.59281914179999995" blue="0.4218877553" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Review Notes &amp; Amendments">
+                                        <state key="normal" title="Review Notes">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1378,17 +1378,15 @@
                                     <constraint firstAttribute="height" constant="240" id="XlD-Se-rwf"/>
                                 </constraints>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Meeting Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ekj-FE-puy">
-                                <rect key="frame" x="139" y="115" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Meeting Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ekj-FE-puy">
+                                <rect key="frame" x="134.5" y="114" width="106" height="30"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="82c-pv-neK">
-                                <rect key="frame" x="139" y="208" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="82c-pv-neK">
+                                <rect key="frame" x="161" y="194" width="52" height="30"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1397,9 +1395,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="82c-pv-neK" firstAttribute="top" secondItem="ekj-FE-puy" secondAttribute="bottom" constant="50" id="El6-k7-yhw"/>
+                            <constraint firstItem="ekj-FE-puy" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" constant="50" id="IWs-bZ-TPA"/>
                             <constraint firstItem="hjr-Jq-R10" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="KgO-gn-RaF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hjr-Jq-R10" secondAttribute="trailing" id="NLu-G8-HVn"/>
                             <constraint firstItem="xcs-cS-82t" firstAttribute="top" secondItem="hjr-Jq-R10" secondAttribute="bottom" id="Stv-2W-wXy"/>
+                            <constraint firstItem="82c-pv-neK" firstAttribute="centerX" secondItem="NyY-Il-lHy" secondAttribute="centerX" id="sMI-nw-WG2"/>
+                            <constraint firstItem="ekj-FE-puy" firstAttribute="centerX" secondItem="NyY-Il-lHy" secondAttribute="centerX" id="xKA-nZ-2VI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Meeting" id="wbg-ed-sWe">
