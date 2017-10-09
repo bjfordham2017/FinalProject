@@ -30,6 +30,12 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
         performSegue(withIdentifier: "groupSegue", sender: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        groupsTable.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "groupSegue":
@@ -38,7 +44,13 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 let group = Group(fromID: directoryEntry.id)
                 let groupView = segue.destination as! ViewController
                 groupView.group = group
+                groupView.groupRef = directoryEntry
+                groupView.user = self.user
             }
+        case "createGroupSegue":
+            let newGroupScene = segue.destination as! CreateGroupViewController
+            newGroupScene.user = self.user
+            newGroupScene.newGroup = Group()
         default:
             print("Unexpected Segue Identifier")
         }

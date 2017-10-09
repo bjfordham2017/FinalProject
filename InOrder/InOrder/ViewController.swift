@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, GroupDetailDelegate {
 
     var group: Group!
+    var user: User!
+    var groupRef: GroupDirectoryEntry!
     
     @IBOutlet var groupName: UITextField!
     @IBOutlet var groupDescription: UITextView!
@@ -24,6 +26,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
         }
         
         self.group.upcomingAgenda = nextAgenda
+        self.group.save()
         
         dismiss(animated: true, completion: nil)
     }
@@ -76,6 +79,11 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
         
         groupName.text = name
         groupDescription.text = details
+        
+        groupRef.name = name
+        
+        group.save()
+        user.save()
     }
     
 }

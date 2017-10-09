@@ -9,37 +9,6 @@
 import Foundation
 
 class User {//needs explicit access control
-    struct GroupDirectoryEntry {
-        let name: String
-        let id: UUID
-        
-        init(name: String, id: UUID) {
-            self.name = name
-            self.id = id
-        }
-        
-        init?(jsonObject: [String:Any]){
-            guard let name = jsonObject[GroupDirectoryEntry.nameLabel] as? String,
-            let idString = jsonObject[GroupDirectoryEntry.idLabel] as? String,
-            let id = UUID(uuidString: idString)
-                else {
-                    return nil
-            }
-            
-            self.name = name
-            self.id = id
-        }
-        
-        var jsonObject: [String:Any] {
-            var output = [String:Any]()
-            output[GroupDirectoryEntry.nameLabel] = name
-            output[GroupDirectoryEntry.idLabel] = id.uuidString
-            return output
-        }
-        
-        public static let nameLabel = "Name"
-        public static let idLabel = "ID"
-    }
     
     var group: Group = Group()
     var groupDirectory: [GroupDirectoryEntry] = []
@@ -89,3 +58,36 @@ class User {//needs explicit access control
     public static let passwordLabel = "Password"
     public static let groupDirectoryLabel = "GroupDirectory"
 }
+
+class GroupDirectoryEntry {
+    var name: String
+    let id: UUID
+    
+    init(name: String, id: UUID) {
+        self.name = name
+        self.id = id
+    }
+    
+    init?(jsonObject: [String:Any]){
+        guard let name = jsonObject[GroupDirectoryEntry.nameLabel] as? String,
+            let idString = jsonObject[GroupDirectoryEntry.idLabel] as? String,
+            let id = UUID(uuidString: idString)
+            else {
+                return nil
+        }
+        
+        self.name = name
+        self.id = id
+    }
+    
+    var jsonObject: [String:Any] {
+        var output = [String:Any]()
+        output[GroupDirectoryEntry.nameLabel] = name
+        output[GroupDirectoryEntry.idLabel] = id.uuidString
+        return output
+    }
+    
+    public static let nameLabel = "Name"
+    public static let idLabel = "ID"
+}
+
