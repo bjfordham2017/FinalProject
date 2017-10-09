@@ -9,16 +9,22 @@
 import Foundation
 
 class Group {
+    let groupID: UUID
     var name: String = "Add your group name here."
     var description: String = "Add a description of your group."
     var meetingHistory: MeetingHistory = MeetingHistory()
     var upcomingAgenda: Agenda = Agenda()
     
     init() {
-        
+        self.groupID = UUID()
     }
     
-    internal init(name: String?, description: String?, meetingHistory: MeetingHistory?, upcomingAgenda: Agenda?) {
+    internal init(groupID: UUID?, name: String?, description: String?, meetingHistory: MeetingHistory?, upcomingAgenda: Agenda?) {
+        if let initGoupID = groupID {
+            self.groupID = initGoupID
+        } else {
+            self.groupID = UUID()
+        }
         if let initName = name {
             self.name = initName
         }
@@ -35,6 +41,7 @@ class Group {
     
     var jsonObject: [String:Any] {
         var output = [String:Any]()
+        output[Group.groupIDLabel] = groupID.uuidString
         output[Group.nameLabel] = name
         output[Group.descriptionLabel] = description
         output[Group.meetingHistoryLabel] = meetingHistory.jsonObject
@@ -43,6 +50,15 @@ class Group {
     }
     
     convenience init(jsonDictionary: [String:Any]) {
+        var groupID: UUID? {
+            if let jsonID = jsonDictionary[Group.groupIDLabel] as? String,
+                let uid = UUID(uuidString: jsonID) {
+                return uid
+            } else {
+                return nil
+            }
+        }
+        
         var name: String? {
             if let jsonName = jsonDictionary[Group.nameLabel] as? String {
                 return jsonName
@@ -71,13 +87,45 @@ class Group {
                 return nil
             }
         }
-        self.init(name: name, description: description, meetingHistory: meetingHistory, upcomingAgenda: upcomingAgenda)
+        self.init(groupID: groupID, name: name, description: description, meetingHistory: meetingHistory, upcomingAgenda: upcomingAgenda)
+    }
+    
+    convenience init (fromID id: UUID) {
+        let filePath: URL = {
+            let documentsDirectories =
+                FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let documentDirectory = documentsDirectories.first!
+            return documentDirectory.appendingPathComponent("\(id.uuidString).json")
+        }()
+        
+        if let data = try? Data(contentsOf: filePath),
+            let JSON = try? JSONSerialization.jsonObject(with: data, options: []),
+            let jsonDictionary = JSON as? [String:Any] {
+                self.init(jsonDictionary: jsonDictionary)
+        } else {
+            self.init()
+        }
+
     }
     
     func save() {
+        let filePath: URL = {
+            let documentsDirectories =
+                FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let documentDirectory = documentsDirectories.first!
+            return documentDirectory.appendingPathComponent("\(self.groupID.uuidString).json")
+        }()
         
+        do {
+            let data = try JSONSerialization.data(withJSONObject: self.jsonObject, options: [])
+            try data.write(to: filePath)
+        } catch {
+            print(error)
+        }
+
     }
     
+    public static let groupIDLabel = "GroupID"
     public static let nameLabel = "Name"
     public static let descriptionLabel = "Description"
     public static let moderatorLabel = "Moderator"

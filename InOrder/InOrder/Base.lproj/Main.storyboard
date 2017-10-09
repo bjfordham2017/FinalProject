@@ -277,6 +277,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="InOrder" id="Mqf-Rn-FTu"/>
                     <connections>
+                        <outlet property="groupsTable" destination="3gb-SZ-lfi" id="aA5-8y-TIu"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="groupSegue" id="eZt-6N-MVV"/>
                     </connections>
                 </viewController>

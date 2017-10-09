@@ -10,15 +10,19 @@ import Foundation
 import UIKit
 
 class UserMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var groupsTable: UITableView!
+    
     var user: User!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return user.groupDirectory.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        cell.textLabel?.text = user.group.name
+        let group = user.groupDirectory[indexPath.row]
+        cell.textLabel?.text = group.name
         return cell
     }
     
@@ -29,8 +33,12 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "groupSegue":
-            let groupView = segue.destination as! ViewController
-            groupView.group = self.user.group
+            if let row = groupsTable.indexPathForSelectedRow?.row {
+                let directoryEntry = user.groupDirectory[row]
+                let group = Group(fromID: directoryEntry.id)
+                let groupView = segue.destination as! ViewController
+                groupView.group = group
+            }
         default:
             print("Unexpected Segue Identifier")
         }
