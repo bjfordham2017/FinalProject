@@ -9,17 +9,20 @@
 import Foundation
 
 class MeetingNotes {
+    let title: String
     let date: Date
     var generalNotes = [Note]()
     var itemsPassed = [AgendaItem]()
     var itemsFailed = [AgendaItem]()
     var itemsTabled = [AgendaItem]()
     
-    init(date: Date) {
+    init(title: String, date: Date) {
+        self.title = title
         self.date = MeetingNotes.sanitize(date: date)
     }
     
-    internal init(date: Date, generalNotes: [Note]?, itemsPassed: [AgendaItem]?, itemsFailed: [AgendaItem]?, itemsTabled: [AgendaItem]?) {
+    internal init(title: String, date: Date, generalNotes: [Note]?, itemsPassed: [AgendaItem]?, itemsFailed: [AgendaItem]?, itemsTabled: [AgendaItem]?) {
+        self.title = title
         self.date = MeetingNotes.sanitize(date: date)
         
         if let initGeneralNotes = generalNotes {
@@ -57,6 +60,7 @@ class MeetingNotes {
         }
         
         output[MeetingNotes.dateLabel] = self.date.timeIntervalSince1970
+        output[MeetingNotes.titleLabel] = self.title
         
         return output
     }
@@ -68,6 +72,7 @@ class MeetingNotes {
         }
         
         let date = Date(timeIntervalSince1970: dateAsDouble)
+        let title = (jsonDictionary[MeetingNotes.titleLabel] as? String) ?? MeetingNotes.dateFormatter.string(from: date)
         
         var generalNotes: [Note]? {
             if let generalNotesJSON = jsonDictionary[MeetingNotes.generalNotesLabel] as? [[String:Any]] {
@@ -105,9 +110,10 @@ class MeetingNotes {
             }
         }
         
-        self.init(date: date, generalNotes: generalNotes, itemsPassed: itemsPassed, itemsFailed: itemsFailed, itemsTabled: itemsTabled)
+        self.init(title: title, date: date, generalNotes: generalNotes, itemsPassed: itemsPassed, itemsFailed: itemsFailed, itemsTabled: itemsTabled)
     }
     
+    public static let titleLabel = "Title"
     public static let dateLabel = "Date"
     public static let generalNotesLabel = "Generalnotes"
     public static let itemsPasedLabel = "Itemspassed"
@@ -121,4 +127,11 @@ extension MeetingNotes {
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
         return calendar.date(from: components)!
     }
+    
+    public static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }()
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class CloseAndVoteViewController: UIViewController, UITextFieldDelegate {
-    var delegate: MotionDelegate!
+    var delegate: MainMotionDelegate!
     
     
     @IBOutlet var votesFor: UITextField!

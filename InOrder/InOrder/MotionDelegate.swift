@@ -9,9 +9,12 @@
 import Foundation
 
 protocol MotionDelegate {
-    func tally(votefor: Int, voteagainst: Int, abstension: Int)
     func passFail(motion: Motions, result: Bool)
     func recordNote(name: String, description: String, general: Bool)
-    func recordAmendment(name: String, description: String)
     func cancelMotion()
+}
+
+protocol MainMotionDelegate: MotionDelegate {
+    func tally(votefor: Int, voteagainst: Int, abstension: Int)
+    func recordAmendment(name: String, description: String)
 }

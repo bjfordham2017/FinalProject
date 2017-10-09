@@ -11,27 +11,27 @@ import UIKit
 
 class NotesAndAmendmentsViewController: UITableViewController {
     
-    var notes: [Note]!
-    var amendments: [Note]!
+    var notes: [Note]?
+    var amendments: [Note]?
     
-    var meetingInProgress: Bool = false
+    var generalNoteRequest: Bool = false
     var generalNotes: [Note]?
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if meetingInProgress {
-            return 3
+        if generalNoteRequest {
+            return 1
         } else {
             return 2
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return notes.count
-        case 1:
-            return amendments.count
-        case 2:
+        switch (section, self.generalNoteRequest) {
+        case (0, false):
+            return notes!.count
+        case (1, _):
+            return amendments!.count
+        case (0, true):
             if let general = generalNotes {
                 return general.count
             } else {
@@ -45,15 +45,15 @@ class NotesAndAmendmentsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteAmendmentCell", for: indexPath)
         
-        if indexPath.section == 0 {
-            cell.textLabel?.text = notes[indexPath.row].name
+        if indexPath.section == 0 && generalNoteRequest == false {
+            cell.textLabel?.text = notes![indexPath.row].name
         }
         
         if indexPath.section == 1 {
-            cell.textLabel?.text = amendments[indexPath.row].name
+            cell.textLabel?.text = amendments![indexPath.row].name
         }
         
-        if indexPath.section == 2 {
+        if indexPath.section == 0 && generalNoteRequest == true {
             cell.textLabel?.text = generalNotes![indexPath.row].name
         }
         
@@ -61,28 +61,28 @@ class NotesAndAmendmentsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            if !notes.isEmpty {
-                if notes.count == 1 {
-                    return "\(notes.count) Note"
+        switch (section, generalNoteRequest) {
+        case (0, false):
+            if !notes!.isEmpty {
+                if notes!.count == 1 {
+                    return "\(notes!.count) Note"
                 } else {
-                    return "\(notes.count) Notes"
+                    return "\(notes!.count) Notes"
                 }
             } else {
                 return "No notes for this item"
             }
-        case 1:
-            if !amendments.isEmpty {
-                if amendments.count == 1 {
-                    return "\(amendments.count) Amendment"
+        case (1, _):
+            if !amendments!.isEmpty {
+                if amendments!.count == 1 {
+                    return "\(amendments!.count) Amendment"
                 } else {
-                    return "\(amendments.count) Amendments"
+                    return "\(amendments!.count) Amendments"
                 }
             } else {
                 return "No amendments passed on this item"
             }
-        case 2:
+        case (0, true):
             if let general = generalNotes {
                 if !general.isEmpty {
                     if general.count == 1 {
@@ -112,12 +112,12 @@ class NotesAndAmendmentsViewController: UITableViewController {
             let section = tableView.indexPathForSelectedRow?.section {
             
             var itemResultArray: [Note] {
-                switch section {
-                case 0:
-                    return notes
-                case 1:
-                    return amendments
-                case 2:
+                switch (section, generalNoteRequest) {
+                case (0, false):
+                    return notes!
+                case (1, _):
+                    return amendments!
+                case (0, true):
                     return generalNotes!
                 default:
                     fatalError("Unexpected section index")

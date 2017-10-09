@@ -9,16 +9,17 @@
 import Foundation
 import UIKit
 
-class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MeetingWalkthroughDelegate {
+class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MeetingWalkthroughDelegate {
     var agenda: Agenda!
     var delegate: MeetingDelegate!
     
     @IBOutlet var agendaTable: UITableView!
-    @IBOutlet var instructions: UITextView!
     @IBOutlet var beginMeeting: UIButton!
     @IBOutlet var editList: UIButton!
     @IBOutlet var addItem: UIButton!
     @IBOutlet var saveForLater: UIButton!
+    @IBOutlet var meetingTitleField: UITextField!
+    
     
     func transferMeetingInfo(newMeeting: MeetingNotes?, nextAgenda: Agenda) {
         delegate.recordMeeting(newMeeting: newMeeting, nextAgenda: nextAgenda)
@@ -58,10 +59,6 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        instructions.text = "Build an agenda for this group's next meeting.  Add items with the 'Add Item' button and add or edit titles and descriptions by tapping the item you want. You can also use 'Edit List' to toggle a mode for rearragning or deleting items. Tap 'Begin Walkthrough' when you are ready to consider your first order of business."
-        
-        instructions.isEditable = false
-        
         if agenda.agenda.isEmpty {
             beginMeeting.isHidden = true
         }
@@ -88,6 +85,22 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
         
         agendaTable.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+        print("Editing ended")
+        
+        agenda.title = meetingTitleField.text ?? "New Meeting"
+    }
+    
+    @IBAction func tapToEndTextEditing(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        agenda.title = meetingTitleField.text ?? "New Meeting"
     }
     
     @IBAction func addItem(_ sender: UIButton) {
@@ -121,11 +134,21 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
                 itemEditView.item = agenda.agenda[row]
             }
         case "beginMeetingSegue"?:
+            for item in agenda.agenda {
+                if item.status == .tabled {
+                    item.untable()
+                }
+            }
+            
             let meetingNav = segue.destination as! MeetingNavViewController
-            let meeting = meetingNav.topViewController as! MeetingViewController
+            let meetingTabBar = meetingNav.topViewController as! MeetingTabBarController
+            meetingTabBar.meetingWalkThroughDelegate = self
+            let meeting = meetingTabBar.customizableViewControllers![0] as! MeetingViewController
             meeting.agenda = self.agenda
-            meeting.newNotes = MeetingNotes(date: Date())
+            meeting.newNotes = MeetingNotes(title: self.agenda.title, date: Date())
             meeting.delegate = self
+            let mainMotion = meetingTabBar.customizableViewControllers![1] as! MainMotionViewController
+            mainMotion.agenda = self.agenda
         default:
             preconditionFailure("unexpected segue identifier")
         }

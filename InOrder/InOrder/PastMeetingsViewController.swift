@@ -16,14 +16,6 @@ class PastMeetingsViewController: UITableViewController {
         return meetingHistory.history.reversed()
     }
     
-    let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter
-    }()
-
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meetingHistorySorted.count
     }
@@ -33,7 +25,8 @@ class PastMeetingsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PastViewCell", for: indexPath)
         let notes = meetingHistorySorted[indexPath.row]
         
-        cell.textLabel?.text = dateFormatter.string(from: notes.date)
+        cell.textLabel?.text = notes.title
+        cell.detailTextLabel?.text = MeetingNotes.dateFormatter.string(from: notes.date)
         
         return cell
     }
