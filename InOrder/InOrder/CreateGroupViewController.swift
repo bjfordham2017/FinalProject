@@ -19,7 +19,26 @@ class CreateGroupViewController: UIViewController {
     var user: User!
     var newGroup: Group!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        groupNameField.placeholder = "Name your group"
+        groupDetailsField.text = "Enter a brief description and other details here"
+        
+        createButton.layer.cornerRadius = 7
+        createButton.layer.borderWidth = 1
+        createButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        cancelButton.layer.cornerRadius = 7
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.borderColor = UIColor.lightGray.cgColor
+
+    }
+    
     @IBAction func createGroup(_ sender: UIButton) {
+        view.endEditing(true)
+        newGroup.name = groupNameField.text ?? "New Group"
+        newGroup.description = groupDetailsField.text ?? "New Group"
         let newGroupRef = GroupDirectoryEntry(name: newGroup.name, id: newGroup.groupID)
         user.groupDirectory.append(newGroupRef)
         user.save()
@@ -30,5 +49,13 @@ class CreateGroupViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func tapToEndEditing(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+        newGroup.name = groupNameField.text ?? "New Group"
+        newGroup.description = groupDetailsField.text ?? "New Group"
+    }
+
     
 }

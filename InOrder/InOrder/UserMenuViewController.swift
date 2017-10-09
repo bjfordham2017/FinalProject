@@ -12,8 +12,18 @@ import UIKit
 class UserMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var groupsTable: UITableView!
+    @IBOutlet var newGroupButton: UIButton!
     
     var user: User!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        newGroupButton.layer.cornerRadius = 7
+        newGroupButton.layer.borderWidth = 1
+        newGroupButton.layer.borderColor = UIColor.lightGray.cgColor
+
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return user.groupDirectory.count
