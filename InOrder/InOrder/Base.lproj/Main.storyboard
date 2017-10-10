@@ -246,11 +246,11 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SQ4-vH-SFZ" id="SC0-YY-CA1">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EHN-GF-OS0">
-                                                    <rect key="frame" x="15" y="0.0" width="313" height="60"/>
+                                                    <rect key="frame" x="15" y="0.0" width="313" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1506,8 +1506,8 @@
                                     <constraint firstAttribute="height" constant="240" id="XlD-Se-rwf"/>
                                 </constraints>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Meeting Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ekj-FE-puy">
-                                <rect key="frame" x="134.5" y="114" width="106" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Meeting Title" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ekj-FE-puy">
+                                <rect key="frame" x="36" y="114" width="303" height="30"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1523,13 +1523,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="82c-pv-neK" firstAttribute="top" secondItem="ekj-FE-puy" secondAttribute="bottom" constant="50" id="El6-k7-yhw"/>
-                            <constraint firstItem="ekj-FE-puy" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" constant="50" id="IWs-bZ-TPA"/>
+                            <constraint firstItem="82c-pv-neK" firstAttribute="top" secondItem="ekj-FE-puy" secondAttribute="bottom" constant="50" id="GHl-vP-IDw"/>
+                            <constraint firstItem="ekj-FE-puy" firstAttribute="top" secondItem="mUS-Ob-cPh" secondAttribute="bottom" constant="50" id="Ixy-dT-hBT"/>
                             <constraint firstItem="hjr-Jq-R10" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" id="KgO-gn-RaF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hjr-Jq-R10" secondAttribute="trailing" id="NLu-G8-HVn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ekj-FE-puy" secondAttribute="trailing" constant="20" id="NUK-w1-BNC"/>
                             <constraint firstItem="xcs-cS-82t" firstAttribute="top" secondItem="hjr-Jq-R10" secondAttribute="bottom" id="Stv-2W-wXy"/>
+                            <constraint firstItem="ekj-FE-puy" firstAttribute="leading" secondItem="NyY-Il-lHy" secondAttribute="leadingMargin" constant="20" id="eej-JS-JZG"/>
                             <constraint firstItem="82c-pv-neK" firstAttribute="centerX" secondItem="NyY-Il-lHy" secondAttribute="centerX" id="sMI-nw-WG2"/>
-                            <constraint firstItem="ekj-FE-puy" firstAttribute="centerX" secondItem="NyY-Il-lHy" secondAttribute="centerX" id="xKA-nZ-2VI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Meeting" id="wbg-ed-sWe">
@@ -1811,9 +1812,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="04A-Mg-6j3"/>
+        <segue reference="a0o-LS-A5p"/>
         <segue reference="gyf-OQ-BNg"/>
         <segue reference="rhf-Up-9JK"/>
-        <segue reference="a0o-LS-A5p"/>
+        <segue reference="rRV-Zx-FSs"/>
     </inferredMetricsTieBreakers>
 </document>
