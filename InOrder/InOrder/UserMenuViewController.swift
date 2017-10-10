@@ -25,8 +25,42 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            if user.groupDirectory.isEmpty {
+                return "You are not managing any groups"
+            } else {
+                return "Groups I manage"
+            }
+        case 1:
+            if user.readOnlyGroupDirectory.isEmpty {
+                return "You are not following any groups"
+            } else {
+                return "Groups I follow"
+            }
+        default:
+            fatalError("Unexpected section index")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(50)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user.groupDirectory.count
+        switch section {
+        case 0:
+            return user.groupDirectory.count
+        case 1:
+            return user.readOnlyGroupDirectory.count
+        default:
+            fatalError("Unexpected section index")
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,13 +83,14 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "groupSegue":
-            if let row = groupsTable.indexPathForSelectedRow?.row {
-                let directoryEntry = user.groupDirectory[row]
+            if let indexPath = groupsTable.indexPathForSelectedRow {
+                let directoryEntry = user.groupDirectory[indexPath.row]
                 let group = Group(fromID: directoryEntry.id)
                 let groupView = segue.destination as! ViewController
                 groupView.group = group
                 groupView.groupRef = directoryEntry
                 groupView.user = self.user
+                groupView.readOnly = false
             }
         case "createGroupSegue":
             let newGroupScene = segue.destination as! CreateGroupViewController

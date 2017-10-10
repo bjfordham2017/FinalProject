@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
     var group: Group!
     var user: User!
     var groupRef: GroupDirectoryEntry!
+    var readOnly: Bool!
     
     @IBOutlet var groupName: UITextField!
     @IBOutlet var groupDescription: UITextView!
@@ -51,6 +52,10 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
         editDetailsButton.layer.borderWidth = 1
         editDetailsButton.layer.borderColor = UIColor.lightGray.cgColor
 
+        if readOnly == true {
+            newMeetingButton.isHidden = true
+            editDetailsButton.isHidden = true
+        }
     }
     
     

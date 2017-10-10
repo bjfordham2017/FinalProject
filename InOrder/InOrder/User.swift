@@ -10,8 +10,8 @@ import Foundation
 
 class User {//needs explicit access control
     
-    var group: Group = Group()
     var groupDirectory: [GroupDirectoryEntry] = []
+    var readOnlyGroupDirectory: [GroupDirectoryEntry] = []
     let filePath: URL = {
         let documentsDirectories =
             FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
