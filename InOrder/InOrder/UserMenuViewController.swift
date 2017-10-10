@@ -35,13 +35,13 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
             if user.groupDirectory.isEmpty {
                 return "You are not managing any groups"
             } else {
-                return "Groups I manage"
+                return "Groups you manage"
             }
         case 1:
             if user.readOnlyGroupDirectory.isEmpty {
                 return "You are not following any groups"
             } else {
-                return "Groups I follow"
+                return "Groups you follow"
             }
         default:
             fatalError("Unexpected section index")
@@ -65,7 +65,18 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        let group = user.groupDirectory[indexPath.row]
+        
+        var group: GroupDirectoryEntry {
+            switch indexPath.section {
+            case 0:
+                return user.groupDirectory[indexPath.row]
+            case 1:
+                return user.readOnlyGroupDirectory[indexPath.row]
+            default:
+                fatalError("Unexpected index path")
+            }
+        }
+        
         cell.textLabel?.text = group.name
         return cell
     }
@@ -84,7 +95,16 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
         switch segue.identifier! {
         case "groupSegue":
             if let indexPath = groupsTable.indexPathForSelectedRow {
-                let directoryEntry = user.groupDirectory[indexPath.row]
+                var directoryEntry: GroupDirectoryEntry {
+                    switch indexPath.section {
+                    case 0:
+                        return user.groupDirectory[indexPath.row]
+                    case 1:
+                        return user.readOnlyGroupDirectory[indexPath.row]
+                    default:
+                        fatalError("Unexpected index path")
+                    }
+                }
                 let group = Group(fromID: directoryEntry.id)
                 let groupView = segue.destination as! ViewController
                 groupView.group = group
