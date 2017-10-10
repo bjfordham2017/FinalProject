@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
     @IBOutlet var newMeetingButton: UIButton!
     @IBOutlet var pastMeetingsButton: UIButton!
     @IBOutlet var editDetailsButton: UIButton!
+    @IBOutlet var membersButton: UIButton!
     
     func recordMeeting(newMeeting: MeetingNotes?, nextAgenda: Agenda) {
         if let newNotes = newMeeting {
@@ -52,9 +53,14 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
         editDetailsButton.layer.borderWidth = 1
         editDetailsButton.layer.borderColor = UIColor.lightGray.cgColor
 
+        membersButton.layer.cornerRadius = 7
+        membersButton.layer.borderWidth = 1
+        membersButton.layer.borderColor = UIColor.lightGray.cgColor
+        
         if readOnly == true {
             newMeetingButton.isHidden = true
             editDetailsButton.isHidden = true
+            membersButton.isHidden = true
         }
     }
     
