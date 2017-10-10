@@ -22,7 +22,7 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
         newGroupButton.layer.cornerRadius = 7
         newGroupButton.layer.borderWidth = 1
         newGroupButton.layer.borderColor = UIColor.lightGray.cgColor
-
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -106,11 +106,21 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                 }
                 let group = Group(fromID: directoryEntry.id)
+                var readOnly: Bool {
+                    switch indexPath.section {
+                    case 0:
+                        return false
+                    case 1:
+                        return true
+                    default:
+                        fatalError("Unexpected index path")
+                    }
+                }
                 let groupView = segue.destination as! ViewController
                 groupView.group = group
                 groupView.groupRef = directoryEntry
                 groupView.user = self.user
-                groupView.readOnly = false
+                groupView.readOnly = readOnly
             }
         case "createGroupSegue":
             let newGroupScene = segue.destination as! CreateGroupViewController
