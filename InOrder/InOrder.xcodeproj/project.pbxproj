@@ -11,6 +11,7 @@
 		601D6EA91F8D146300681754 /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D6EA81F8D146300681754 /* MembersViewController.swift */; };
 		601D6EAB1F8D14BB00681754 /* MemberDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D6EAA1F8D14BB00681754 /* MemberDetailViewController.swift */; };
 		601D6EAD1F8D151B00681754 /* NewInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D6EAC1F8D151B00681754 /* NewInviteViewController.swift */; };
+		601D6EAF1F8D241700681754 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D6EAE1F8D241700681754 /* Invite.swift */; };
 		6059B73D1F72B9670069A3A2 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6059B73C1F72B9670069A3A2 /* Meeting.swift */; };
 		6059B73F1F890AE20069A3A2 /* MeetingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6059B73E1F890AE20069A3A2 /* MeetingTabBarController.swift */; };
 		6059B7411F8910AE0069A3A2 /* MainMotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6059B7401F8910AE0069A3A2 /* MainMotionViewController.swift */; };
@@ -72,6 +73,7 @@
 		601D6EA81F8D146300681754 /* MembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
 		601D6EAA1F8D14BB00681754 /* MemberDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberDetailViewController.swift; sourceTree = "<group>"; };
 		601D6EAC1F8D151B00681754 /* NewInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewInviteViewController.swift; sourceTree = "<group>"; };
+		601D6EAE1F8D241700681754 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		6059B73C1F72B9670069A3A2 /* Meeting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		6059B73E1F890AE20069A3A2 /* MeetingTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingTabBarController.swift; sourceTree = "<group>"; };
 		6059B7401F8910AE0069A3A2 /* MainMotionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMotionViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				60CC619D1EE1BAA30041C17F /* LaunchScreen.storyboard */,
 				60CC61A01EE1BAA30041C17F /* Info.plist */,
 				60CC61C21EE1BABF0041C17F /* User.swift */,
+				601D6EAE1F8D241700681754 /* Invite.swift */,
 				60CC61C41EE1BCBF0041C17F /* Group.swift */,
 				6059B73C1F72B9670069A3A2 /* Meeting.swift */,
 				60CC61C61EE1CFE70041C17F /* MeetingHistory.swift */,
@@ -374,6 +377,7 @@
 				60CC61CF1EE1DFDE0041C17F /* Agenda.swift in Sources */,
 				60D974851EEEDB9300F319BA /* MeetingNavViewController.swift in Sources */,
 				60D746321EEAF605005900F8 /* MotionToAmendViewController.swift in Sources */,
+				601D6EAF1F8D241700681754 /* Invite.swift in Sources */,
 				60CC61951EE1BAA30041C17F /* AppDelegate.swift in Sources */,
 				6069C6361F8A622A00570DAC /* UserMenuViewController.swift in Sources */,
 				60C3BEF21EE74131001A8710 /* PastMeetingsViewController.swift in Sources */,

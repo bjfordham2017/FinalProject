@@ -126,6 +126,9 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
             let newGroupScene = segue.destination as! CreateGroupViewController
             newGroupScene.user = self.user
             newGroupScene.newGroup = Group()
+        case "invitesSegue":
+            let inviteView = segue.destination as! InvitesViewController
+            inviteView.user = self.user
         default:
             print("Unexpected Segue Identifier")
         }
