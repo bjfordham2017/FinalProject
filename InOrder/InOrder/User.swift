@@ -16,7 +16,7 @@ class User {//needs explicit access control
         let documentsDirectories =
             FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = documentsDirectories.first!
-        return documentDirectory.appendingPathComponent("thirdNewUser.json")
+        return documentDirectory.appendingPathComponent("SecondPresentationUser.json")
     }()
     
     var jsonObject: [String:Any] {
