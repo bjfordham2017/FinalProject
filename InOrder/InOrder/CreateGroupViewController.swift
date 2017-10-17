@@ -43,6 +43,8 @@ class CreateGroupViewController: UIViewController {
         user.groupDirectory.append(newGroupRef)
         user.save()
         newGroup.save()
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: UIButton) {

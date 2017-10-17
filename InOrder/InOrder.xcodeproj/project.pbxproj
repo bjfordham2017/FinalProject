@@ -18,6 +18,8 @@
 		6059B7411F8910AE0069A3A2 /* MainMotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6059B7401F8910AE0069A3A2 /* MainMotionViewController.swift */; };
 		6069C6361F8A622A00570DAC /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069C6351F8A622A00570DAC /* UserMenuViewController.swift */; };
 		6069C6381F8BC73A00570DAC /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069C6371F8BC73A00570DAC /* CreateGroupViewController.swift */; };
+		60A1A8A51F964BC700C26286 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1A8A41F964BC700C26286 /* LogInViewController.swift */; };
+		60A1A8A71F964C0900C26286 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A1A8A61F964C0900C26286 /* RegisterViewController.swift */; };
 		60C3BEF01EE74107001A8710 /* NewMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C3BEEF1EE74107001A8710 /* NewMeetingViewController.swift */; };
 		60C3BEF21EE74131001A8710 /* PastMeetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C3BEF11EE74131001A8710 /* PastMeetingsViewController.swift */; };
 		60C3BEF61EE75299001A8710 /* MeetingNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C3BEF51EE75299001A8710 /* MeetingNotesViewController.swift */; };
@@ -81,6 +83,8 @@
 		6059B7401F8910AE0069A3A2 /* MainMotionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMotionViewController.swift; sourceTree = "<group>"; };
 		6069C6351F8A622A00570DAC /* UserMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
 		6069C6371F8BC73A00570DAC /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		60A1A8A41F964BC700C26286 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		60A1A8A61F964C0900C26286 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		60C3BEEF1EE74107001A8710 /* NewMeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMeetingViewController.swift; sourceTree = "<group>"; };
 		60C3BEF11EE74131001A8710 /* PastMeetingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastMeetingsViewController.swift; sourceTree = "<group>"; };
 		60C3BEF51EE75299001A8710 /* MeetingNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingNotesViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				60CC61941EE1BAA30041C17F /* AppDelegate.swift */,
+				60A1A8A41F964BC700C26286 /* LogInViewController.swift */,
+				60A1A8A61F964C0900C26286 /* RegisterViewController.swift */,
 				6069C6351F8A622A00570DAC /* UserMenuViewController.swift */,
 				601D6EA61F8D13E000681754 /* InvitesViewController.swift */,
 				60CC61961EE1BAA30041C17F /* ViewController.swift */,
@@ -378,6 +384,7 @@
 				60D745F51EEA0850005900F8 /* MotionDelegate.swift in Sources */,
 				60D745ED1EE9C170005900F8 /* EditAgendaItemView.swift in Sources */,
 				60CC61CF1EE1DFDE0041C17F /* Agenda.swift in Sources */,
+				60A1A8A71F964C0900C26286 /* RegisterViewController.swift in Sources */,
 				60D974851EEEDB9300F319BA /* MeetingNavViewController.swift in Sources */,
 				60D746321EEAF605005900F8 /* MotionToAmendViewController.swift in Sources */,
 				601D6EAF1F8D241700681754 /* Invite.swift in Sources */,
@@ -399,6 +406,7 @@
 				60D746301EEAF5DB005900F8 /* AddNoteViewController.swift in Sources */,
 				6059B73D1F72B9670069A3A2 /* Meeting.swift in Sources */,
 				60CC61C31EE1BABF0041C17F /* User.swift in Sources */,
+				60A1A8A51F964BC700C26286 /* LogInViewController.swift in Sources */,
 				6069C6381F8BC73A00570DAC /* CreateGroupViewController.swift in Sources */,
 				60D745EF1EE9E835005900F8 /* MeetingViewController.swift in Sources */,
 				60CC61C51EE1BCBF0041C17F /* Group.swift in Sources */,
