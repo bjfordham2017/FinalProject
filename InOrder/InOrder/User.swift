@@ -10,6 +10,9 @@ import Foundation
 
 class User {//needs explicit access control
     
+    let name: String
+    let email: String
+    let id: UUID
     var groupDirectory: [GroupDirectoryEntry] = []
     var readOnlyGroupDirectory: [GroupDirectoryEntry] = []
     let filePath: URL = {
@@ -24,7 +27,15 @@ class User {//needs explicit access control
         let directoryJSON = self.groupDirectory.map({item in
             return item.jsonObject
         })
+        let readOnlyDirectoryJSON = self.readOnlyGroupDirectory.map({item in
+            return item.jsonObject
+        })
         output[User.groupDirectoryLabel] = directoryJSON
+        output[User.readOnlyGroupDirectoryLabel] = readOnlyDirectoryJSON
+        output[User.nameLabel] = self.name
+        output[User.emailLabel] = self.email
+        output[User.idLabel] = self.id.uuidString
+        
         return output
     }
     
@@ -41,6 +52,58 @@ class User {//needs explicit access control
                 }
             }
         }
+        self.name = "New User"
+        self.email = "noemail@void.com"
+        self.id = UUID()
+    }
+    
+    internal init (name: String, email: String, id: UUID, groupDirectory: [GroupDirectoryEntry], readOnlyGroupDirectory: [GroupDirectoryEntry]) {
+        self.name = name
+        self.email = email
+        self.id = id
+        self.groupDirectory = groupDirectory
+        self.readOnlyGroupDirectory = readOnlyGroupDirectory
+    }
+    
+    convenience init? (jsonOjbect: [String:Any]) {
+        guard let name = jsonOjbect[User.nameLabel] as? String,
+        let email = jsonOjbect[User.emailLabel] as? String,
+        let idString = jsonOjbect[User.idLabel] as? String,
+            let id = UUID(uuidString: idString) else {
+                return nil
+        }
+        
+        var groupDirectory: [GroupDirectoryEntry] {
+            var output = [GroupDirectoryEntry]()
+            if let directoryJSON = jsonOjbect[User.groupDirectoryLabel] as? [[String:Any]] {
+                let directoryOptionals = directoryJSON.map({element in
+                    return GroupDirectoryEntry(jsonObject: element)
+                })
+                for item in directoryOptionals {
+                    if let directoryEntry = item {
+                        output.append(directoryEntry)
+                    }
+                }
+            }
+            return output
+        }
+        
+        var readOnlyGroupDirectory: [GroupDirectoryEntry] {
+            var output = [GroupDirectoryEntry]()
+            if let directoryJSON = jsonOjbect[User.readOnlyGroupDirectoryLabel] as? [[String:Any]] {
+                let directoryOptionals = directoryJSON.map({element in
+                    return GroupDirectoryEntry(jsonObject: element)
+                })
+                for item in directoryOptionals {
+                    if let directoryEntry = item {
+                        output.append(directoryEntry)
+                    }
+                }
+            }
+            return output
+        }
+        
+        self.init(name: name, email: email, id: id, groupDirectory: groupDirectory, readOnlyGroupDirectory: readOnlyGroupDirectory)
     }
     
     func save() {
@@ -52,11 +115,12 @@ class User {//needs explicit access control
         }
     }
     
-    public static let firstNameLabel = "Firstname"
-    public static let lastNameLabel = "Lastname"
+    public static let nameLabel = "Name"
+    public static let idLabel = "ID"
     public static let emailLabel = "Email"
     public static let passwordLabel = "Password"
     public static let groupDirectoryLabel = "GroupDirectory"
+    public static let readOnlyGroupDirectoryLabel = "ReadOnlyGroupDirectory"
 }
 
 class GroupDirectoryEntry {
