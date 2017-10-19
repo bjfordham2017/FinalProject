@@ -17,6 +17,7 @@ class LogInViewController: UIViewController {
     @IBOutlet var registerButton: UIButton!
     
     var isUserLoggedIn: AuthStateDidChangeListenerHandle!
+    var currentUser: InOrderUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +42,15 @@ class LogInViewController: UIViewController {
         
         self.isUserLoggedIn = Auth.auth().addStateDidChangeListener({auth, user in
             if user != nil {
-                //self.performSegue(withIdentifier: "logInSegue", sender: nil)
                 print("User currently logged in")
+                let usersRef = Database.database().reference(withPath: "Users")
+                let currentUserRef = usersRef.child(user!.uid)
+                currentUserRef.observe(.value, with: {snapshot in
+                    self.currentUser = InOrderUser(dataSnapshot: snapshot)
+                    if self.currentUser != nil {
+                        self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                    }
+                })
             }
         })
     }
@@ -60,6 +68,9 @@ class LogInViewController: UIViewController {
         case "logInSegue":
             let nav = segue.destination as! UINavigationController
             let userView = nav.topViewController as! UserMenuViewController
+            if let userLoggedIn = self.currentUser {
+                userView.user = userLoggedIn
+            }
         case "registerSegue":
             let registerView = segue.destination as! RegisterViewController
         default:

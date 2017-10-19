@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class InOrderUser {//needs explicit access control
     
@@ -86,6 +87,42 @@ class InOrderUser {//needs explicit access control
                 for item in directoryOptionals {
                     if let directoryEntry = item {
                         output.append(directoryEntry)
+                    }
+                }
+            }
+            return output
+        }
+        
+        self.init(name: name, email: email, id: id, groupDirectory: groupDirectory, readOnlyGroupDirectory: readOnlyGroupDirectory)
+    }
+    
+    convenience init? (dataSnapshot: DataSnapshot) {
+        guard let firebaseJSON = dataSnapshot.value as? [String:Any],
+            let name = firebaseJSON[InOrderUser.nameLabel] as? String,
+            let email = firebaseJSON[InOrderUser.emailLabel] as? String,
+            let id = firebaseJSON[InOrderUser.idLabel] as? String
+            else {
+                return nil
+        }
+        
+        var groupDirectory: [GroupDirectoryEntry] {
+            var output = [GroupDirectoryEntry]()
+            if let directoryJSON = firebaseJSON[InOrderUser.groupDirectoryLabel] as? [[String:Any]] {
+                for item in directoryJSON {
+                    if let entry = GroupDirectoryEntry(jsonObject: item) {
+                        output.append(entry)
+                    }
+                }
+            }
+            return output
+        }
+        
+        var readOnlyGroupDirectory: [GroupDirectoryEntry] {
+            var output = [GroupDirectoryEntry]()
+            if let directoryJSON = firebaseJSON[InOrderUser.readOnlyGroupDirectoryLabel] as? [[String:Any]] {
+                for item in directoryJSON {
+                    if let entry = GroupDirectoryEntry(jsonObject: item) {
+                        output.append(entry)
                     }
                 }
             }
