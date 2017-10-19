@@ -16,7 +16,7 @@ class CreateGroupViewController: UIViewController {
     @IBOutlet var createButton: UIButton!
     @IBOutlet var cancelButton: UIButton!
     
-    var user: User!
+    var user: InOrderUser!
     var newGroup: Group!
 
     override func viewDidLoad() {

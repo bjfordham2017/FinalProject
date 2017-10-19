@@ -19,7 +19,7 @@ class MembersViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.loadView()
         
         self.members = []
-        let fakeMember = Member(name: "Not a Real Member", email: "fakehandle@fakemail.fakyfake", id: UUID())
+        let fakeMember = Member(name: "Not a Real Member", email: "fakehandle@fakemail.fakyfake", id: "FakeID")
         
         members.append(fakeMember)
     }

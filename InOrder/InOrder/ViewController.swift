@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, GroupDetailDelegate {
 
     var group: Group!
-    var user: User!
+    var user: InOrderUser!
     var groupRef: GroupDirectoryEntry!
     var readOnly: Bool!
     

@@ -11,7 +11,7 @@ import UIKit
 
 class InvitesViewController: UITableViewController {
     var invites: [Invite]!
-    var user: User!
+    var user: InOrderUser!
     
     override func loadView() {
         super.loadView()

@@ -11,9 +11,9 @@ import Foundation
 class Member {
     let name: String
     let email: String
-    let id: UUID
+    let id: String
     
-    init (name: String, email: String, id: UUID) {
+    init (name: String, email: String, id: String) {
         self.name = name
         self.email = email
         self.id = id

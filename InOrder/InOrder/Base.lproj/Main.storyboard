@@ -1952,7 +1952,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vyx-S0-AWZ" kind="presentation" identifier="logInSegue" id="CpE-8v-HAc"/>
+                                    <action selector="logIn:" destination="nBw-CO-EGL" eventType="touchUpInside" id="Qex-bp-SPC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2O-9n-YJY">
@@ -1963,6 +1963,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="register:" destination="nBw-CO-EGL" eventType="touchUpInside" id="C7k-kz-0O0"/>
                                     <segue destination="d8j-4y-63R" kind="presentation" identifier="registerSegue" id="Ya1-55-8xi"/>
                                 </connections>
                             </button>
@@ -2005,6 +2006,13 @@
                             <constraint firstItem="dxz-WE-4Wn" firstAttribute="centerX" secondItem="qcX-Mb-ipu" secondAttribute="centerX" id="mwG-ak-ULD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="c5h-b8-LDP" id="jlN-LQ-b7l"/>
+                        <outlet property="loginButton" destination="xGL-hM-sdX" id="39n-1r-0kw"/>
+                        <outlet property="passwordField" destination="Vly-UL-Zcl" id="0uH-AQ-zAW"/>
+                        <outlet property="registerButton" destination="H2O-9n-YJY" id="JZe-Ax-ge9"/>
+                        <segue destination="vyx-S0-AWZ" kind="presentation" identifier="logInSegue" id="9u0-w6-HXG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z03-nK-iqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2074,6 +2082,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="register:" destination="d8j-4y-63R" eventType="touchUpInside" id="Wux-fP-ide"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MW-qz-cEI">
                                 <rect key="frame" x="164" y="529" width="65" height="30"/>
@@ -2082,10 +2093,20 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancel:" destination="d8j-4y-63R" eventType="touchUpInside" id="Ekc-pb-hhw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="ePG-MQ-kyS" id="mcg-FZ-Hkb"/>
+                        <outlet property="emailField" destination="9wh-MG-LPt" id="zRf-2d-Hgx"/>
+                        <outlet property="nameField" destination="LAG-DB-njy" id="Eig-jq-21c"/>
+                        <outlet property="passwordField" destination="ePG-MQ-kyS" id="raf-Ki-pnI"/>
+                        <outlet property="registerButton" destination="ocQ-fb-ZN0" id="A6S-d3-jdS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JGS-Q4-sKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

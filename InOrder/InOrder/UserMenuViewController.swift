@@ -14,7 +14,7 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var groupsTable: UITableView!
     @IBOutlet var newGroupButton: UIButton!
     
-    var user: User!
+    var user: InOrderUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
