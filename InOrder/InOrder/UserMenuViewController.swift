@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class UserMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,6 +24,11 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
         newGroupButton.layer.borderWidth = 1
         newGroupButton.layer.borderColor = UIColor.lightGray.cgColor
         
+        Auth.auth().addStateDidChangeListener({auth, user in
+            if user == nil {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,6 +137,14 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
             inviteView.user = self.user
         default:
             print("Unexpected Segue Identifier")
+        }
+    }
+    
+    @IBAction func logOut(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error)
         }
     }
     

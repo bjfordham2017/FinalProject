@@ -481,6 +481,11 @@
                                 <segue destination="Fsc-x0-tfp" kind="show" identifier="invitesSegue" id="hsP-VJ-3DG"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="JBm-rz-3lP">
+                            <connections>
+                                <action selector="logOut:" destination="p7k-95-QE0" id="vg8-8t-hmh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="groupsTable" destination="3gb-SZ-lfi" id="aA5-8y-TIu"/>
