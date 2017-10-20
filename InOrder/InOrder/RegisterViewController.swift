@@ -23,13 +23,11 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fakeDirectoryEntry = GroupDirectoryEntry(name: "FakeGroup", id: UUID())
-        let dictionaryEntryPoser = GroupDirectoryEntry(name: "I'm only pretending to be in this group", id: UUID())
         self.newUserListener = Auth.auth().addStateDidChangeListener({auth, user in
             guard let newUser = user else {
                 return
             }
-            let newInOrderUser = InOrderUser(name: self.nameField.text!, email: newUser.email!, id: newUser.uid, groupDirectory: [fakeDirectoryEntry], readOnlyGroupDirectory: [dictionaryEntryPoser])
+            let newInOrderUser = InOrderUser(name: self.nameField.text!, email: newUser.email!, id: newUser.uid)
             let newUserRef = self.userRef.child(newUser.uid)
             newUserRef.setValue(newInOrderUser.jsonObject)
             

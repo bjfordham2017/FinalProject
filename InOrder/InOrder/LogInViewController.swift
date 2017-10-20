@@ -31,7 +31,9 @@ class LogInViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         Auth.auth().removeStateDidChangeListener(isUserLoggedIn)
-        self.currentUserRef.removeObserver(withHandle: currentUserObserver)
+        if currentUserObserver != nil {
+            currentUserRef.removeObserver(withHandle: currentUserObserver)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
