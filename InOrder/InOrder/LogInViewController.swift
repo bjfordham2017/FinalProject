@@ -17,6 +17,8 @@ class LogInViewController: UIViewController {
     @IBOutlet var registerButton: UIButton!
     
     var isUserLoggedIn: AuthStateDidChangeListenerHandle!
+    var currentUserRef: DatabaseReference!
+    var currentUserObserver: UInt!
     var currentUser: InOrderUser?
     
     override func viewDidLoad() {
@@ -29,6 +31,7 @@ class LogInViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         Auth.auth().removeStateDidChangeListener(isUserLoggedIn)
+        self.currentUserRef.removeObserver(withHandle: currentUserObserver)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,19 +41,21 @@ class LogInViewController: UIViewController {
             if user != nil {
                 print("User currently logged in")
                 let usersRef = Database.database().reference(withPath: "Users")
-                let currentUserRef = usersRef.child(user!.uid)
-                currentUserRef.observe(.value, with: {snapshot in
+                self.currentUserRef = usersRef.child(user!.uid)
+                self.currentUserObserver = self.currentUserRef.observe(.value, with: {snapshot in
                     self.currentUser = InOrderUser(dataSnapshot: snapshot)
                     if self.currentUser != nil {
                         self.performSegue(withIdentifier: "logInSegue", sender: nil)
                     }
                 })
+                
             }
         })
     }
     
     @IBAction func logIn(_ sender: UIButton) {
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!, completion: nil)
+        
     }
     
     @IBAction func register(_ sender: UIButton) {

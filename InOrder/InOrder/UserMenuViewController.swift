@@ -16,6 +16,7 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var newGroupButton: UIButton!
     
     var user: InOrderUser!
+    var logOutListener: AuthStateDidChangeListenerHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +25,6 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
         newGroupButton.layer.borderWidth = 1
         newGroupButton.layer.borderColor = UIColor.lightGray.cgColor
         
-        Auth.auth().addStateDidChangeListener({auth, user in
-            if user == nil {
-                self.dismiss(animated: true, completion: nil)
-            }
-        })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -94,7 +90,17 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.logOutListener = Auth.auth().addStateDidChangeListener({auth, user in
+            if user == nil {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+        
         groupsTable.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(logOutListener)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
