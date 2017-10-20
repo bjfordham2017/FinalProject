@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Member {
     let name: String
@@ -18,4 +19,20 @@ class Member {
         self.email = email
         self.id = id
     }
+    
+    convenience init? (snapshot: DataSnapshot) {
+        guard let jsonObject = snapshot.value as? [String:Any],
+        let name = jsonObject[Member.nameLabel] as? String,
+        let email = jsonObject[Member.emailLabel] as? String,
+            let id = jsonObject[Member.idLabel] as? String else {
+                return nil
+        }
+        self.init(name: name, email: email, id: id)
+    }
+    
+    public static let nameLabel = "Name"
+    public static let idLabel = "ID"
+    public static let emailLabel = "Email"
+
+    
 }

@@ -40,6 +40,16 @@ class InOrderUser {//needs explicit access control
         return output
     }
     
+    var memberOnlyJSONObject: [String:Any] {
+        var output = [String:Any]()
+
+        output[InOrderUser.nameLabel] = self.name
+        output[InOrderUser.emailLabel] = self.email
+        output[InOrderUser.idLabel] = self.id
+        
+        return output
+    }
+    
     init (name: String, email: String, id: String, groupDirectory: [GroupDirectoryEntry]? = [], readOnlyGroupDirectory: [GroupDirectoryEntry]? = []) {
         self.name = name
         self.email = email

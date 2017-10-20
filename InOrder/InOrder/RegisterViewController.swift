@@ -12,6 +12,7 @@ import Firebase
 
 class RegisterViewController: UIViewController {
     let userRef = Database.database().reference(withPath: "Users")
+    let allMembersRef = Database.database().reference(withPath: "AllMembers")
     var newUserListener: AuthStateDidChangeListenerHandle!
     
     @IBOutlet var nameField: UITextField!
@@ -28,9 +29,18 @@ class RegisterViewController: UIViewController {
                 return
             }
             let newInOrderUser = InOrderUser(name: self.nameField.text!, email: newUser.email!, id: newUser.uid)
+            let pathSafeEmail = newInOrderUser.email.characters.filter({character in
+                if character == "." {
+                    return false
+                } else {
+                    return true
+                }
+            })
+            let emailPath = String(pathSafeEmail)
             let newUserRef = self.userRef.child(newUser.uid)
+            let newMemberRef = self.allMembersRef.child(emailPath)
             newUserRef.setValue(newInOrderUser.jsonObject)
-            
+            newMemberRef.setValue(newInOrderUser.memberOnlyJSONObject)
             self.dismiss(animated: true, completion: nil)
         })
     }
