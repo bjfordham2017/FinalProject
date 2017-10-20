@@ -17,6 +17,11 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
     var user: InOrderUser!
     var logOutListener: AuthStateDidChangeListenerHandle!
+    let groupsRef = Database.database().reference(withPath: "Groups")
+    var selectedGroupRef: DatabaseReference!
+    var selectedGroupObserver: UInt!
+    var selectedDirectoryEntry: GroupDirectoryEntry!
+    var selectedGroup: Group!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +89,26 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "groupSegue", sender: nil)
+        switch indexPath.section {
+        case 0:
+            self.selectedDirectoryEntry = user.groupDirectory[indexPath.row]
+        case 1:
+            self.selectedDirectoryEntry = user.readOnlyGroupDirectory[indexPath.row]
+        default:
+            fatalError("Unexpected index path")
+        }
+        
+        if selectedDirectoryEntry != nil {
+            self.selectedGroupRef = groupsRef.child(selectedDirectoryEntry.id.uuidString)
+            self.selectedGroupObserver = selectedGroupRef.observe(.value, with: {snapshot in
+                self.selectedGroup = Group(dataSnapshot: snapshot)
+                if self.selectedGroup != nil {
+                    self.performSegue(withIdentifier: "groupSegue", sender: nil)
+                }
+            })
+        }
+        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,23 +125,15 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillDisappear(_ animated: Bool) {
         Auth.auth().removeStateDidChangeListener(logOutListener)
+        if selectedGroupObserver != nil {
+            selectedGroupRef.removeObserver(withHandle: selectedGroupObserver)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "groupSegue":
             if let indexPath = groupsTable.indexPathForSelectedRow {
-                var directoryEntry: GroupDirectoryEntry {
-                    switch indexPath.section {
-                    case 0:
-                        return user.groupDirectory[indexPath.row]
-                    case 1:
-                        return user.readOnlyGroupDirectory[indexPath.row]
-                    default:
-                        fatalError("Unexpected index path")
-                    }
-                }
-                let group = Group(fromID: directoryEntry.id)
                 var readOnly: Bool {
                     switch indexPath.section {
                     case 0:
@@ -129,8 +145,8 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                 }
                 let groupView = segue.destination as! ViewController
-                groupView.group = group
-                groupView.groupRef = directoryEntry
+                groupView.group = self.selectedGroup
+                groupView.groupRef = self.selectedDirectoryEntry
                 groupView.user = self.user
                 groupView.readOnly = readOnly
             }

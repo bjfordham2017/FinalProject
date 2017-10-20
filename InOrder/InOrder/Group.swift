@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Group {
     let groupID: UUID
@@ -50,6 +51,51 @@ class Group {
     }
     
     convenience init(jsonDictionary: [String:Any]) {
+        var groupID: UUID? {
+            if let jsonID = jsonDictionary[Group.groupIDLabel] as? String,
+                let uid = UUID(uuidString: jsonID) {
+                return uid
+            } else {
+                return nil
+            }
+        }
+        
+        var name: String? {
+            if let jsonName = jsonDictionary[Group.nameLabel] as? String {
+                return jsonName
+            } else {
+                return nil
+            }
+        }
+        var description: String? {
+            if let jsonDescription = jsonDictionary[Group.descriptionLabel] as? String {
+                return jsonDescription
+            } else {
+                return nil
+            }
+        }
+        var meetingHistory: MeetingHistory? {
+            if let jsonMeetingHistory = jsonDictionary[Group.meetingHistoryLabel] as? [String:Any] {
+                return MeetingHistory(jsonDictionary: jsonMeetingHistory)
+            } else {
+                return nil
+            }
+        }
+        var upcomingAgenda: Agenda? {
+            if let jsonUpcomingAgenda = jsonDictionary[Group.upcomingAgendaLabel] as? [String:Any] {
+                return Agenda(jsonDictionary: jsonUpcomingAgenda)
+            } else {
+                return nil
+            }
+        }
+        self.init(groupID: groupID, name: name, description: description, meetingHistory: meetingHistory, upcomingAgenda: upcomingAgenda)
+    }
+    
+    convenience init? (dataSnapshot: DataSnapshot) {
+        guard let jsonDictionary = dataSnapshot.value as? [String:Any] else {
+            return nil
+        }
+        
         var groupID: UUID? {
             if let jsonID = jsonDictionary[Group.groupIDLabel] as? String,
                 let uid = UUID(uuidString: jsonID) {
