@@ -8,17 +8,35 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class InvitesViewController: UITableViewController {
+    
+    let usersRef = Database.database().reference(withPath: "Users")
+    var currentUserRef: DatabaseReference!
+    var currentUserInvitesRef: DatabaseReference!
+    var invitesObserver: UInt!
     var invites: [Invite]!
     var user: InOrderUser!
     
     override func loadView() {
         super.loadView()
         
+        self.currentUserRef = usersRef.child(user.id)
+        self.currentUserInvitesRef = currentUserRef.child("Invites")
+        
         self.invites = []
-        let fakeInvite = Invite(inviteID: UUID(), groupID: UUID(), groupName: "Not a real group")
-        invites.append(fakeInvite)
+        
+        self.invitesObserver = currentUserInvitesRef.observe(.value, with: {snapshot in
+            if snapshot.exists() {
+                for invite in snapshot.children {
+                    if let invitation = Invite(snapshot: invite as! DataSnapshot) {
+                        self.invites.append(invitation)
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        })
         
     }
     
@@ -37,7 +55,5 @@ class InvitesViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        let fakeReference = GroupDirectoryEntry(name: invites[0].groupName, id: invites[0].groupID)
-        user.readOnlyGroupDirectory.append(fakeReference)
     }
 }
