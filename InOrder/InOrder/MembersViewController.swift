@@ -13,6 +13,7 @@ class MembersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet var memberTable: UITableView!
     
+    var group: Group!
     var members: [Member]!
     
     override func loadView() {
@@ -48,6 +49,9 @@ class MembersViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let detailView = segue.destination as! MemberDetailViewController
                 detailView.member = self.members[row]
             }
+        case "newInviteSegue":
+            let newInviteView = segue.destination as! NewInviteViewController
+            newInviteView.groupSendingInvite = self.group
         default:
             print("Unexpected Segue Identifier")
         }

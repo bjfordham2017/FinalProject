@@ -12,23 +12,47 @@ import Firebase
 
 class NewInviteViewController: UIViewController {
     let usersRef = Database.database().reference(withPath: "AllMembers")
-    var selectedInvitee: Member! {
-        willSet {
-            if newValue != nil {
-                print("Success!!!")
-            }
-        }
-    }
-    var inviteeRef: UInt!
+    var inviteeRef: DatabaseReference!
+    var inviteeObserver: UInt!
+    var userToInvite: Member?
+    var groupSendingInvite: Group!
+    
+    @IBOutlet var searchField: UITextField!
+    @IBOutlet var searchButton: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.searchByEmail(address: "bjfordham@presby.edu")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if userToInvite != nil {
+            userToInvite = nil
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+        if inviteeRef != nil {
+            inviteeRef.removeObserver(withHandle: inviteeObserver)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "searchResultsSegue":
+            let resultsView = segue.destination as! SearchResultsViewController
+            if let newMember = self.userToInvite {
+                resultsView.userToInvite = newMember
+            }
+            resultsView.groupName = self.groupSendingInvite.name
+            resultsView.groupID = self.groupSendingInvite.groupID
+        default:
+            fatalError("Unexpected Segue Identifier")
+        }
     }
     
     func pathSafeEmail(_ input: String) -> String {
@@ -50,10 +74,19 @@ class NewInviteViewController: UIViewController {
         
         let pathSafeAddress = pathSafeEmail(address)
         
-        self.inviteeRef = usersRef.child(pathSafeAddress).observe(.value, with: {snapshot in
+        self.inviteeRef = usersRef.child(pathSafeAddress)
+        self.inviteeObserver = inviteeRef.observe(.value, with: {snapshot in
             if snapshot.exists() {
-                self.selectedInvitee = Member(snapshot: snapshot)
+                self.userToInvite = Member(snapshot: snapshot)
+                if self.userToInvite != nil {
+                    self.performSegue(withIdentifier: "searchResultsSegue", sender: nil)
+                }
             }
         })
+    }
+    
+    @IBAction func search(_ sender: UIButton) {
+        let enteredAddress = searchField.text!
+        searchByEmail(address: enteredAddress)
     }
 }

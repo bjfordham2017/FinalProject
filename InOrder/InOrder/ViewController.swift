@@ -101,6 +101,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MeetingDelegate, Gr
             details.details = group.description
         case "membersSegue"?:
             let membersView = segue.destination as! MembersViewController
+            membersView.group = self.group
         default:
             preconditionFailure("Unexpected segue identifier")
         }
