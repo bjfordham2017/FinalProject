@@ -29,11 +29,12 @@ class RegisterViewController: UIViewController {
                 return
             }
             let newInOrderUser = InOrderUser(name: self.nameField.text!, email: newUser.email!, id: newUser.uid)
-            let pathSafeEmail = newInOrderUser.email.characters.filter({character in
-                if character == "." {
-                    return false
-                } else {
-                    return true
+            let pathSafeEmail = newInOrderUser.email.characters.map({character -> Character in
+                switch character {
+                case ".":
+                    return ","
+                default:
+                    return character
                 }
             })
             let emailPath = String(pathSafeEmail)

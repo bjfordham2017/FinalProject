@@ -32,11 +32,12 @@ class NewInviteViewController: UIViewController {
     }
     
     func pathSafeEmail(_ input: String) -> String {
-        let pathSafeArray = input.characters.filter({character in
-            if character == "." {
-                return false
-            } else {
-                return true
+        let pathSafeArray = input.characters.map({character -> Character in
+            switch character {
+            case ".":
+                return ","
+            default:
+                return character
             }
         })
         
