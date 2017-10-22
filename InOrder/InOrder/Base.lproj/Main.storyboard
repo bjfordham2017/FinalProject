@@ -636,10 +636,71 @@
                             <outlet property="delegate" destination="Fsc-x0-tfp" id="Yzy-JT-k08"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="b2D-rp-Kw2" kind="presentation" identifier="invitationResponseSegue" id="dl3-u8-b5K"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwN-KV-A9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-616" y="864"/>
+        </scene>
+        <!--Invitation Response View Controller-->
+        <scene sceneID="roU-eQ-Clz">
+            <objects>
+                <viewController id="b2D-rp-Kw2" customClass="InvitationResponseViewController" customModule="InOrder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yBA-Lz-xXM"/>
+                        <viewControllerLayoutGuide type="bottom" id="7tN-gK-6qb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WJ6-ah-zmi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4ml-m6-Dfo">
+                                <rect key="frame" x="67" y="90" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KOE-fx-s33">
+                                <rect key="frame" x="158" y="279" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Accept"/>
+                                <connections>
+                                    <action selector="accept:" destination="b2D-rp-Kw2" eventType="touchUpInside" id="Rsx-rd-pBG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZjW-qi-KMs">
+                                <rect key="frame" x="139" y="414" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Answer Later"/>
+                                <connections>
+                                    <action selector="answerLater:" destination="b2D-rp-Kw2" eventType="touchUpInside" id="Xhx-fT-bRg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLD-d4-XjU">
+                                <rect key="frame" x="158" y="346" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Decline"/>
+                                <connections>
+                                    <action selector="decline:" destination="b2D-rp-Kw2" eventType="touchUpInside" id="y3x-WJ-73G"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="InvitationView" destination="4ml-m6-Dfo" id="80i-Ks-drr"/>
+                        <outlet property="acceptButton" destination="KOE-fx-s33" id="c7V-w7-Z9k"/>
+                        <outlet property="answerLaterButton" destination="ZjW-qi-KMs" id="142-TQ-xew"/>
+                        <outlet property="declineButton" destination="mLD-d4-XjU" id="b8a-04-SKT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="69q-tF-tCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-618.39999999999998" y="1609.745127436282"/>
         </scene>
         <!--Create Group View Controller-->
         <scene sceneID="oVQ-MH-FJ8">

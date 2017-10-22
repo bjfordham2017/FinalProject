@@ -16,6 +16,8 @@ class InOrderUser {//needs explicit access control
     let id: String
     var groupDirectory: [GroupDirectoryEntry] = []
     var readOnlyGroupDirectory: [GroupDirectoryEntry] = []
+    var invites: [UUID:Invite]?
+    
     let filePath: URL = {
         let documentsDirectories =
             FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -36,7 +38,13 @@ class InOrderUser {//needs explicit access control
         output[InOrderUser.nameLabel] = self.name
         output[InOrderUser.emailLabel] = self.email
         output[InOrderUser.idLabel] = self.id
-        
+        if let invitations = invites {
+            var invitesJSON = [String:[String:Any]]()
+            for (key, value) in invitations {
+                invitesJSON[key.uuidString] = value.jsonObject
+            }
+            output[InOrderUser.invitesLabel] = invitesJSON
+        }
         return output
     }
     
@@ -46,11 +54,11 @@ class InOrderUser {//needs explicit access control
         output[InOrderUser.nameLabel] = self.name
         output[InOrderUser.emailLabel] = self.email
         output[InOrderUser.idLabel] = self.id
-        
+
         return output
     }
     
-    init (name: String, email: String, id: String, groupDirectory: [GroupDirectoryEntry]? = [], readOnlyGroupDirectory: [GroupDirectoryEntry]? = []) {
+    init (name: String, email: String, id: String, groupDirectory: [GroupDirectoryEntry]? = [], readOnlyGroupDirectory: [GroupDirectoryEntry]? = [], invites: [UUID:Invite]? = nil) {
         self.name = name
         self.email = email
         self.id = id
@@ -61,6 +69,10 @@ class InOrderUser {//needs explicit access control
         
         if let readOnlyGroupDirectoryInput = readOnlyGroupDirectory {
             self.readOnlyGroupDirectory = readOnlyGroupDirectoryInput
+        }
+        
+        if let invitesInput = invites {
+            self.invites = invitesInput
         }
         
     }
@@ -139,7 +151,25 @@ class InOrderUser {//needs explicit access control
             return output
         }
         
-        self.init(name: name, email: email, id: id, groupDirectory: groupDirectory, readOnlyGroupDirectory: readOnlyGroupDirectory)
+        var invites: [UUID:Invite]? {
+            guard let invitesJSON = firebaseJSON[InOrderUser.invitesLabel] as? [String:Any] else {
+                return nil
+            }
+            var invitesDictionaryOfJSONObjects = [String:[String:Any]]()
+            for (key, value) in invitesJSON {
+                invitesDictionaryOfJSONObjects[key] = value as? [String:Any]
+            }
+            var invitesInitialized = [UUID:Invite]()
+            for (key, value) in invitesDictionaryOfJSONObjects {
+                if let id = UUID(uuidString: key) {
+                    invitesInitialized[id] = Invite(jsonDictionary: value)
+                }
+            }
+            
+            return invitesInitialized
+        }
+        
+        self.init(name: name, email: email, id: id, groupDirectory: groupDirectory, readOnlyGroupDirectory: readOnlyGroupDirectory, invites: invites)
     }
     
     func save() {
@@ -149,6 +179,7 @@ class InOrderUser {//needs explicit access control
         } catch {
             print(error)
         }
+        
     }
     
     public static let nameLabel = "Name"
@@ -157,6 +188,7 @@ class InOrderUser {//needs explicit access control
     public static let passwordLabel = "Password"
     public static let groupDirectoryLabel = "GroupDirectory"
     public static let readOnlyGroupDirectoryLabel = "ReadOnlyGroupDirectory"
+    public static let invitesLabel = "Invites"
 }
 
 class GroupDirectoryEntry {

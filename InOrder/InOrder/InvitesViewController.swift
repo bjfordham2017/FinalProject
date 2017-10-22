@@ -23,22 +23,26 @@ class InvitesViewController: UITableViewController {
         super.loadView()
         
         self.currentUserRef = usersRef.child(user.id)
-        self.currentUserInvitesRef = currentUserRef.child("Invites")
-        
-        self.invites = []
-        
-        self.invitesObserver = currentUserInvitesRef.observe(.value, with: {snapshot in
-            if snapshot.exists() {
-                for invite in snapshot.children {
-                    if let invitation = Invite(snapshot: invite as! DataSnapshot) {
-                        self.invites.append(invitation)
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        })
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectionIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectionIndexPath, animated: true)
+        }
+        
+        self.invites = []
+        if let userInvites = user.invites {
+            for (_, value) in userInvites {
+                self.invites.append(value)
+            }
+            tableView.reloadData()
+        }
+    }
+    
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return invites.count
@@ -52,8 +56,25 @@ class InvitesViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "invitationResponseSegue", sender: nil)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "invitationResponseSegue":
+            let responseView = segue.destination as! InvitationResponseViewController
+            if let selectedPath = tableView.indexPathForSelectedRow {
+                responseView.invitation = invites[selectedPath.row]
+            }
+            responseView.user = self.user
+        default:
+            fatalError("Unexpected segue identifier")
+        }
     }
 }

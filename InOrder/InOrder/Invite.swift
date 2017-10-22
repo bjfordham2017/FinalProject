@@ -28,6 +28,18 @@ class Invite {
         return output
     }
     
+    convenience init? (jsonDictionary: [String:Any]) {
+        guard let inviteIDString = jsonDictionary[Invite.inviteIDLabel] as? String,
+            let inviteID = UUID(uuidString: inviteIDString),
+            let groupIDString = jsonDictionary[Invite.groupIDLabel] as? String,
+            let groupID = UUID(uuidString: groupIDString),
+            let groupName = jsonDictionary[Invite.nameLabel] as? String else {
+                return nil
+        }
+        
+        self.init(inviteID: inviteID, groupID: groupID, groupName: groupName)
+    }
+    
     convenience init? (snapshot: DataSnapshot) {
         guard let jsonDictionary = snapshot.value as? [String:Any],
         let inviteIDString = jsonDictionary[Invite.inviteIDLabel] as? String,
