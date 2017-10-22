@@ -12,6 +12,7 @@ import UIKit
 class MembersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var memberTable: UITableView!
+    @IBOutlet var inviteButton: UIButton!
     
     var group: Group!
     var members: [Member]!
@@ -26,6 +27,11 @@ class MembersViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             memberTable.reloadData()
         }
+        
+        inviteButton.layer.cornerRadius = 7
+        inviteButton.layer.borderWidth = 1
+        inviteButton.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

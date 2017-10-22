@@ -12,6 +12,7 @@ import UIKit
 class MemberDetailViewController: UIViewController {
     @IBOutlet var nameField: UITextField!
     @IBOutlet var emailField: UITextField!
+    @IBOutlet var dismissButton: UIButton!
     
     
     var member: Member!
@@ -21,6 +22,12 @@ class MemberDetailViewController: UIViewController {
         
         nameField.text = member.name
         emailField.text = member.email
+        
+        dismissButton.layer.cornerRadius = 7
+        dismissButton.layer.borderWidth = 1
+        dismissButton.layer.borderColor = UIColor.lightGray.cgColor
+        dismissButton.isHidden = true
+        
     }
     
 }

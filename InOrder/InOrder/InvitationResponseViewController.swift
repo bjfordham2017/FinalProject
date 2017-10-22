@@ -32,6 +32,19 @@ class InvitationResponseViewController: UIViewController {
         self.currentGroupRef = groupsRef.child(invitation.groupID.uuidString)
         
         self.InvitationView.text = "You've been invited to join the group \(invitation.groupName)."
+        
+        acceptButton.layer.cornerRadius = 7
+        acceptButton.layer.borderWidth = 1
+        acceptButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        declineButton.layer.cornerRadius = 7
+        declineButton.layer.borderWidth = 1
+        declineButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        answerLaterButton.layer.cornerRadius = 7
+        answerLaterButton.layer.borderWidth = 1
+        answerLaterButton.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     func pathSafeEmail(_ input: String) -> String {

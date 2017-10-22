@@ -25,6 +25,11 @@ class NewInviteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchButton.layer.cornerRadius = 7
+        searchButton.layer.borderWidth = 1
+        searchButton.layer.borderColor = UIColor.lightGray.cgColor
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

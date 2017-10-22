@@ -19,10 +19,18 @@ class RegisterViewController: UIViewController {
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var registerButton: UIButton!
-    @IBOutlet var cancelButton: UITextField!
+    @IBOutlet var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerButton.layer.cornerRadius = 7
+        registerButton.layer.borderWidth = 1
+        registerButton.layer.borderColor = UIColor.lightGray.cgColor
+        
+        cancelButton.layer.cornerRadius = 7
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.borderColor = UIColor.lightGray.cgColor
         
         self.newUserListener = Auth.auth().addStateDidChangeListener({auth, user in
             guard let newUser = user else {

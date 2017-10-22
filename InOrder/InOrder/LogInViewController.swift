@@ -25,6 +25,15 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         
         print("Loaded!")
+        
+        loginButton.layer.cornerRadius = 7
+        loginButton.layer.borderWidth = 1
+        loginButton.layer.borderColor = UIColor.lightGray.cgColor
+
+        registerButton.layer.cornerRadius = 7
+        registerButton.layer.borderWidth = 1
+        registerButton.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

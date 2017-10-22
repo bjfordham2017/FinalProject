@@ -30,6 +30,15 @@ class SearchResultsViewController: UIViewController {
         
         nameField.text = userToInvite.name
         emailField.text = userToInvite.email
+        
+        sendInviteButton.layer.cornerRadius = 7
+        sendInviteButton.layer.borderWidth = 1
+        sendInviteButton.layer.borderColor = UIColor.lightGray.cgColor
+
+        cancelButton.layer.cornerRadius = 7
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.borderColor = UIColor.lightGray.cgColor
+
     }
     
     func createInvitation() {
