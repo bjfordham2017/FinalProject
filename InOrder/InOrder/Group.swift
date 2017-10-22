@@ -15,12 +15,13 @@ class Group {
     var description: String = "Add a description of your group."
     var meetingHistory: MeetingHistory = MeetingHistory()
     var upcomingAgenda: Agenda = Agenda()
+    var members: [String:Member]?
     
     init() {
         self.groupID = UUID()
     }
     
-    internal init(groupID: UUID?, name: String?, description: String?, meetingHistory: MeetingHistory?, upcomingAgenda: Agenda?) {
+    internal init(groupID: UUID?, name: String?, description: String?, meetingHistory: MeetingHistory?, upcomingAgenda: Agenda?, members: [String:Member]? = nil) {
         if let initGoupID = groupID {
             self.groupID = initGoupID
         } else {
@@ -38,6 +39,10 @@ class Group {
         if let initUpcomingAgenda = upcomingAgenda {
             self.upcomingAgenda = initUpcomingAgenda
         }
+        
+        if let initMembers = members {
+            self.members = initMembers
+        }
     }
     
     var jsonObject: [String:Any] {
@@ -47,6 +52,14 @@ class Group {
         output[Group.descriptionLabel] = description
         output[Group.meetingHistoryLabel] = meetingHistory.jsonObject
         output[Group.upcomingAgendaLabel] = upcomingAgenda.jsonObject
+        if let membership = members {
+            var membersJSON = [String:[String:Any]]()
+            for (key, value) in membership {
+                membersJSON[key] = value.jsonObject
+            }
+            output[Group.memberslabel] = membersJSON
+        }
+
         return output
     }
     
@@ -133,7 +146,24 @@ class Group {
                 return nil
             }
         }
-        self.init(groupID: groupID, name: name, description: description, meetingHistory: meetingHistory, upcomingAgenda: upcomingAgenda)
+        
+        var members: [String:Member]? {
+            guard let invitesJSON = jsonDictionary[Group.memberslabel] as? [String:Any] else {
+                return nil
+            }
+            var membersDictionaryOfJSONObjects = [String:[String:Any]]()
+            for (key, value) in invitesJSON {
+                membersDictionaryOfJSONObjects[key] = value as? [String:Any]
+            }
+            var membersInitialized = [String:Member]()
+            for (key, value) in membersDictionaryOfJSONObjects {
+                membersInitialized[key] = Member(jsonObject: value)
+            }
+            
+            return membersInitialized
+        }
+        
+        self.init(groupID: groupID, name: name, description: description, meetingHistory: meetingHistory, upcomingAgenda: upcomingAgenda, members: members)
     }
     
     convenience init (fromID id: UUID) {
@@ -177,4 +207,5 @@ class Group {
     public static let moderatorLabel = "Moderator"
     public static let meetingHistoryLabel = "Meetinghistory"
     public static let upcomingAgendaLabel = "Upcomingagenda"
+    public static let memberslabel = "Members"
 }

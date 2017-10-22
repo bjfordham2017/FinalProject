@@ -20,9 +20,12 @@ class MembersViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.loadView()
         
         self.members = []
-        let fakeMember = Member(name: "Not a Real Member", email: "fakehandle@fakemail.fakyfake", id: "FakeID")
-        
-        members.append(fakeMember)
+        if let membership = group.members {
+            for (_, value) in membership {
+                self.members.append(value)
+            }
+            memberTable.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
