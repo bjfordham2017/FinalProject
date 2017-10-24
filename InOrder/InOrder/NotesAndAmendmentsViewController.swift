@@ -17,6 +17,12 @@ class NotesAndAmendmentsViewController: UITableViewController {
     var generalNoteRequest: Bool = false
     var generalNotes: [Note]?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.leftBarButtonItem?.title = "Back"
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         if generalNoteRequest {
             return 1

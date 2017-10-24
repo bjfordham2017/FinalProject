@@ -23,10 +23,13 @@ class PassFailMotionViewController: UIViewController {
         switch motionType {
         case .adjourn:
             motionText.text = "A motion to adjourn requires a second and a simple majority vote.  If you adjourn before the end of your planned agenda, any remaining items will appear in the list automatically when you prepare your next meeting."
+            navigationItem.title = "Adjourn"
         case .table:
             motionText.text = "A motion to table requires a second and a simple majority vote.  Tabled items are moved to the agenda for the following meeting."
+            navigationItem.title = "Table"
         case .recess:
             motionText.text = "A motion to recess requires a second and a simple majority vote."
+            navigationItem.title = "Recess"
         default:
             motionText.text = "Error: \(motionType.description) is not a pass/fail motion. If this happens, it is a bug"
         }

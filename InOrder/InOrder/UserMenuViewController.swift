@@ -26,9 +26,12 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Your Groups"
+        
         newGroupButton.layer.cornerRadius = 7
         newGroupButton.layer.borderWidth = 1
         newGroupButton.layer.borderColor = UIColor.lightGray.cgColor
+        
         
     }
     
@@ -36,27 +39,35 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
         return 2
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let output = UILabel()
+        
+        output.textColor = .black
+        output.font = UIFont.boldSystemFont(ofSize: 20)
+        
         switch section {
         case 0:
             if user.groupDirectory.isEmpty {
-                return "You are not managing any groups"
+                 output.text = "  You are not managing any groups"
             } else {
-                return "Groups you manage"
+                output.text = "  Groups you manage"
             }
         case 1:
             if user.readOnlyGroupDirectory.isEmpty {
-                return "You are not following any groups"
+                output.text = "  You are not following any groups"
             } else {
-                return "Groups you follow"
+                output.text = "  Groups you follow"
             }
         default:
             fatalError("Unexpected section index")
         }
+        
+        return output
+    
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(50)
+        return CGFloat(60)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

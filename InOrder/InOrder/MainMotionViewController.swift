@@ -28,6 +28,8 @@ class MainMotionViewController: UIViewController, MainMotionDelegate {
     override func viewDidLoad() {
         super .viewDidLoad()
         
+        self.navigationItem.title = "Main Motion"
+        
         self.motionName.text = currentItem.name
         self.motionText.text = currentItem.description
         
@@ -50,8 +52,8 @@ class MainMotionViewController: UIViewController, MainMotionDelegate {
         review.layer.borderColor = UIColor.lightGray.cgColor
         
         closeAndVote.layer.cornerRadius = 7
-        closeAndVote.layer.borderWidth = 1
-        closeAndVote.layer.borderColor = UIColor.lightGray.cgColor
+        closeAndVote.layer.borderWidth = 3
+        closeAndVote.layer.borderColor = UIColor.black.cgColor
 
     }
     

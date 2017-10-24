@@ -40,8 +40,8 @@ class MeetingViewController: UIViewController, MotionDelegate {
         generalNotes.layer.borderColor = UIColor.lightGray.cgColor
         
         adjourn.layer.cornerRadius = 7
-        adjourn.layer.borderWidth = 1
-        adjourn.layer.borderColor = UIColor.lightGray.cgColor
+        adjourn.layer.borderWidth = 3
+        adjourn.layer.borderColor = UIColor.black.cgColor
         
         review.layer.cornerRadius = 7
         review.layer.borderWidth = 1

@@ -40,6 +40,8 @@ class InvitesViewController: UITableViewController {
             }
             tableView.reloadData()
         }
+        
+        self.navigationItem.title = "Invites"
     }
     
     
