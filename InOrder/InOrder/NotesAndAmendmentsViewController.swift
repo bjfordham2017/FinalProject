@@ -66,38 +66,44 @@ class NotesAndAmendmentsViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let output = UILabel()
+        
+        output.textColor = .black
+        output.font = UIFont.boldSystemFont(ofSize: 20)
+        output.textAlignment = .center
+        
         switch (section, generalNoteRequest) {
         case (0, false):
             if !notes!.isEmpty {
                 if notes!.count == 1 {
-                    return "\(notes!.count) Note"
+                    output.text = "\(notes!.count) Note"
                 } else {
-                    return "\(notes!.count) Notes"
+                    output.text = "\(notes!.count) Notes"
                 }
             } else {
-                return "No notes for this item"
+                output.text = "No notes for this item"
             }
         case (1, _):
             if !amendments!.isEmpty {
                 if amendments!.count == 1 {
-                    return "\(amendments!.count) Amendment"
+                    output.text = "\(amendments!.count) Amendment"
                 } else {
-                    return "\(amendments!.count) Amendments"
+                    output.text = "\(amendments!.count) Amendments"
                 }
             } else {
-                return "No amendments passed on this item"
+                output.text = "No amendments passed on this item"
             }
         case (0, true):
             if let general = generalNotes {
                 if !general.isEmpty {
                     if general.count == 1 {
-                        return "\(general.count) General Meeting Note"
+                        output.text = "\(general.count) General Meeting Note"
                     } else {
-                        return "\(general.count) General Meeting Notes"
+                        output.text = "\(general.count) General Meeting Notes"
                     }
                 } else {
-                    return "No general notes for this meeting so far"
+                    output.text = "No general notes for this meeting so far"
                 }
             } else {
                 return nil
@@ -106,10 +112,13 @@ class NotesAndAmendmentsViewController: UITableViewController {
             print("unexpected section index")
             return nil
         }
+        
+        return output
+        
     }
-    
+        
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(50)
+        return CGFloat(60)
     }
     
     

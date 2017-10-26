@@ -38,6 +38,8 @@ class NewInviteViewController: UIViewController {
         if userToInvite != nil {
             userToInvite = nil
         }
+        
+        searchField.text = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {

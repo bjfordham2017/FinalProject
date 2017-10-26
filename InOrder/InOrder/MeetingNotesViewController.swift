@@ -42,36 +42,49 @@ class MeetingNotesViewController: UITableViewController, UINavigationControllerD
         return 4
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let output = UILabel()
+        
+        output.textColor = .black
+        output.font = UIFont.boldSystemFont(ofSize: 20)
+        output.textAlignment = .center
+        
         switch section {
         case 0:
             if !meetingNotes.generalNotes.isEmpty {
-                return "General Notes"
+                output.text = "General Notes"
             } else {
-                return "No notes from this meeting"
+                output.text = "No notes from this meeting"
             }
         case 1:
             if !meetingNotes.itemsPassed.isEmpty {
-                return "Passed Items"
+                output.text = "Passed Items"
             } else {
-                return "No items passed at this meeting"
+                output.text = "No items passed at this meeting"
             }
         case 2:
             if !meetingNotes.itemsFailed.isEmpty {
-                return "Failed Items"
+                output.text = "Failed Items"
             } else {
-                return "No items failed at this meeting"
+                output.text = "No items failed at this meeting"
             }
         case 3:
             if !meetingNotes.itemsTabled.isEmpty {
-                return "Tabled Items"
+                output.text = "Tabled Items"
             } else {
-                return "No Items tabled at this meeting"
+                output.text = "No Items tabled at this meeting"
             }
         default:
-            print("Unexpected section index")
-            return nil
+            fatalError("Unexpected section index")
         }
+
+        
+        return output
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(60)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

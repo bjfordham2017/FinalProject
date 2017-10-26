@@ -44,6 +44,7 @@ class UserMenuViewController: UIViewController, UITableViewDelegate, UITableView
         
         output.textColor = .black
         output.font = UIFont.boldSystemFont(ofSize: 20)
+        output.textAlignment = .center
         
         switch section {
         case 0:
