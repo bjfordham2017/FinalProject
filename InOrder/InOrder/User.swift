@@ -7,11 +7,17 @@
 //
 
 import Foundation
+import Firebase
 
-class User {//needs explicit access control
+class InOrderUser {//needs explicit access control
     
-    var group: Group = Group()
+    let name: String
+    let email: String
+    let id: String
     var groupDirectory: [GroupDirectoryEntry] = []
+    var readOnlyGroupDirectory: [GroupDirectoryEntry] = []
+    var invites: [UUID:Invite]?
+    
     let filePath: URL = {
         let documentsDirectories =
             FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -24,23 +30,146 @@ class User {//needs explicit access control
         let directoryJSON = self.groupDirectory.map({item in
             return item.jsonObject
         })
-        output[User.groupDirectoryLabel] = directoryJSON
+        let readOnlyDirectoryJSON = self.readOnlyGroupDirectory.map({item in
+            return item.jsonObject
+        })
+        output[InOrderUser.groupDirectoryLabel] = directoryJSON
+        output[InOrderUser.readOnlyGroupDirectoryLabel] = readOnlyDirectoryJSON
+        output[InOrderUser.nameLabel] = self.name
+        output[InOrderUser.emailLabel] = self.email
+        output[InOrderUser.idLabel] = self.id
+        if let invitations = invites {
+            var invitesJSON = [String:[String:Any]]()
+            for (key, value) in invitations {
+                invitesJSON[key.uuidString] = value.jsonObject
+            }
+            output[InOrderUser.invitesLabel] = invitesJSON
+        }
         return output
     }
     
-    init() {
-        if let data = try? Data(contentsOf: filePath),
-            let JSON = try? JSONSerialization.jsonObject(with: data, options: []),
-            let jsonDictionary = JSON as? [String:Any],
-            let directoryJSON = jsonDictionary[User.groupDirectoryLabel] as? [[String:Any]] {
-            let directoryOptionals = directoryJSON.map({element in
-                return GroupDirectoryEntry(jsonObject: element)})
-            for item in directoryOptionals {
-                if let directoryEntry = item {
-                    self.groupDirectory.append(directoryEntry)
+    var memberOnlyJSONObject: [String:Any] {
+        var output = [String:Any]()
+
+        output[InOrderUser.nameLabel] = self.name
+        output[InOrderUser.emailLabel] = self.email
+        output[InOrderUser.idLabel] = self.id
+
+        return output
+    }
+    
+    init (name: String, email: String, id: String, groupDirectory: [GroupDirectoryEntry]? = [], readOnlyGroupDirectory: [GroupDirectoryEntry]? = [], invites: [UUID:Invite]? = nil) {
+        self.name = name
+        self.email = email
+        self.id = id
+        
+        if let groupDirectoryInput = groupDirectory {
+            self.groupDirectory = groupDirectoryInput
+        }
+        
+        if let readOnlyGroupDirectoryInput = readOnlyGroupDirectory {
+            self.readOnlyGroupDirectory = readOnlyGroupDirectoryInput
+        }
+        
+        if let invitesInput = invites {
+            self.invites = invitesInput
+        }
+        
+    }
+    
+    convenience init? (jsonOjbect: [String:Any]) {
+        guard let name = jsonOjbect[InOrderUser.nameLabel] as? String,
+        let email = jsonOjbect[InOrderUser.emailLabel] as? String,
+        let id = jsonOjbect[InOrderUser.idLabel] as? String
+            else {
+                return nil
+        }
+        
+        var groupDirectory: [GroupDirectoryEntry] {
+            var output = [GroupDirectoryEntry]()
+            if let directoryJSON = jsonOjbect[InOrderUser.groupDirectoryLabel] as? [[String:Any]] {
+                let directoryOptionals = directoryJSON.map({element in
+                    return GroupDirectoryEntry(jsonObject: element)
+                })
+                for item in directoryOptionals {
+                    if let directoryEntry = item {
+                        output.append(directoryEntry)
+                    }
                 }
             }
+            return output
         }
+        
+        var readOnlyGroupDirectory: [GroupDirectoryEntry] {
+            var output = [GroupDirectoryEntry]()
+            if let directoryJSON = jsonOjbect[InOrderUser.readOnlyGroupDirectoryLabel] as? [[String:Any]] {
+                let directoryOptionals = directoryJSON.map({element in
+                    return GroupDirectoryEntry(jsonObject: element)
+                })
+                for item in directoryOptionals {
+                    if let directoryEntry = item {
+                        output.append(directoryEntry)
+                    }
+                }
+            }
+            return output
+        }
+        
+        self.init(name: name, email: email, id: id, groupDirectory: groupDirectory, readOnlyGroupDirectory: readOnlyGroupDirectory)
+    }
+    
+    convenience init? (dataSnapshot: DataSnapshot) {
+        guard let firebaseJSON = dataSnapshot.value as? [String:Any],
+            let name = firebaseJSON[InOrderUser.nameLabel] as? String,
+            let email = firebaseJSON[InOrderUser.emailLabel] as? String,
+            let id = firebaseJSON[InOrderUser.idLabel] as? String
+            else {
+                return nil
+        }
+        
+        var groupDirectory: [GroupDirectoryEntry] {
+            var output = [GroupDirectoryEntry]()
+            if let directoryJSON = firebaseJSON[InOrderUser.groupDirectoryLabel] as? [[String:Any]] {
+                for item in directoryJSON {
+                    if let entry = GroupDirectoryEntry(jsonObject: item) {
+                        output.append(entry)
+                    }
+                }
+            }
+            return output
+        }
+        
+        var readOnlyGroupDirectory: [GroupDirectoryEntry] {
+            var output = [GroupDirectoryEntry]()
+            if let directoryJSON = firebaseJSON[InOrderUser.readOnlyGroupDirectoryLabel] as? [[String:Any]] {
+                for item in directoryJSON {
+                    if let entry = GroupDirectoryEntry(jsonObject: item) {
+                        output.append(entry)
+                    }
+                }
+            }
+            return output
+        }
+        
+        var invites: [UUID:Invite]? {
+            guard let invitesJSON = firebaseJSON[InOrderUser.invitesLabel] as? [String:Any] else {
+                return nil
+            }
+            var invitesDictionaryOfJSONObjects = [String:[String:Any]]()
+            for (key, value) in invitesJSON {
+                invitesDictionaryOfJSONObjects[key] = value as? [String:Any]
+            }
+            var invitesInitialized = [UUID:Invite]()
+            for (key, value) in invitesDictionaryOfJSONObjects {
+                if let id = UUID(uuidString: key) {
+                    invitesInitialized[id] = Invite(jsonDictionary: value)
+                }
+            }
+            
+            return invitesInitialized
+        }
+        
+        self.init(name: name, email: email, id: id, groupDirectory: groupDirectory, readOnlyGroupDirectory: readOnlyGroupDirectory, invites: invites)
     }
     
     func save() {
@@ -50,13 +179,16 @@ class User {//needs explicit access control
         } catch {
             print(error)
         }
+        
     }
     
-    public static let firstNameLabel = "Firstname"
-    public static let lastNameLabel = "Lastname"
+    public static let nameLabel = "Name"
+    public static let idLabel = "ID"
     public static let emailLabel = "Email"
     public static let passwordLabel = "Password"
     public static let groupDirectoryLabel = "GroupDirectory"
+    public static let readOnlyGroupDirectoryLabel = "ReadOnlyGroupDirectory"
+    public static let invitesLabel = "Invites"
 }
 
 class GroupDirectoryEntry {

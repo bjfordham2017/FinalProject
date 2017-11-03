@@ -23,10 +23,12 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func transferMeetingInfo(newMeeting: MeetingNotes?, nextAgenda: Agenda) {
         delegate.recordMeeting(newMeeting: newMeeting, nextAgenda: nextAgenda)
+        print("Title at transfer from New Meeting \(agenda.title)")
         dismiss(animated: true, completion: nil)
     }
     
     func cancel() {
+        print("Title At cancel \(agenda.title)")
         dismiss(animated: true, completion: nil)
     }
     
@@ -84,6 +86,7 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        meetingTitleField.text = agenda.title
         agendaTable.reloadData()
     }
     
@@ -94,6 +97,7 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
         print("Editing ended")
         
         agenda.title = meetingTitleField.text ?? "New Meeting"
+        print("Title at New Meeting viewWillDisappear \(agenda.title)")
     }
     
     @IBAction func tapToEndTextEditing(_ sender: UITapGestureRecognizer) {
@@ -123,6 +127,10 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func saveForLater(_ sender: UIButton) {
+        view.endEditing(true)
+        print("Editing ended")
+        
+        agenda.title = meetingTitleField.text ?? "New Meeting"
         transferMeetingInfo(newMeeting: nil, nextAgenda: agenda)
     }
     
@@ -145,7 +153,6 @@ class NewMeetingViewController: UIViewController, UITableViewDelegate, UITableVi
             meetingTabBar.meetingWalkThroughDelegate = self
             let meeting = meetingTabBar.customizableViewControllers![0] as! MeetingViewController
             meeting.agenda = self.agenda
-            meeting.newNotes = MeetingNotes(title: self.agenda.title, date: Date())
             meeting.delegate = self
             let mainMotion = meetingTabBar.customizableViewControllers![1] as! MainMotionViewController
             mainMotion.agenda = self.agenda

@@ -29,6 +29,8 @@ class MeetingViewController: UIViewController, MotionDelegate {
         meetingTitle.text = agenda.title
         meetingDate.text = MeetingNotes.dateFormatter.string(from: Date())
         
+        newNotes = MeetingNotes(title: agenda.title, date: Date())
+        
         recess.layer.cornerRadius = 7
         recess.layer.borderWidth = 1
         recess.layer.borderColor = UIColor.lightGray.cgColor
@@ -38,8 +40,8 @@ class MeetingViewController: UIViewController, MotionDelegate {
         generalNotes.layer.borderColor = UIColor.lightGray.cgColor
         
         adjourn.layer.cornerRadius = 7
-        adjourn.layer.borderWidth = 1
-        adjourn.layer.borderColor = UIColor.lightGray.cgColor
+        adjourn.layer.borderWidth = 3
+        adjourn.layer.borderColor = UIColor.black.cgColor
         
         review.layer.cornerRadius = 7
         review.layer.borderWidth = 1
@@ -89,6 +91,7 @@ class MeetingViewController: UIViewController, MotionDelegate {
         }
         
         self.agenda.agenda = savedForNext
+        print("title at closeMeeting \(agenda.title)")
         self.delegate.transferMeetingInfo(newMeeting: newNotes, nextAgenda: agenda)
     }
     

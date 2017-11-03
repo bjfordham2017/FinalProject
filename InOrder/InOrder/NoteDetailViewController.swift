@@ -20,6 +20,9 @@ class NoteDetailViewController: UIViewController, UINavigationControllerDelegate
     
     override func loadView() {
         super.loadView()
+        
+        navigationItem.leftBarButtonItem?.title = "Back"
+        
         noteText.text = note.note
         
         noteText.isEditable = false

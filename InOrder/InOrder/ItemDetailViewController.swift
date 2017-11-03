@@ -33,6 +33,8 @@ class ItemDetailViewController: UIViewController {
         countAgainst.text = "\(item.votesAgainst)"
         countAbstained.text = "\(item.abstentions)"
         
+        navigationItem.leftBarButtonItem?.title = "Back"
+        
         var notesOnButton: String {
             if item.notes.count == 1 {
                 return "\(item.notes.count) Note"
