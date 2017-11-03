@@ -88,6 +88,11 @@ class NewInviteViewController: UIViewController {
                 if self.userToInvite != nil {
                     self.performSegue(withIdentifier: "searchResultsSegue", sender: nil)
                 }
+            } else {
+                let userNotFoundMessage = UIAlertController(title: "User Not Found", message: "Check that the email address you used is correct and try again.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: .default)
+                userNotFoundMessage.addAction(okAction)
+                self.present(userNotFoundMessage, animated: true, completion: nil)
             }
         })
     }
