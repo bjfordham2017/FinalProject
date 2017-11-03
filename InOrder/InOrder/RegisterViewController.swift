@@ -65,6 +65,32 @@ class RegisterViewController: UIViewController {
             if error == nil {
                 Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: nil)
             }
+            
+            if error != nil {
+                
+                let errorCode = AuthErrorCode(rawValue: error!._code)
+                
+                var errorMessage: String {
+                    if let code = errorCode {
+                        switch code {
+                        case .emailAlreadyInUse:
+                            return "Email already used"
+                        case .invalidEmail:
+                            return "Not a valid email"
+                        default:
+                            return "Unknown error"
+                        }
+                    } else {
+                        return "Unknown error"
+                    }
+                }
+                
+                let errorAlert = UIAlertController(title: "Registration Error", message: errorMessage, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: .default)
+                errorAlert.addAction(okAction)
+                
+                self.present(errorAlert, animated: true, completion: nil)
+            }
         })
         
     }
