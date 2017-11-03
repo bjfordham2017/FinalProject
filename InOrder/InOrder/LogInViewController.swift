@@ -71,20 +71,33 @@ class LogInViewController: UIViewController {
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!, completion: {(user, error) in
             if error != nil {
                 let errorCode = AuthErrorCode(rawValue: error!._code)
-                if let code = errorCode {
-                    switch code {
-                    case .invalidEmail:
-                        print("invalid email")
-                    case .wrongPassword:
-                        print("wrong password")
-                    case .userNotFound:
-                        print("user not found")
-                    case .userDisabled:
-                        print("user disabled")
-                    default:
-                        print(error!)
+                
+                var errorMesssage: String {
+                    if let code = errorCode {
+                        switch code {
+                        case .invalidEmail:
+                            return "Invalid email"
+                        case .wrongPassword:
+                            return "Wrong password"
+                        case .userNotFound:
+                            return "User not found"
+                        case .userDisabled:
+                            return "User disabled"
+                        default:
+                            return "Unknown error"
+                        }
+                    } else {
+                        return "Unknown error"
                     }
                 }
+                
+                let errorAlert = UIAlertController(title: "Authentication Error", message: errorMesssage, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: .default)
+                
+                errorAlert.addAction(okAction)
+                
+                self.present(errorAlert, animated: true, completion: nil)
+                
             }
         })
         
